@@ -704,6 +704,18 @@
             align-items: center;
             justify-content: center;
             color: var(--text-secondary);
+            overflow: hidden;
+        }
+
+        .kitchen-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .kitchen-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
         /* About Section */
@@ -1287,7 +1299,6 @@
         </section>
     </div>
 
-    <!-- Остальные страницы -->
     <!-- Страница услуг -->
     <div id="services-page" class="page">
         <section class="page-hero">
@@ -1453,8 +1464,257 @@
         </section>
     </div>
 
-    <!-- Остальные страницы (кухня, портфолио, о нас, контакты) -->
-    <!-- ... -->
+    <!-- Страница кухни -->
+    <div id="kitchen-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Кухня</h1>
+                <p>Вкусные и изысканные блюда для вашего мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="kitchen">
+            <div class="container">
+                <div class="kitchen-categories">
+                    <button class="kitchen-category-btn active" data-category="tartlets">Тарталетки</button>
+                    <button class="kitchen-category-btn" data-category="bruschetta">Брускетты</button>
+                    <button class="kitchen-category-btn" data-category="canape">Канапе</button>
+                    <button class="kitchen-category-btn" data-category="other">Разное</button>
+                </div>
+                
+                <!-- Тарталетки -->
+                <div class="kitchen-items" id="tartlets-items">
+                    <div class="kitchen-item" style="--delay: 1">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка кремчиз-икра</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 2">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка кремчиз-лосось</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 3">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка Салями</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 4">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка Гусиная печень с перепелинным яйцом</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 5">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка с паштотом из тунца с черри</h3>
+                    </div>
+                </div>
+                
+                <!-- Брускетты -->
+                <div class="kitchen-items" id="bruschetta-items" style="display: none;">
+                    <div class="kitchen-item" style="--delay: 1">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Брускета Салями</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 2">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Брускета Сельдь на сыре с корнишонами</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 3">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Брускета с лососем</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 4">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Брускетта Капрезе</h3>
+                    </div>
+                </div>
+                
+                <!-- Канапе -->
+                <div class="kitchen-items" id="canape-items" style="display: none;">
+                    <div class="kitchen-item" style="--delay: 1">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Канапе Пеперони</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 2">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Канапе с лососем</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 3">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Канапе Камамбер с виноградом</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 4">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Канапе Чеддер с виноградом</h3>
+                    </div>
+                </div>
+                
+                <!-- Разное -->
+                <div class="kitchen-items" id="other-items" style="display: none;">
+                    <div class="kitchen-item" style="--delay: 1">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Салат греческий</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 2">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Ролл Цезарь с куриным филе</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 3">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Такосы</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 4">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Салат Цезарь</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 5">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тар-тар с тунцом и авокадо</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница портфолио -->
+    <div id="portfolio-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Наши работы</h1>
+                <p>Реализованные проекты и мероприятия, которые мы организовали</p>
+            </div>
+        </section>
+        
+        <section class="portfolio">
+            <div class="container">
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" style="--delay: 1">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Тяжелый дым на свадебный танец</h3>
+                            <p>Свадьба Анны и Михаила, июль 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 2">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Пирамида шампанского</h3>
+                            <p>Корпоратив IT-компании, декабрь 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 3">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Выездной бар</h3>
+                            <p>День рождения ресторана, май 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 4">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Коктейльный бар</h3>
+                            <p>Свадьба Екатерины и Дмитрия, сентябрь 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 5">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Тематическая вечеринка</h3>
+                            <p>Выпускной вечер, июнь 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 6">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Корпоративное мероприятие</h3>
+                            <p>Тимбилдинг компании, август 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница о нас -->
+    <div id="about-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>О нас</h1>
+                <p>Узнайте больше о нашем event-агентстве</p>
+            </div>
+        </section>
+        
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Event-агентство "Пить и Танцевать" - это команда профессионалов, которая превращает ваши мечты о идеальном празднике в реальность.</p>
+                        <p>Мы специализируемся на организации свадеб, корпоративных мероприятий, дней рождений и других торжеств. Наш подход - это индивидуальный план для каждого клиента, внимание к деталям и безупречное исполнение.</p>
+                        <p>С нами ваш праздник станет незабываемым событием, которое будут вспоминать с теплотой и восторгом!</p>
+                        <p>Наша команда состоит из опытных организаторов, дизайнеров, барменов и техников, которые работают слаженно, чтобы обеспечить высочайший уровень сервиса.</p>
+                        <p>Мы гордимся каждым проведенным мероприятием и стремимся превзойти ожидания наших клиентов.</p>
+                    </div>
+                    <div class="about-image">
+                        Фото команды
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница контактов -->
+    <div id="contact-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Контакты</h1>
+                <p>Свяжитесь с нами для организации вашего мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@pit-i-tancevat.ru">info@pit-i-tancevat.ru</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>г. Москва, ул. Праздничная, д. 123</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Пн-Пт: 9:00-21:00, Сб-Вс: 10:00-20:00</span>
+                        </div>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-vk"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" placeholder="Ваш телефон" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Ваш email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Сообщение" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Отправить сообщение</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- Кнопка "Наверх" -->
     <div class="back-to-top" id="backToTop">
@@ -1603,6 +1863,32 @@
                 const category = btn.getAttribute('data-category');
                 document.getElementById(`${category}-cocktails`).style.display = 
                     category === 'classic' ? 'grid' : 'block';
+                    
+                // Активируем анимации для нового контента
+                setTimeout(() => {
+                    activateAnimations();
+                }, 100);
+            });
+        });
+        
+        // Переключение категорий кухни
+        const kitchenCategoryBtns = document.querySelectorAll('.kitchen-category-btn');
+        
+        kitchenCategoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Убираем активный класс у всех кнопок
+                kitchenCategoryBtns.forEach(b => b.classList.remove('active'));
+                // Добавляем активный класс текущей кнопке
+                btn.classList.add('active');
+                
+                // Скрываем все категории блюд
+                document.querySelectorAll('.kitchen-items').forEach(category => {
+                    category.style.display = 'none';
+                });
+                
+                // Показываем выбранную категорию
+                const category = btn.getAttribute('data-category');
+                document.getElementById(`${category}-items`).style.display = 'grid';
                     
                 // Активируем анимации для нового контента
                 setTimeout(() => {
