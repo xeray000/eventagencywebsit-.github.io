@@ -51,13 +51,13 @@
         }
 
         section {
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
             position: relative;
             opacity: 0;
             transform: translateY(30px);
@@ -104,9 +104,10 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             padding: 15px 0;
             transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
 
         header.scrolled {
@@ -124,6 +125,12 @@
             font-size: 1.8rem;
             font-weight: bold;
             color: var(--accent-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo span {
@@ -135,13 +142,14 @@
         }
 
         .nav-menu li {
-            margin-left: 30px;
+            margin-left: 25px;
         }
 
         .nav-menu a {
             font-weight: 500;
             transition: var(--transition);
             position: relative;
+            font-size: 1rem;
         }
 
         .nav-menu a:hover {
@@ -172,6 +180,7 @@
             margin-right: 20px;
             font-weight: bold;
             transition: var(--transition);
+            white-space: nowrap;
         }
 
         .phone:hover {
@@ -202,6 +211,7 @@
         .hamburger {
             display: none;
             cursor: pointer;
+            font-size: 1.5rem;
         }
 
         /* Hero Section */
@@ -211,6 +221,7 @@
             align-items: center;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80') no-repeat center center/cover;
             text-align: center;
+            padding-top: 80px;
         }
 
         .hero-content {
@@ -227,7 +238,7 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             margin-bottom: 20px;
             line-height: 1.2;
         }
@@ -248,9 +259,10 @@
         .process-step {
             flex: 0 0 23%;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             opacity: 0;
             transform: translateY(30px);
+            padding: 20px 15px;
         }
 
         .process-step.visible {
@@ -279,23 +291,28 @@
 
         .step-description {
             color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
         /* Services Section */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 25px;
         }
 
         .service-card {
             background-color: var(--secondary-color);
             border-radius: 8px;
-            padding: 30px;
+            padding: 25px;
             text-align: center;
             transition: var(--transition);
             opacity: 0;
             transform: translateY(30px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .service-card.visible {
@@ -315,13 +332,14 @@
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
         }
 
         .service-card p {
             color: var(--text-secondary);
             margin-bottom: 20px;
+            flex-grow: 1;
         }
 
         .service-price {
@@ -338,7 +356,9 @@
             border-radius: 4px;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             transition: var(--transition);
+            font-weight: bold;
         }
 
         .whatsapp-btn:hover {
@@ -354,21 +374,22 @@
         .bar-features {
             background-color: var(--secondary-color);
             border-radius: 10px;
-            padding: 60px 40px;
-            margin: 60px 0;
+            padding: 50px 30px;
+            margin: 50px 0;
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .feature-item {
             text-align: center;
             opacity: 0;
             transform: translateY(30px);
+            padding: 20px 15px;
         }
 
         .feature-item.visible {
@@ -377,7 +398,7 @@
         }
 
         .feature-icon {
-            font-size: 3rem;
+            font-size: 2.8rem;
             color: var(--accent-color);
             margin-bottom: 20px;
         }
@@ -389,6 +410,7 @@
 
         .feature-description {
             color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
         .why-us {
@@ -397,6 +419,7 @@
             margin: 0 auto;
             opacity: 0;
             transform: translateY(30px);
+            padding: 20px;
         }
 
         .why-us.visible {
@@ -405,14 +428,14 @@
         }
 
         .why-us h3 {
-            font-size: 2rem;
-            margin-bottom: 30px;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
             color: var(--accent-color);
         }
 
         .why-us p {
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 1.1rem;
+            line-height: 1.7;
             color: var(--text-secondary);
         }
 
@@ -421,6 +444,7 @@
             display: flex;
             justify-content: center;
             margin-bottom: 40px;
+            flex-wrap: wrap;
         }
 
         .category-btn {
@@ -429,7 +453,7 @@
             color: var(--text-secondary);
             font-size: 1.1rem;
             padding: 10px 20px;
-            margin: 0 10px;
+            margin: 5px 10px;
             cursor: pointer;
             transition: var(--transition);
             position: relative;
@@ -488,6 +512,13 @@
             align-items: center;
             justify-content: center;
             color: var(--text-secondary);
+            overflow: hidden;
+        }
+
+        .cocktail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .cocktail-name {
@@ -526,6 +557,7 @@
 
         .cocktail-simple-item:hover {
             background-color: #2a2a2a;
+            transform: translateX(5px);
         }
 
         .cocktail-simple-name {
@@ -765,20 +797,20 @@
         /* Footer */
         footer {
             background-color: var(--secondary-color);
-            padding: 60px 0 30px;
+            padding: 50px 0 25px;
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .footer-column {
             flex: 1;
             min-width: 250px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .footer-column h3 {
@@ -802,7 +834,7 @@
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 25px;
             border-top: 1px solid #333;
             color: var(--text-secondary);
             font-size: 0.9rem;
@@ -833,6 +865,10 @@
             
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
             }
         }
 
@@ -868,11 +904,11 @@
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .process-step {
@@ -891,11 +927,15 @@
             .features-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .hero {
+                padding-top: 70px;
+            }
         }
 
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .kitchen-categories {
@@ -906,13 +946,21 @@
             .kitchen-category-btn {
                 margin: 5px 0;
             }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
         }
 
         /* Страницы */
         .page {
             display: none;
             min-height: 100vh;
-            padding-top: 100px;
+            padding-top: 80px;
         }
 
         .page.active {
@@ -920,7 +968,7 @@
         }
 
         .page-hero {
-            height: 60vh;
+            height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -929,15 +977,85 @@
         }
 
         .page-hero h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
         .page-hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        /* Дополнительные улучшения */
+        .quick-contact {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .quick-contact .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .quick-contact p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid var(--accent-color);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -945,16 +1063,15 @@
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
-            <a href="#" class="logo">Пить и <span>Танцевать</span></a>
+            <div class="logo" id="home-link">Пить и <span>Танцевать</span></div>
             
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
             
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link" data-page="home">Главная</a></li>
                 <li><a href="#services" class="nav-link" data-page="services">Услуги</a></li>
-                <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейльная карта</a></li>
+                <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейли</a></li>
                 <li><a href="#kitchen" class="nav-link" data-page="kitchen">Кухня</a></li>
                 <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
                 <li><a href="#about" class="nav-link" data-page="about">О нас</a></li>
@@ -972,13 +1089,23 @@
         </div>
     </header>
 
+    <!-- Быстрый контакт -->
+    <div class="quick-contact">
+        <div class="container">
+            <p>Нужна помощь в организации мероприятия?</p>
+            <a href="https://wa.me/79991234567" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Написать в WhatsApp
+            </a>
+        </div>
+    </div>
+
     <!-- Главная страница -->
     <div id="home" class="page active">
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Event-агентство | Праздничные услуги "Пить и Танцевать"</h1>
+                    <h1>Event-агентство "Пить и Танцевать"</h1>
                     <p>Создаем незабываемые события под ключ! Свадьбы, корпоративы, вечеринки и многое другое.</p>
                     <a href="#contact" class="btn nav-link" data-page="contact">Связаться с нами</a>
                 </div>
@@ -1076,7 +1203,7 @@
                         <p>Создадим незабываемую атмосферу для вашего первого танца как молодоженов</p>
                         <div class="service-price">от 8000 руб.</div>
                         <a href="https://wa.me/79991234567" class="whatsapp-btn">
-                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                            <i class="fab fa-whatsapp"></i> Заказать
                         </a>
                     </div>
                     
@@ -1087,12 +1214,11 @@
                         <h3>Пирамида из бокалов с шампанским</h3>
                         <p>Эффектная подача шампанского для вашего праздника</p>
                         <div class="service-subcategories">
-                            <p>35 бокалов</p>
-                            <p>55 бокалов</p>
+                            <p>35 бокалов | 55 бокалов</p>
                         </div>
                         <div class="service-price">от 6000 руб.</div>
                         <a href="https://wa.me/79991234567" class="whatsapp-btn">
-                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                            <i class="fab fa-whatsapp"></i> Заказать
                         </a>
                     </div>
                     
@@ -1110,7 +1236,7 @@
                         </ul>
                         <div class="service-price">от 25000 руб.</div>
                         <a href="https://wa.me/79991234567" class="whatsapp-btn">
-                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                            <i class="fab fa-whatsapp"></i> Заказать
                         </a>
                     </div>
                 </div>
@@ -1118,7 +1244,7 @@
         </section>
     </div>
 
-    <!-- Остальные страницы остаются без изменений -->
+    <!-- Остальные страницы -->
     <!-- Страница услуг -->
     <div id="services-page" class="page">
         <section class="page-hero">
@@ -1139,7 +1265,7 @@
                         <p>Создадим незабываемую атмосферу для вашего первого танца как молодоженов. Наш профессиональный дымовой эффект добавит волшебства и романтики в этот особенный момент.</p>
                         <div class="service-price">от 8000 руб.</div>
                         <a href="https://wa.me/79991234567" class="whatsapp-btn">
-                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                            <i class="fab fa-whatsapp"></i> Заказать
                         </a>
                     </div>
                     
@@ -1150,12 +1276,11 @@
                         <h3>Пирамида из бокалов с шампанским</h3>
                         <p>Эффектная подача шампанского для вашего праздника. Идеальное решение для торжественного тоста, которое произведет впечатление на всех гостей.</p>
                         <div class="service-subcategories">
-                            <p>35 бокалов</p>
-                            <p>55 бокалов</p>
+                            <p>35 бокалов | 55 бокалов</p>
                         </div>
                         <div class="service-price">от 6000 руб.</div>
                         <a href="https://wa.me/79991234567" class="whatsapp-btn">
-                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                            <i class="fab fa-whatsapp"></i> Заказать
                         </a>
                     </div>
                     
@@ -1173,7 +1298,7 @@
                         </ul>
                         <div class="service-price">от 25000 руб.</div>
                         <a href="https://wa.me/79991234567" class="whatsapp-btn">
-                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                            <i class="fab fa-whatsapp"></i> Заказать
                         </a>
                     </div>
                 </div>
@@ -1285,8 +1410,13 @@
         </section>
     </div>
 
-    <!-- Остальные страницы (кухня, портфолио, о нас, контакты) остаются без изменений -->
+    <!-- Остальные страницы (кухня, портфолио, о нас, контакты) -->
     <!-- ... -->
+
+    <!-- Кнопка "Наверх" -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1307,11 +1437,11 @@
                 <div class="footer-column">
                     <h3>Навигация</h3>
                     <ul class="footer-links">
-                        <li><a href="#home" class="nav-link" data-page="home">Главная</a></li>
                         <li><a href="#services" class="nav-link" data-page="services">Услуги</a></li>
-                        <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейльная карта</a></li>
+                        <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейли</a></li>
                         <li><a href="#kitchen" class="nav-link" data-page="kitchen">Кухня</a></li>
                         <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
+                        <li><a href="#about" class="nav-link" data-page="about">О нас</a></li>
                         <li><a href="#contact" class="nav-link" data-page="contact">Контакты</a></li>
                     </ul>
                 </div>
@@ -1343,38 +1473,66 @@
         // Навигация по страницам
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page');
+        const homeLink = document.getElementById('home-link');
         
+        // Функция для переключения страниц
+        function switchPage(targetPage) {
+            // Скрываем все страницы
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Показываем целевую страницу
+            document.getElementById(`${targetPage}-page`).classList.add('active');
+            
+            // Закрываем мобильное меню
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            
+            // Прокручиваем к верху страницы
+            window.scrollTo(0, 0);
+        }
+        
+        // Обработчики для навигационных ссылок
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                
                 const targetPage = link.getAttribute('data-page');
-                
-                // Скрываем все страницы
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                // Показываем целевую страницу
-                document.getElementById(`${targetPage}-page`).classList.add('active');
-                
-                // Закрываем мобильное меню
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                
-                // Прокручиваем к верху страницы
-                window.scrollTo(0, 0);
+                switchPage(targetPage);
             });
+        });
+        
+        // Обработчик для логотипа (возврат на главную)
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchPage('home');
         });
         
         // Изменение header при скролле
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
+            const backToTop = document.getElementById('backToTop');
+            
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
+            
+            // Показать/скрыть кнопку "Наверх"
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // Кнопка "Наверх"
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
         
         // Переключение категорий коктейлей
@@ -1436,6 +1594,28 @@
         window.addEventListener('load', () => {
             document.querySelector('.hero-content').classList.add('visible');
         });
+        
+        // Обработчик формы обратной связи
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Здесь можно добавить код для отправки формы
+            // Например, с помощью AJAX или перенаправления на email
+            alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
+        });
+        
+        // Имитация загрузки данных (для демонстрации)
+        function simulateLoading() {
+            const loadingSpinner = document.createElement('div');
+            loadingSpinner.className = 'loading-spinner';
+            loadingSpinner.innerHTML = '<div class="spinner"></div><p>Загрузка данных...</p>';
+            
+            // В реальном приложении здесь был бы AJAX-запрос
+            setTimeout(() => {
+                loadingSpinner.style.display = 'none';
+            }, 1500);
+        }
     </script>
 </body>
 </html>
