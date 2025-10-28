@@ -238,6 +238,49 @@
             color: var(--text-secondary);
         }
 
+        /* Process Section */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .process-step {
+            flex: 0 0 23%;
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .process-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+        }
+
         /* Services Section */
         .services-grid {
             display: grid;
@@ -389,49 +432,6 @@
         .cocktail-ingredients {
             color: var(--text-secondary);
             font-size: 0.9rem;
-        }
-
-        /* Process Section */
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .process-step {
-            flex: 0 0 23%;
-            text-align: center;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .process-step.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 20px;
-        }
-
-        .step-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-
-        .step-description {
-            color: var(--text-secondary);
         }
 
         /* Portfolio Section */
@@ -794,6 +794,38 @@
                 margin: 5px 0;
             }
         }
+
+        /* Страницы */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80') no-repeat center center/cover;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -807,13 +839,14 @@
             </div>
             
             <ul class="nav-menu">
-                <li><a href="#services">Услуги</a></li>
-                <li><a href="#cocktail-menu">Коктейльная карта</a></li>
-                <li><a href="#process">Процесс</a></li>
-                <li><a href="#portfolio">Портфолио</a></li>
-                <li><a href="#kitchen">Кухня</a></li>
-                <li><a href="#about">О нас</a></li>
-                <li><a href="#contact">Контакты</a></li>
+                <li><a href="#home" class="nav-link" data-page="home">Главная</a></li>
+                <li><a href="#process" class="nav-link" data-page="process">Процесс</a></li>
+                <li><a href="#services" class="nav-link" data-page="services">Услуги</a></li>
+                <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейльная карта</a></li>
+                <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
+                <li><a href="#kitchen" class="nav-link" data-page="kitchen">Кухня</a></li>
+                <li><a href="#about" class="nav-link" data-page="about">О нас</a></li>
+                <li><a href="#contact" class="nav-link" data-page="contact">Контакты</a></li>
             </ul>
             
             <div class="contact-info">
@@ -827,321 +860,491 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Event-агентство | Праздничные услуги "Пить и Танцевать"</h1>
-                <p>Создаем незабываемые события под ключ! Свадьбы, корпоративы, вечеринки и многое другое.</p>
-                <a href="#contact" class="btn">Связаться с нами</a>
+    <!-- Главная страница -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Event-агентство | Праздничные услуги "Пить и Танцевать"</h1>
+                    <p>Создаем незабываемые события под ключ! Свадьбы, корпоративы, вечеринки и многое другое.</p>
+                    <a href="#contact" class="btn nav-link" data-page="contact">Связаться с нами</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Наши услуги</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-smog"></i>
+        <!-- Process Section -->
+        <section id="process" class="process">
+            <div class="container">
+                <h2 class="section-title">Наш процесс работы</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Консультация</h3>
+                        <p class="step-description">Обсуждаем ваши пожелания, бюджет и особенности мероприятия</p>
                     </div>
-                    <h3>Тяжелый дым на свадебный танец</h3>
-                    <p>Создадим незабываемую атмосферу для вашего первого танца как молодоженов</p>
-                    <div class="service-price">от 8000 руб.</div>
-                    <a href="https://wa.me/79991234567" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
-                    </a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-glass-cheers"></i>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Концепция</h3>
+                        <p class="step-description">Разрабатываем уникальную концепцию мероприятия и подбираем услуги</p>
                     </div>
-                    <h3>Пирамида из бокалов с шампанским</h3>
-                    <p>Эффектная подача шампанского для вашего праздника</p>
-                    <div class="service-subcategories">
-                        <p>35 бокалов</p>
-                        <p>55 бокалов</p>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Планирование</h3>
+                        <p class="step-description">Составляем детальный план мероприятия и согласовываем все детали</p>
                     </div>
-                    <div class="service-price">от 6000 руб.</div>
-                    <a href="https://wa.me/79991234567" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
-                    </a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cocktail"></i>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Реализация</h3>
+                        <p class="step-description">Организуем и проводим мероприятие, обеспечивая безупречный результат</p>
                     </div>
-                    <h3>Коктейльный бар под ключ</h3>
-                    <p>Полный комплекс услуг по организации коктейльного бара на вашем мероприятии</p>
-                    <ul>
-                        <li>На выбор от 5 коктейлей</li>
-                        <li>Выезд от 1 бармена</li>
-                        <li>Заказ от 100 позиций</li>
-                        <li>Продолжительность: 3 часа</li>
-                    </ul>
-                    <div class="service-price">от 25000 руб.</div>
-                    <a href="https://wa.me/79991234567" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
-                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Cocktail Menu Section -->
-    <section id="cocktail-menu" class="cocktail-menu">
-        <div class="container">
-            <h2 class="section-title">Коктейльная карта</h2>
-            
-            <div class="cocktail-categories">
-                <button class="category-btn active" data-category="alcoholic">Алкогольные коктейли</button>
-                <button class="category-btn" data-category="non-alcoholic">Безалкогольные коктейли</button>
-                <button class="category-btn" data-category="classic">Классические коктейли</button>
-            </div>
-            
-            <div class="cocktail-list" id="alcoholic-cocktails">
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Лонг Айленд Айс Ти</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Дайкири</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Мятный экстази</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Черный русский</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Том Колинз</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Вайт Леди</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Кайпиринья</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Поцелуй VS</h3>
-                </div>
-            </div>
-            
-            <div class="cocktail-list" id="non-alcoholic-cocktails" style="display: none;">
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Манго-маракуя</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Грейпфрут-соленая карамель</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Малиновый рассвет</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Мохито</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Арбуз-базилик</h3>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Лавандовый-бергамот</h3>
-                </div>
-            </div>
-            
-            <div class="cocktail-list" id="classic-cocktails" style="display: none;">
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">White Russian</h3>
-                    <p class="cocktail-ingredients">Водка, Кофейный ликер, Сливки</p>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Whiskey Sour</h3>
-                    <p class="cocktail-ingredients">Виски, Лимонный сок, Сахарный сироп, Белок</p>
-                </div>
-                <div class="cocktail-item">
-                    <div class="cocktail-image">Фото коктейля</div>
-                    <h3 class="cocktail-name">Porn Star Martini</h3>
-                    <p class="cocktail-ingredients">Водка, Ванильная водка, Пюре маракуйи, Сахарный сироп, Игристое вино</p>
-                </div>
-                <!-- Добавьте остальные классические коктейли по аналогии -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section id="process" class="process">
-        <div class="container">
-            <h2 class="section-title">Наш процесс работы</h2>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Консультация</h3>
-                    <p class="step-description">Обсуждаем ваши пожелания, бюджет и особенности мероприятия</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Концепция</h3>
-                    <p class="step-description">Разрабатываем уникальную концепцию мероприятия и подбираем услуги</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Планирование</h3>
-                    <p class="step-description">Составляем детальный план мероприятия и согласовываем все детали</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3 class="step-title">Реализация</h3>
-                    <p class="step-description">Организуем и проводим мероприятие, обеспечивая безупречный результат</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">Наши работы</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-image">Фото работы</div>
-                    <div class="portfolio-overlay">
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Наши услуги</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-smog"></i>
+                        </div>
                         <h3>Тяжелый дым на свадебный танец</h3>
+                        <p>Создадим незабываемую атмосферу для вашего первого танца как молодоженов</p>
+                        <div class="service-price">от 8000 руб.</div>
+                        <a href="https://wa.me/79991234567" class="whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                        </a>
                     </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image">Фото работы</div>
-                    <div class="portfolio-overlay">
-                        <h3>Пирамида шампанского</h3>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-glass-cheers"></i>
+                        </div>
+                        <h3>Пирамида из бокалов с шампанским</h3>
+                        <p>Эффектная подача шампанского для вашего праздника</p>
+                        <div class="service-subcategories">
+                            <p>35 бокалов</p>
+                            <p>55 бокалов</p>
+                        </div>
+                        <div class="service-price">от 6000 руб.</div>
+                        <a href="https://wa.me/79991234567" class="whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                        </a>
                     </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image">Фото работы</div>
-                    <div class="portfolio-overlay">
-                        <h3>Выездной бар</h3>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cocktail"></i>
+                        </div>
+                        <h3>Коктейльный бар под ключ</h3>
+                        <p>Полный комплекс услуг по организации коктейльного бара на вашем мероприятии</p>
+                        <ul>
+                            <li>На выбор от 5 коктейлей</li>
+                            <li>Выезд от 1 бармена</li>
+                            <li>Заказ от 100 позиций</li>
+                            <li>Продолжительность: 3 часа</li>
+                        </ul>
+                        <div class="service-price">от 25000 руб.</div>
+                        <a href="https://wa.me/79991234567" class="whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Kitchen Section -->
-    <section id="kitchen" class="kitchen">
-        <div class="container">
-            <h2 class="section-title">Кухня</h2>
-            
-            <div class="kitchen-categories">
-                <button class="kitchen-category-btn active" data-category="tartlets">Тарталетки</button>
-                <button class="kitchen-category-btn" data-category="bruschetta">Брускетты</button>
-                <button class="kitchen-category-btn" data-category="canape">Канапе</button>
-                <button class="kitchen-category-btn" data-category="other">Разное</button>
+    <!-- Страница процесса -->
+    <div id="process-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Наш процесс работы</h1>
+                <p>Узнайте, как мы превращаем ваши мечты о идеальном празднике в реальность</p>
             </div>
-            
-            <div class="kitchen-items" id="tartlets-items">
-                <div class="kitchen-item">
-                    <div class="kitchen-image">Фото блюда</div>
-                    <h3>Тарталетка кремчиз-икра</h3>
-                </div>
-                <div class="kitchen-item">
-                    <div class="kitchen-image">Фото блюда</div>
-                    <h3>Тарталетка кремчиз-лосось</h3>
-                </div>
-                <div class="kitchen-item">
-                    <div class="kitchen-image">Фото блюда</div>
-                    <h3>Тарталетка Салями</h3>
-                </div>
-                <div class="kitchen-item">
-                    <div class="kitchen-image">Фото блюда</div>
-                    <h3>Тарталетка Гусиная печень с перепелинным яйцом</h3>
-                </div>
-                <div class="kitchen-item">
-                    <div class="kitchen-image">Фото блюда</div>
-                    <h3>Тарталетка с паштотом из тунца с черри</h3>
+        </section>
+        
+        <section class="process">
+            <div class="container">
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Консультация</h3>
+                        <p class="step-description">Обсуждаем ваши пожелания, бюджет и особенности мероприятия. На этом этапе мы знакомимся, понимаем ваши ожидания и формируем общее видение будущего события.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Концепция</h3>
+                        <p class="step-description">Разрабатываем уникальную концепцию мероприятия и подбираем услуги. Создаем детальный план, подбираем тематику, оформление и развлечения, которые идеально подходят именно для вашего праздника.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Планирование</h3>
+                        <p class="step-description">Составляем детальный план мероприятия и согласовываем все детали. Расписываем тайминг, подбираем поставщиков, заключаем договоры и готовим все необходимое для безупречной организации.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Реализация</h3>
+                        <p class="step-description">Организуем и проводим мероприятие, обеспечивая безупречный результат. Наши координаторы следят за всем процессом, чтобы вы могли расслабиться и наслаждаться праздником.</p>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Остальные категории кухни по аналогии -->
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">О нас</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Event-агентство "Пить и Танцевать" - это команда профессионалов, которая превращает ваши мечты о идеальном празднике в реальность.</p>
-                    <p>Мы специализируемся на организации свадеб, корпоративных мероприятий, дней рождений и других торжеств. Наш подход - это индивидуальный план для каждого клиента, внимание к деталям и безупречное исполнение.</p>
-                    <p>С нами ваш праздник станет незабываемым событием, которое будут вспоминать с теплотой и восторгом!</p>
-                </div>
-                <div class="about-image">
-                    Фото команды
+    <!-- Страница услуг -->
+    <div id="services-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Наши услуги</h1>
+                <p>Полный спектр услуг для организации незабываемого мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="services">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-smog"></i>
+                        </div>
+                        <h3>Тяжелый дым на свадебный танец</h3>
+                        <p>Создадим незабываемую атмосферу для вашего первого танца как молодоженов. Наш профессиональный дымовой эффект добавит волшебства и романтики в этот особенный момент.</p>
+                        <div class="service-price">от 8000 руб.</div>
+                        <a href="https://wa.me/79991234567" class="whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                        </a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-glass-cheers"></i>
+                        </div>
+                        <h3>Пирамида из бокалов с шампанским</h3>
+                        <p>Эффектная подача шампанского для вашего праздника. Идеальное решение для торжественного тоста, которое произведет впечатление на всех гостей.</p>
+                        <div class="service-subcategories">
+                            <p>35 бокалов</p>
+                            <p>55 бокалов</p>
+                        </div>
+                        <div class="service-price">от 6000 руб.</div>
+                        <a href="https://wa.me/79991234567" class="whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                        </a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cocktail"></i>
+                        </div>
+                        <h3>Коктейльный бар под ключ</h3>
+                        <p>Полный комплекс услуг по организации коктейльного бара на вашем мероприятии. Наши профессиональные бармены создадут уникальные коктейли по вашему выбору.</p>
+                        <ul>
+                            <li>На выбор от 5 коктейлей</li>
+                            <li>Выезд от 1 бармена</li>
+                            <li>Заказ от 100 позиций</li>
+                            <li>Продолжительность: 3 часа</li>
+                        </ul>
+                        <div class="service-price">от 25000 руб.</div>
+                        <a href="https://wa.me/79991234567" class="whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Контакты</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+    <!-- Страница коктейльной карты -->
+    <div id="cocktail-menu-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Коктейльная карта</h1>
+                <p>Широкий выбор алкогольных и безалкогольных коктейлей для вашего мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="cocktail-menu">
+            <div class="container">
+                <div class="cocktail-categories">
+                    <button class="category-btn active" data-category="alcoholic">Алкогольные коктейли</button>
+                    <button class="category-btn" data-category="non-alcoholic">Безалкогольные коктейли</button>
+                    <button class="category-btn" data-category="classic">Классические коктейли</button>
+                </div>
+                
+                <div class="cocktail-list" id="alcoholic-cocktails">
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Лонг Айленд Айс Ти</h3>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:info@pit-i-tancevat.ru">info@pit-i-tancevat.ru</a>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Дайкири</h3>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>г. Москва, ул. Праздничная, д. 123</span>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Мятный экстази</h3>
                     </div>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Черный русский</h3>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Том Колинз</h3>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Вайт Леди</h3>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Кайпиринья</h3>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Поцелуй VS</h3>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Ваше имя" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Ваш телефон" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Ваш email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Сообщение" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Отправить сообщение</button>
-                    </form>
+                
+                <div class="cocktail-list" id="non-alcoholic-cocktails" style="display: none;">
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Манго-маракуя</h3>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Грейпфрут-соленая карамель</h3>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Малиновый рассвет</h3>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Мохито</h3>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Арбуз-базилик</h3>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Лавандовый-бергамот</h3>
+                    </div>
+                </div>
+                
+                <div class="cocktail-list" id="classic-cocktails" style="display: none;">
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">White Russian</h3>
+                        <p class="cocktail-ingredients">Водка, Кофейный ликер, Сливки</p>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Whiskey Sour</h3>
+                        <p class="cocktail-ingredients">Виски, Лимонный сок, Сахарный сироп, Белок</p>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Porn Star Martini</h3>
+                        <p class="cocktail-ingredients">Водка, Ванильная водка, Пюре маракуйи, Сахарный сироп, Игристое вино</p>
+                    </div>
+                    <!-- Добавьте остальные классические коктейли по аналогии -->
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
+
+    <!-- Страница портфолио -->
+    <div id="portfolio-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Наши работы</h1>
+                <p>Реализованные проекты и мероприятия, которые мы организовали</p>
+            </div>
+        </section>
+        
+        <section class="portfolio">
+            <div class="container">
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Тяжелый дым на свадебный танец</h3>
+                            <p>Свадьба Анны и Михаила, июль 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Пирамида шампанского</h3>
+                            <p>Корпоратив IT-компании, декабрь 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Выездной бар</h3>
+                            <p>День рождения ресторана, май 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Коктейльный бар</h3>
+                            <p>Свадьба Екатерины и Дмитрия, сентябрь 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Тематическая вечеринка</h3>
+                            <p>Выпускной вечер, июнь 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Корпоративное мероприятие</h3>
+                            <p>Тимбилдинг компании, август 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница кухни -->
+    <div id="kitchen-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Кухня</h1>
+                <p>Вкусные и изысканные блюда для вашего мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="kitchen">
+            <div class="container">
+                <div class="kitchen-categories">
+                    <button class="kitchen-category-btn active" data-category="tartlets">Тарталетки</button>
+                    <button class="kitchen-category-btn" data-category="bruschetta">Брускетты</button>
+                    <button class="kitchen-category-btn" data-category="canape">Канапе</button>
+                    <button class="kitchen-category-btn" data-category="other">Разное</button>
+                </div>
+                
+                <div class="kitchen-items" id="tartlets-items">
+                    <div class="kitchen-item">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка кремчиз-икра</h3>
+                    </div>
+                    <div class="kitchen-item">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка кремчиз-лосось</h3>
+                    </div>
+                    <div class="kitchen-item">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка Салями</h3>
+                    </div>
+                    <div class="kitchen-item">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка Гусиная печень с перепелинным яйцом</h3>
+                    </div>
+                    <div class="kitchen-item">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка с паштотом из тунца с черри</h3>
+                    </div>
+                </div>
+                
+                <!-- Остальные категории кухни по аналогии -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница о нас -->
+    <div id="about-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>О нас</h1>
+                <p>Узнайте больше о нашем event-агентстве</p>
+            </div>
+        </section>
+        
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Event-агентство "Пить и Танцевать" - это команда профессионалов, которая превращает ваши мечты о идеальном празднике в реальность.</p>
+                        <p>Мы специализируемся на организации свадеб, корпоративных мероприятий, дней рождений и других торжеств. Наш подход - это индивидуальный план для каждого клиента, внимание к деталям и безупречное исполнение.</p>
+                        <p>С нами ваш праздник станет незабываемым событием, которое будут вспоминать с теплотой и восторгом!</p>
+                        <p>Наша команда состоит из опытных организаторов, дизайнеров, барменов и техников, которые работают слаженно, чтобы обеспечить высочайший уровень сервиса.</p>
+                        <p>Мы гордимся каждым проведенным мероприятием и стремимся превзойти ожидания наших клиентов.</p>
+                    </div>
+                    <div class="about-image">
+                        Фото команды
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница контактов -->
+    <div id="contact-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Контакты</h1>
+                <p>Свяжитесь с нами для организации вашего мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@pit-i-tancevat.ru">info@pit-i-tancevat.ru</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>г. Москва, ул. Праздничная, д. 123</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Пн-Пт: 9:00-21:00, Сб-Вс: 10:00-20:00</span>
+                        </div>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-vk"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" placeholder="Ваш телефон" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Ваш email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Сообщение" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Отправить сообщение</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1154,19 +1357,20 @@
                 <div class="footer-column">
                     <h3>Услуги</h3>
                     <ul class="footer-links">
-                        <li><a href="#services">Тяжелый дым</a></li>
-                        <li><a href="#services">Пирамида шампанского</a></li>
-                        <li><a href="#services">Коктейльный бар</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Тяжелый дым</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Пирамида шампанского</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Коктейльный бар</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Навигация</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Главная</a></li>
-                        <li><a href="#services">Услуги</a></li>
-                        <li><a href="#cocktail-menu">Коктейльная карта</a></li>
-                        <li><a href="#portfolio">Портфолио</a></li>
-                        <li><a href="#contact">Контакты</a></li>
+                        <li><a href="#home" class="nav-link" data-page="home">Главная</a></li>
+                        <li><a href="#process" class="nav-link" data-page="process">Процесс</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Услуги</a></li>
+                        <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейльная карта</a></li>
+                        <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
+                        <li><a href="#contact" class="nav-link" data-page="contact">Контакты</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1194,11 +1398,30 @@
             navMenu.classList.toggle('active');
         });
         
-        // Закрытие меню при клике на ссылку
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
+        // Навигация по страницам
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const targetPage = link.getAttribute('data-page');
+                
+                // Скрываем все страницы
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Показываем целевую страницу
+                document.getElementById(`${targetPage}-page`).classList.add('active');
+                
+                // Закрываем мобильное меню
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
+                
+                // Прокручиваем к верху страницы
+                window.scrollTo(0, 0);
             });
         });
         
