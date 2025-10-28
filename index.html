@@ -3,1163 +3,1273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Пить и танцевать - Бар-ресторан</title>
+    <title>Пить и Танцевать - Event-агентство</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Общие стили */
+        /* Базовые стили */
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #1a1a1a;
+            --accent-color: #d4af37;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cormorant', serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        :root {
-            --primary-color: #c8a97e;
-            --dark-color: #000;
-            --light-color: #111;
-            --gray-color: #777;
-            --gold-gradient: linear-gradient(135deg, #c8a97e, #e6c9a3, #c8a97e);
+
+        html {
+            scroll-behavior: smooth;
         }
-        
+
         body {
+            background-color: var(--primary-color);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: #fff;
-            background-color: var(--dark-color);
+            overflow-x: hidden;
         }
-        
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        .section {
-            padding: 80px 0;
+
+        section {
+            padding: 100px 0;
         }
-        
+
         .section-title {
-            font-size: 42px;
-            font-weight: 600;
             text-align: center;
-            margin-bottom: 50px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
             position: relative;
-            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        
-        .section-title:after {
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title::after {
             content: '';
-            display: block;
-            width: 100px;
-            height: 2px;
-            background: var(--gold-gradient);
-            margin: 15px auto 0;
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
         }
-        
+
         .btn {
             display: inline-block;
-            padding: 14px 32px;
-            background: var(--gold-gradient);
-            color: #000;
-            text-decoration: none;
-            border-radius: 2px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
             border: none;
+            border-radius: 4px;
+            font-weight: bold;
             cursor: pointer;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 14px;
+            transition: var(--transition);
         }
-        
+
         .btn:hover {
+            background-color: #e6c158;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(200, 169, 126, 0.3);
         }
-        
-        /* Шапка */
-        .header {
-            background: rgba(0, 0, 0, 0.95);
+
+        /* Header */
+        header {
             position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.9);
             padding: 15px 0;
-            border-bottom: 1px solid rgba(200, 169, 126, 0.2);
+            transition: var(--transition);
         }
-        
-        .header__inner {
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 24px;
-            font-weight: 700;
-            text-decoration: none;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 2px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
         }
-        
-        .nav__list {
+
+        .logo span {
+            color: var(--text-primary);
+        }
+
+        .nav-menu {
             display: flex;
-            list-style: none;
         }
-        
-        .nav__item {
+
+        .nav-menu li {
             margin-left: 30px;
         }
-        
-        .nav__link {
-            color: #fff;
-            text-decoration: none;
+
+        .nav-menu a {
             font-weight: 500;
-            transition: color 0.3s ease;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
-            font-size: 15px;
+            transition: var(--transition);
             position: relative;
         }
-        
-        .nav__link:after {
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-menu a::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 1px;
             bottom: -5px;
             left: 0;
-            background: var(--gold-gradient);
-            transition: width 0.3s ease;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
         }
-        
-        .nav__link:hover:after, .nav__link.active:after {
+
+        .nav-menu a:hover::after {
             width: 100%;
         }
-        
-        .nav__link:hover, .nav__link.active {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .header__contacts {
-            color: white;
-        }
-        
-        .phone {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-family: 'Cinzel', serif;
-        }
-        
-        .burger {
-            display: none;
-            flex-direction: column;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            z-index: 1001;
-        }
-        
-        .burger span {
-            width: 25px;
-            height: 2px;
-            background: #fff;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-        
-        .burger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        
-        .burger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .burger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        
-        /* Мобильное меню */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 300px;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.98);
-            z-index: 999;
-            transition: right 0.4s ease;
-            padding: 80px 30px 30px;
-            border-left: 1px solid rgba(200, 169, 126, 0.2);
-            overflow-y: auto;
-        }
-        
-        .mobile-menu.active {
-            right: 0;
-        }
-        
-        .mobile-menu__list {
-            list-style: none;
-        }
-        
-        .mobile-menu__item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 15px;
-        }
-        
-        .mobile-menu__link {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
-            display: block;
-            padding: 10px 0;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-menu__link:hover, .mobile-menu__link.active {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            padding-left: 10px;
-        }
-        
-        .mobile-menu__contacts {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .mobile-menu__phone {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            font-family: 'Cinzel', serif;
-            display: block;
-            margin-bottom: 15px;
-        }
-        
-        .mobile-menu__address {
-            color: #ccc;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-        
-        .mobile-menu__hours {
-            color: #ccc;
-            font-size: 14px;
-        }
-        
-        /* Главный экран */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+
+        .contact-info {
             display: flex;
             align-items: center;
+        }
+
+        .phone {
+            margin-right: 20px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .phone:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            margin-left: 10px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80') no-repeat center center/cover;
             text-align: center;
-            color: white;
-            position: relative;
         }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(200, 169, 126, 0.1) 0%, rgba(0,0,0,0) 50%);
-        }
-        
-        .hero__content {
+
+        .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
         }
-        
-        .hero__title {
-            font-size: 72px;
-            font-weight: 700;
+
+        .hero-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 3px;
+            line-height: 1.2;
         }
-        
-        .hero__subtitle {
-            font-size: 24px;
-            margin-bottom: 40px;
-            font-family: 'Cormorant', serif;
-            font-weight: 300;
-            letter-spacing: 1px;
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
         }
-        
-        /* Услуги */
+
+        /* Services Section */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-        
+
         .service-card {
-            background: #111;
-            border-radius: 2px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(200, 169, 126, 0.1);
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
         }
-        
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .service-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(200, 169, 126, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        
-        .service-card__img {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
         }
-        
-        .service-card__content {
-            padding: 25px;
-        }
-        
-        .service-card__title {
-            font-size: 22px;
+
+        .service-card h3 {
+            font-size: 1.5rem;
             margin-bottom: 15px;
-            color: #fff;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
         }
-        
-        /* Коктейли */
-        .cocktails-grid {
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+        }
+
+        .whatsapp-btn i {
+            margin-right: 8px;
+        }
+
+        /* Cocktail Menu Section */
+        .cocktail-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .category-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .category-btn.active {
+            color: var(--accent-color);
+        }
+
+        .category-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .category-btn.active::after {
+            width: 100%;
+        }
+
+        .cocktail-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
-        
-        .cocktail-card {
-            background: #111;
-            border-radius: 2px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(200, 169, 126, 0.1);
-        }
-        
-        .cocktail-card__img {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .cocktail-card__content {
+
+        .cocktail-item {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
             padding: 20px;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
         }
-        
-        .cocktail-card__title {
-            font-size: 20px;
+
+        .cocktail-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cocktail-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .cocktail-image {
+            width: 100%;
+            height: 200px;
+            background-color: #333;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+
+        .cocktail-name {
+            font-size: 1.2rem;
             margin-bottom: 10px;
-            color: #fff;
-            font-family: 'Cinzel', serif;
         }
-        
-        .cocktail-card__price {
-            font-size: 18px;
-            font-weight: 600;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-family: 'Cinzel', serif;
+
+        .cocktail-ingredients {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
-        
-        /* Кухня */
-        .kitchen-menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .menu-category {
-            background: #111;
-            border-radius: 2px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(200, 169, 126, 0.1);
-        }
-        
-        .menu-category__title {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #fff;
-            border-bottom: 2px solid;
-            border-image: var(--gold-gradient);
-            border-image-slice: 1;
-            padding-bottom: 10px;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
-        }
-        
-        .menu-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .menu-item:last-child {
-            margin-bottom: 0;
-            border-bottom: none;
-        }
-        
-        .menu-item__header {
+
+        /* Process Section */
+        .process-steps {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
+            flex-wrap: wrap;
         }
-        
-        .menu-item__name {
-            font-weight: 600;
-            font-family: 'Cinzel', serif;
+
+        .process-step {
+            flex: 0 0 23%;
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
         }
-        
-        .menu-item__price {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 600;
-            font-family: 'Cinzel', serif;
+
+        .process-step.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        /* Портфолио */
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+        }
+
+        /* Portfolio Section */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
-        
+
         .portfolio-item {
             position: relative;
+            border-radius: 8px;
             overflow: hidden;
-            border-radius: 2px;
-            height: 300px;
-            border: 1px solid rgba(200, 169, 126, 0.1);
+            height: 250px;
+            opacity: 0;
+            transform: translateY(30px);
         }
-        
-        .portfolio-item img {
+
+        .portfolio-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .portfolio-item__overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            background-color: #333;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            color: var(--text-secondary);
+            transition: var(--transition);
         }
-        
-        .portfolio-item:hover .portfolio-item__overlay {
-            opacity: 1;
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            transform: translateY(100%);
+            transition: var(--transition);
         }
-        
-        .portfolio-item__overlay h3 {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-family: 'Cinzel', serif;
-            font-size: 24px;
-            letter-spacing: 1px;
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
         }
-        
-        /* Контакты */
-        .contacts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.05);
         }
-        
-        .contact-info {
-            background: #111;
-            padding: 30px;
-            border-radius: 2px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(200, 169, 126, 0.1);
-        }
-        
-        .contact-info__item {
+
+        /* Kitchen Section */
+        .kitchen-categories {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
         }
-        
-        .contact-info__icon {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 20px;
-            margin-right: 15px;
-            margin-top: 5px;
+
+        .kitchen-category-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            margin: 5px 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
         }
-        
+
+        .kitchen-category-btn.active {
+            color: var(--accent-color);
+        }
+
+        .kitchen-category-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .kitchen-category-btn.active::after {
+            width: 100%;
+        }
+
+        .kitchen-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .kitchen-item {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .kitchen-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .kitchen-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .kitchen-image {
+            width: 100%;
+            height: 180px;
+            background-color: #333;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .about-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background-color: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .about-image.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .contact-info.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
         .contact-form {
-            background: #111;
-            padding: 30px;
-            border-radius: 2px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(200, 169, 126, 0.1);
+            flex: 1;
+            opacity: 0;
+            transform: translateX(30px);
         }
-        
+
+        .contact-form.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
         .form-group {
             margin-bottom: 20px;
         }
-        
-        .form-control {
+
+        .form-group input,
+        .form-group textarea {
             width: 100%;
             padding: 12px 15px;
-            background: #000;
-            border: 1px solid rgba(200, 169, 126, 0.2);
-            border-radius: 2px;
-            font-size: 16px;
-            color: #fff;
-            font-family: 'Cormorant', serif;
+            background-color: var(--secondary-color);
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: var(--text-primary);
+            transition: var(--transition);
         }
-        
-        .form-control:focus {
+
+        .form-group input:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: #c8a97e;
+            border-color: var(--accent-color);
         }
-        
-        textarea.form-control {
-            min-height: 150px;
+
+        .form-group textarea {
+            height: 150px;
             resize: vertical;
         }
-        
-        /* Подвал */
-        .footer {
-            background: #000;
-            color: white;
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
             padding: 60px 0 30px;
-            border-top: 1px solid rgba(200, 169, 126, 0.2);
         }
-        
-        .footer__inner {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
             margin-bottom: 40px;
         }
-        
-        .footer__title {
-            font-size: 20px;
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
             margin-bottom: 20px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
+            color: var(--accent-color);
         }
-        
-        .footer__text {
-            margin-bottom: 15px;
-            font-family: 'Cormorant', serif;
+
+        .footer-links li {
+            margin-bottom: 10px;
         }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: var(--transition);
         }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            color: white;
-            text-decoration: none;
-            transition: background 0.3s ease;
+
+        .footer-links a:hover {
+            color: var(--accent-color);
         }
-        
-        .social-link:hover {
-            background: var(--gold-gradient);
-            color: #000;
-        }
-        
-        .footer__bottom {
+
+        .copyright {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-family: 'Cormorant', serif;
+            border-top: 1px solid #333;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
-        
-        /* Страницы */
-        .page {
-            display: none;
-            padding-top: 100px;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
+
         /* Адаптивность */
         @media (max-width: 992px) {
-            .nav {
+            .about-content,
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .about-text,
+            .about-image,
+            .contact-info,
+            .contact-form {
+                transform: translateY(30px);
+            }
+            
+            .about-image,
+            .contact-form {
+                transform: translateY(30px);
+            }
+            
+            .process-step {
+                flex: 0 0 48%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .contact-info {
                 display: none;
             }
             
-            .burger {
-                display: flex;
+            .hero h1 {
+                font-size: 2.5rem;
             }
             
-            .hero__title {
-                font-size: 48px;
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .process-step {
+                flex: 0 0 100%;
             }
         }
-        
-        @media (max-width: 768px) {
-            .section {
-                padding: 60px 0;
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
             }
             
-            .hero__title {
-                font-size: 36px;
+            .cocktail-categories,
+            .kitchen-categories {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .hero__subtitle {
-                font-size: 18px;
+            .category-btn,
+            .kitchen-category-btn {
+                margin: 5px 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Шапка сайта -->
-    <header class="header">
-        <div class="container">
-            <div class="header__inner">
-                <a href="#" class="logo" data-page="index">
-                    <span class="logo__text">ПИТЬ И ТАНЦЕВАТЬ</span>
-                </a>
-                
-                <nav class="nav">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a class="nav__link active" data-page="index">Главная</a></li>
-                        <li class="nav__item"><a class="nav__link" data-page="services">Услуги</a></li>
-                        <li class="nav__item"><a class="nav__link" data-page="cocktails">Коктейли</a></li>
-                        <li class="nav__item"><a class="nav__link" data-page="kitchen">Кухня</a></li>
-                        <li class="nav__item"><a class="nav__link" data-page="portfolio">Портфолио</a></li>
-                        <li class="nav__item"><a class="nav__link" data-page="contacts">Контакты</a></li>
-                    </ul>
-                </nav>
-                
-                <div class="header__contacts">
-                    <a href="tel:+79991234567" class="phone">+7 (999) 123-45-67</a>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Пить и <span>Танцевать</span></a>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#cocktail-menu">Коктейльная карта</a></li>
+                <li><a href="#process">Процесс</a></li>
+                <li><a href="#portfolio">Портфолио</a></li>
+                <li><a href="#kitchen">Кухня</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            
+            <div class="contact-info">
+                <a href="tel:+79991234567" class="phone">+7 (999) 123-45-67</a>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
-                
-                <button class="burger" id="burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
         </div>
     </header>
 
-    <!-- Мобильное меню -->
-    <div class="mobile-menu" id="mobileMenu">
-        <ul class="mobile-menu__list">
-            <li class="mobile-menu__item"><a class="mobile-menu__link active" data-page="index">Главная</a></li>
-            <li class="mobile-menu__item"><a class="mobile-menu__link" data-page="services">Услуги</a></li>
-            <li class="mobile-menu__item"><a class="mobile-menu__link" data-page="cocktails">Коктейли</a></li>
-            <li class="mobile-menu__item"><a class="mobile-menu__link" data-page="kitchen">Кухня</a></li>
-            <li class="mobile-menu__item"><a class="mobile-menu__link" data-page="portfolio">Портфолио</a></li>
-            <li class="mobile-menu__item"><a class="mobile-menu__link" data-page="contacts">Контакты</a></li>
-        </ul>
-        
-        <div class="mobile-menu__contacts">
-            <a href="tel:+79991234567" class="mobile-menu__phone">+7 (999) 123-45-67</a>
-            <div class="mobile-menu__address">г. Москва, ул. Тверская, д. 10</div>
-            <div class="mobile-menu__hours">
-                <div>Пн-Чт: 12:00 - 00:00</div>
-                <div>Пт-Сб: 12:00 - 02:00</div>
-                <div>Вс: 12:00 - 00:00</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Главная страница -->
-    <section id="index" class="page active">
-        <!-- Герой секция -->
-        <div class="hero">
-            <div class="container">
-                <div class="hero__content">
-                    <h1 class="hero__title">ПИТЬ И ТАНЦЕВАТЬ</h1>
-                    <p class="hero__subtitle">Элитный бар-ресторан с живой музыкой и авторской кухней</p>
-                    <a href="#" class="btn" data-page="services">Наши услуги</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- О нас -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">О нашем заведении</h2>
-                <div class="about-content">
-                    <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; font-size: 20px; font-family: 'Cormorant', serif;">
-                        "Пить и танцевать" - это эксклюзивное место, где встречаются изысканная кухня, авторские коктейли и живая музыка. 
-                        Мы создали атмосферу роскоши и уюта, в которой каждый гость чувствует себя особенным.
-                    </p>
-                    <div style="text-align: center;">
-                        <a href="#" class="btn" data-page="portfolio">Смотреть портфолио</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Преимущества -->
-        <section class="section" style="background: #0a0a0a;">
-            <div class="container">
-                <h2 class="section-title">Наши преимущества</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-card__img" style="background-image: url('https://images.unsplash.com/photo-1567690346811-2223f6b2b1d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Живая музыка</h3>
-                            <p style="font-family: 'Cormorant', serif;">Каждый вечер выступления лучших музыкантов города и диджеев.</p>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-card__img" style="background-image: url('https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Авторские коктейли</h3>
-                            <p style="font-family: 'Cormorant', serif;">Уникальные рецепты от нашего бармена-виртуоза.</p>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-card__img" style="background-image: url('https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Европейская кухня</h3>
-                            <p style="font-family: 'Cormorant', serif;">Блюда от нашего шеф-повара с многолетним опытом.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </section>
-
-    <!-- Услуги -->
-    <section id="services" class="page">
-        <div class="section" style="padding-top: 150px;">
-            <div class="container">
-                <h2 class="section-title">Наши услуги</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-card__img" style="background-image: url('https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Банкеты и праздники</h3>
-                            <p style="font-family: 'Cormorant', serif;">Организация банкетов, корпоративов, дней рождений и других торжеств.</p>
-                            <a href="#" class="btn" style="margin-top: 15px;">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-card__img" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Живые выступления</h3>
-                            <p style="font-family: 'Cormorant', serif;">Организация концертов, музыкальных вечеров и выступлений артистов.</p>
-                            <a href="#" class="btn" style="margin-top: 15px;">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-card__img" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Кейтеринг</h3>
-                            <p style="font-family: 'Cormorant', serif;">Выездное обслуживание мероприятий любого масштаба.</p>
-                            <a href="#" class="btn" style="margin-top: 15px;">Подробнее</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Коктейли -->
-    <section id="cocktails" class="page">
-        <div class="section" style="padding-top: 150px;">
-            <div class="container">
-                <h2 class="section-title">Наши коктейли</h2>
-                <div class="cocktails-grid">
-                    <div class="cocktail-card">
-                        <div class="cocktail-card__img" style="background-image: url('https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <div class="cocktail-card__content">
-                            <h3 class="cocktail-card__title">Мохито</h3>
-                            <p style="font-family: 'Cormorant', serif;">Классический коктейль с белым ромом, лаймом, мятой и содовой.</p>
-                            <div class="cocktail-card__price">450 ₽</div>
-                        </div>
-                    </div>
-                    <div class="cocktail-card">
-                        <div class="cocktail-card__img" style="background-image: url('https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <div class="cocktail-card__content">
-                            <h3 class="cocktail-card__title">Негрони</h3>
-                            <p style="font-family: 'Cormorant', serif;">Джин, красный вермут и кампари с апельсиновой цедрой.</p>
-                            <div class="cocktail-card__price">550 ₽</div>
-                        </div>
-                    </div>
-                    <div class="cocktail-card">
-                        <div class="cocktail-card__img" style="background-image: url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <div class="cocktail-card__content">
-                            <h3 class="cocktail-card__title">Маргарита</h3>
-                            <p style="font-family: 'Cormorant', serif;">Текила, апельсиновый ликер и сок лайма с соленым ободком.</p>
-                            <div class="cocktail-card__price">500 ₽</div>
-                        </div>
-                    </div>
-                    <div class="cocktail-card">
-                        <div class="cocktail-card__img" style="background-image: url('https://images.unsplash.com/photo-1570598912132-0ba1dc952b7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <div class="cocktail-card__content">
-                            <h3 class="cocktail-card__title">Пина Колада</h3>
-                            <p style="font-family: 'Cormorant', serif;">Ром, кокосовый крем и ананасовый сок с кусочками ананаса.</p>
-                            <div class="cocktail-card__price">520 ₽</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Кухня -->
-    <section id="kitchen" class="page">
-        <div class="section" style="padding-top: 150px;">
-            <div class="container">
-                <h2 class="section-title">Наша кухня</h2>
-                <div class="kitchen-menu">
-                    <div class="menu-category">
-                        <h3 class="menu-category__title">Закуски</h3>
-                        <div class="menu-item">
-                            <div class="menu-item__header">
-                                <div class="menu-item__name">Брускетты с томатами</div>
-                                <div class="menu-item__price">320 ₽</div>
-                            </div>
-                            <p style="font-family: 'Cormorant', serif;">Хрустящий хлеб с томатами, базиликом и оливковым маслом</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item__header">
-                                <div class="menu-item__name">Тартар из говядины</div>
-                                <div class="menu-item__price">580 ₽</div>
-                            </div>
-                            <p style="font-family: 'Cormorant', serif;">Нежная говядина с каперсами, луком и соусом</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item__header">
-                                <div class="menu-item__name">Сырная тарелка</div>
-                                <div class="menu-item__price">650 ₽</div>
-                            </div>
-                            <p style="font-family: 'Cormorant', serif;">Подборка европейских сыров с орехами и медом</p>
-                        </div>
-                    </div>
-                    <div class="menu-category">
-                        <h3 class="menu-category__title">Основные блюда</h3>
-                        <div class="menu-item">
-                            <div class="menu-item__header">
-                                <div class="menu-item__name">Стейк Рибай</div>
-                                <div class="menu-item__price">1200 ₽</div>
-                            </div>
-                            <p style="font-family: 'Cormorant', serif;">Мраморная говядина с овощами гриль и соусом</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item__header">
-                                <div class="menu-item__name">Лосось в соусе терияки</div>
-                                <div class="menu-item__price">890 ₽</div>
-                            </div>
-                            <p style="font-family: 'Cormorant', serif;">Филе лосося с брокколи и кунжутом</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item__header">
-                                <div class="menu-item__name">Паста Карбонара</div>
-                                <div class="menu-item__price">550 ₽</div>
-                            </div>
-                            <p style="font-family: 'Cormorant', serif;">Спагетти с беконом, сыром и сливочным соусом</p>
-                        </div>
-                    </div>
-                    <div class="menu-category">
-                        <h3 class="menu-category__title">Десерты</h3>
-                        <div class="menu-item">
-                            <div class="menu-item__header">
-                                <div class="menu-item__name">Тирамису</div>
-                                <div class="menu-item__price">380 ₽</div>
-                            </div>
-                            <p style="font-family: 'Cormorant', serif;">Классический итальянский десерт</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item__header">
-                                <div class="menu-item__name">Чизкейк Нью-Йорк</div>
-                                <div class="menu-item__price">350 ₽</div>
-                            </div>
-                            <p style="font-family: 'Cormorant', serif;">Нежный чизкейк с ягодным соусом</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item__header">
-                                <div class="menu-item__name">Шоколадный фондан</div>
-                                <div class="menu-item__price">320 ₽</div>
-                            </div>
-                            <p style="font-family: 'Cormorant', serif;">Теплый шоколадный кекс с жидкой сердцевиной</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Портфолио -->
-    <section id="portfolio" class="page">
-        <div class="section" style="padding-top: 150px;">
-            <div class="container">
-                <h2 class="section-title">Наше портфолио</h2>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Интерьер">
-                        <div class="portfolio-item__overlay">
-                            <h3>Интерьер</h3>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Блюда">
-                        <div class="portfolio-item__overlay">
-                            <h3>Блюда</h3>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Коктейли">
-                        <div class="portfolio-item__overlay">
-                            <h3>Коктейли</h3>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Мероприятия">
-                        <div class="portfolio-item__overlay">
-                            <h3>Мероприятия</h3>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Банкеты">
-                        <div class="portfolio-item__overlay">
-                            <h3>Банкеты</h3>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Вечеринки">
-                        <div class="portfolio-item__overlay">
-                            <h3>Вечеринки</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Контакты -->
-    <section id="contacts" class="page">
-        <div class="section" style="padding-top: 150px;">
-            <div class="container">
-                <h2 class="section-title">Контакты</h2>
-                <div class="contacts-grid">
-                    <div class="contact-info">
-                        <h3 style="margin-bottom: 20px; font-family: 'Cinzel', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Наши контакты</h3>
-                        <div class="contact-info__item">
-                            <div class="contact-info__icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4 style="font-family: 'Cinzel', serif;">Адрес</h4>
-                                <p style="font-family: 'Cormorant', serif;">г. Москва, ул. Тверская, д. 10</p>
-                            </div>
-                        </div>
-                        <div class="contact-info__item">
-                            <div class="contact-info__icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4 style="font-family: 'Cinzel', serif;">Телефон</h4>
-                                <p style="font-family: 'Cormorant', serif;">+7 (999) 123-45-67</p>
-                            </div>
-                        </div>
-                        <div class="contact-info__item">
-                            <div class="contact-info__icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4 style="font-family: 'Cinzel', serif;">Email</h4>
-                                <p style="font-family: 'Cormorant', serif;">info@pit-i-tancevat.ru</p>
-                            </div>
-                        </div>
-                        <div class="contact-info__item">
-                            <div class="contact-info__icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <h4 style="font-family: 'Cinzel', serif;">Время работы</h4>
-                                <p style="font-family: 'Cormorant', serif;">Пн-Чт: 12:00 - 00:00</p>
-                                <p style="font-family: 'Cormorant', serif;">Пт-Сб: 12:00 - 02:00</p>
-                                <p style="font-family: 'Cormorant', serif;">Вс: 12:00 - 00:00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-form">
-                        <h3 style="margin-bottom: 20px; font-family: 'Cinzel', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Оставить заявку</h3>
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Ваше имя" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" class="form-control" placeholder="Телефон" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" placeholder="Сообщение" required></textarea>
-                            </div>
-                            <button type="submit" class="btn">Отправить</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Карта -->
-        <div style="height: 400px; background: #111; display: flex; align-items: center; justify-content: center; border-top: 1px solid rgba(200, 169, 126, 0.1);">
-            <h3 style="font-family: 'Cinzel', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Здесь будет карта</h3>
-        </div>
-    </section>
-
-    <!-- Подвал -->
-    <footer class="footer">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
         <div class="container">
-            <div class="footer__inner">
-                <div>
-                    <h3 class="footer__title">ПИТЬ И ТАНЦЕВАТЬ</h3>
-                    <p class="footer__text">Элитный бар-ресторан с живой музыкой и авторской кухней.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+            <div class="hero-content">
+                <h1>Event-агентство | Праздничные услуги "Пить и Танцевать"</h1>
+                <p>Создаем незабываемые события под ключ! Свадьбы, корпоративы, вечеринки и многое другое.</p>
+                <a href="#contact" class="btn">Связаться с нами</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-smog"></i>
                     </div>
+                    <h3>Тяжелый дым на свадебный танец</h3>
+                    <p>Создадим незабываемую атмосферу для вашего первого танца как молодоженов</p>
+                    <div class="service-price">от 8000 руб.</div>
+                    <a href="https://wa.me/79991234567" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                    </a>
                 </div>
-                <div>
-                    <h3 class="footer__title">Контакты</h3>
-                    <p class="footer__text">г. Москва, ул. Тверская, д. 10</p>
-                    <p class="footer__text">+7 (999) 123-45-67</p>
-                    <p class="footer__text">info@pit-i-tancevat.ru</p>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Пирамида из бокалов с шампанским</h3>
+                    <p>Эффектная подача шампанского для вашего праздника</p>
+                    <div class="service-subcategories">
+                        <p>35 бокалов</p>
+                        <p>55 бокалов</p>
+                    </div>
+                    <div class="service-price">от 6000 руб.</div>
+                    <a href="https://wa.me/79991234567" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                    </a>
                 </div>
-                <div>
-                    <h3 class="footer__title">Часы работы</h3>
-                    <p class="footer__text">Пн-Чт: 12:00 - 00:00</p>
-                    <p class="footer__text">Пт-Сб: 12:00 - 02:00</p>
-                    <p class="footer__text">Вс: 12:00 - 00:00</p>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cocktail"></i>
+                    </div>
+                    <h3>Коктейльный бар под ключ</h3>
+                    <p>Полный комплекс услуг по организации коктейльного бара на вашем мероприятии</p>
+                    <ul>
+                        <li>На выбор от 5 коктейлей</li>
+                        <li>Выезд от 1 бармена</li>
+                        <li>Заказ от 100 позиций</li>
+                        <li>Продолжительность: 3 часа</li>
+                    </ul>
+                    <div class="service-price">от 25000 руб.</div>
+                    <a href="https://wa.me/79991234567" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Заказать в WhatsApp
+                    </a>
                 </div>
             </div>
-            <div class="footer__bottom">
-                <p>&copy; 2023 "Пить и танцевать". Все права защищены.</p>
+        </div>
+    </section>
+
+    <!-- Cocktail Menu Section -->
+    <section id="cocktail-menu" class="cocktail-menu">
+        <div class="container">
+            <h2 class="section-title">Коктейльная карта</h2>
+            
+            <div class="cocktail-categories">
+                <button class="category-btn active" data-category="alcoholic">Алкогольные коктейли</button>
+                <button class="category-btn" data-category="non-alcoholic">Безалкогольные коктейли</button>
+                <button class="category-btn" data-category="classic">Классические коктейли</button>
+            </div>
+            
+            <div class="cocktail-list" id="alcoholic-cocktails">
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Лонг Айленд Айс Ти</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Дайкири</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Мятный экстази</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Черный русский</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Том Колинз</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Вайт Леди</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Кайпиринья</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Поцелуй VS</h3>
+                </div>
+            </div>
+            
+            <div class="cocktail-list" id="non-alcoholic-cocktails" style="display: none;">
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Манго-маракуя</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Грейпфрут-соленая карамель</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Малиновый рассвет</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Мохито</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Арбуз-базилик</h3>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Лавандовый-бергамот</h3>
+                </div>
+            </div>
+            
+            <div class="cocktail-list" id="classic-cocktails" style="display: none;">
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">White Russian</h3>
+                    <p class="cocktail-ingredients">Водка, Кофейный ликер, Сливки</p>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Whiskey Sour</h3>
+                    <p class="cocktail-ingredients">Виски, Лимонный сок, Сахарный сироп, Белок</p>
+                </div>
+                <div class="cocktail-item">
+                    <div class="cocktail-image">Фото коктейля</div>
+                    <h3 class="cocktail-name">Porn Star Martini</h3>
+                    <p class="cocktail-ingredients">Водка, Ванильная водка, Пюре маракуйи, Сахарный сироп, Игристое вино</p>
+                </div>
+                <!-- Добавьте остальные классические коктейли по аналогии -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <h2 class="section-title">Наш процесс работы</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Консультация</h3>
+                    <p class="step-description">Обсуждаем ваши пожелания, бюджет и особенности мероприятия</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Концепция</h3>
+                    <p class="step-description">Разрабатываем уникальную концепцию мероприятия и подбираем услуги</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Планирование</h3>
+                    <p class="step-description">Составляем детальный план мероприятия и согласовываем все детали</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Реализация</h3>
+                    <p class="step-description">Организуем и проводим мероприятие, обеспечивая безупречный результат</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Наши работы</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">Фото работы</div>
+                    <div class="portfolio-overlay">
+                        <h3>Тяжелый дым на свадебный танец</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">Фото работы</div>
+                    <div class="portfolio-overlay">
+                        <h3>Пирамида шампанского</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">Фото работы</div>
+                    <div class="portfolio-overlay">
+                        <h3>Выездной бар</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kitchen Section -->
+    <section id="kitchen" class="kitchen">
+        <div class="container">
+            <h2 class="section-title">Кухня</h2>
+            
+            <div class="kitchen-categories">
+                <button class="kitchen-category-btn active" data-category="tartlets">Тарталетки</button>
+                <button class="kitchen-category-btn" data-category="bruschetta">Брускетты</button>
+                <button class="kitchen-category-btn" data-category="canape">Канапе</button>
+                <button class="kitchen-category-btn" data-category="other">Разное</button>
+            </div>
+            
+            <div class="kitchen-items" id="tartlets-items">
+                <div class="kitchen-item">
+                    <div class="kitchen-image">Фото блюда</div>
+                    <h3>Тарталетка кремчиз-икра</h3>
+                </div>
+                <div class="kitchen-item">
+                    <div class="kitchen-image">Фото блюда</div>
+                    <h3>Тарталетка кремчиз-лосось</h3>
+                </div>
+                <div class="kitchen-item">
+                    <div class="kitchen-image">Фото блюда</div>
+                    <h3>Тарталетка Салями</h3>
+                </div>
+                <div class="kitchen-item">
+                    <div class="kitchen-image">Фото блюда</div>
+                    <h3>Тарталетка Гусиная печень с перепелинным яйцом</h3>
+                </div>
+                <div class="kitchen-item">
+                    <div class="kitchen-image">Фото блюда</div>
+                    <h3>Тарталетка с паштотом из тунца с черри</h3>
+                </div>
+            </div>
+            
+            <!-- Остальные категории кухни по аналогии -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О нас</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Event-агентство "Пить и Танцевать" - это команда профессионалов, которая превращает ваши мечты о идеальном празднике в реальность.</p>
+                    <p>Мы специализируемся на организации свадеб, корпоративных мероприятий, дней рождений и других торжеств. Наш подход - это индивидуальный план для каждого клиента, внимание к деталям и безупречное исполнение.</p>
+                    <p>С нами ваш праздник станет незабываемым событием, которое будут вспоминать с теплотой и восторгом!</p>
+                </div>
+                <div class="about-image">
+                    Фото команды
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@pit-i-tancevat.ru">info@pit-i-tancevat.ru</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>г. Москва, ул. Праздничная, д. 123</span>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Ваш телефон" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Ваш email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Сообщение" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить сообщение</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Пить и Танцевать</h3>
+                    <p>Event-агентство, создающее незабываемые праздники под ключ.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Услуги</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Тяжелый дым</a></li>
+                        <li><a href="#services">Пирамида шампанского</a></li>
+                        <li><a href="#services">Коктейльный бар</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#cocktail-menu">Коктейльная карта</a></li>
+                        <li><a href="#portfolio">Портфолио</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+79991234567">+7 (999) 123-45-67</a></li>
+                        <li><a href="mailto:info@pit-i-tancevat.ru">info@pit-i-tancevat.ru</a></li>
+                        <li>г. Москва, ул. Праздничная, д. 123</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Event-агентство "Пить и Танцевать". Все права защищены.
             </div>
         </div>
     </footer>
 
     <script>
-        // Навигация между страницами
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav__link, .logo, .btn[data-page], .mobile-menu__link');
-            const pages = document.querySelectorAll('.page');
-            const burger = document.getElementById('burger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            
-            // Функция переключения страниц
-            function showPage(pageId) {
-                // Скрыть все страницы
-                pages.forEach(page => {
-                    page.classList.remove('active');
+        // Мобильное меню
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Изменение header при скролле
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Переключение категорий коктейлей
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const cocktailLists = document.querySelectorAll('.cocktail-list');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Убираем активный класс у всех кнопок
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Добавляем активный класс текущей кнопке
+                btn.classList.add('active');
+                
+                // Скрываем все списки коктейлей
+                cocktailLists.forEach(list => {
+                    list.style.display = 'none';
                 });
                 
-                // Показать выбранную страницу
-                document.getElementById(pageId).classList.add('active');
+                // Показываем выбранный список
+                const category = btn.getAttribute('data-category');
+                document.getElementById(`${category}-cocktails`).style.display = 'grid';
+            });
+        });
+        
+        // Переключение категорий кухни
+        const kitchenCategoryBtns = document.querySelectorAll('.kitchen-category-btn');
+        
+        kitchenCategoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Убираем активный класс у всех кнопок
+                kitchenCategoryBtns.forEach(b => b.classList.remove('active'));
+                // Добавляем активный класс текущей кнопке
+                btn.classList.add('active');
                 
-                // Обновить активную ссылку в навигации
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('data-page') === pageId) {
-                        link.classList.add('active');
-                    }
-                });
-                
-                // Закрыть мобильное меню при переходе на страницу
-                if (mobileMenu.classList.contains('active')) {
-                    mobileMenu.classList.remove('active');
-                    burger.classList.remove('active');
+                // Здесь можно добавить логику для отображения соответствующих блюд
+            });
+        });
+        
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
-                
-                // Прокрутить к верху страницы
-                window.scrollTo(0, 0);
-            }
-            
-            // Обработчики кликов по навигационным ссылкам
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pageId = this.getAttribute('data-page');
-                    if (pageId) {
-                        showPage(pageId);
-                    }
-                });
             });
-            
-            // Бургер-меню для мобильных устройств
-            burger.addEventListener('click', function() {
-                burger.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-            });
-            
-            // Обработчик формы
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('Спасибо! Ваша заявка отправлена.');
-                    contactForm.reset();
-                });
-            }
+        }, observerOptions);
+        
+        // Наблюдаем за всеми элементами, которые должны появляться при скролле
+        document.querySelectorAll('.section-title, .service-card, .cocktail-item, .process-step, .portfolio-item, .kitchen-item, .about-text, .about-image, .contact-info, .contact-form').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Анимация для hero section
+        window.addEventListener('load', () => {
+            document.querySelector('.hero-content').classList.add('visible');
         });
     </script>
 </body>
