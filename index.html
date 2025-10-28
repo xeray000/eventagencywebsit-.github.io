@@ -434,6 +434,38 @@
             font-size: 0.9rem;
         }
 
+        /* Списки для алкогольных и безалкогольных коктейлей */
+        .cocktail-simple-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cocktail-simple-item {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .cocktail-simple-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cocktail-simple-item:hover {
+            background-color: #2a2a2a;
+        }
+
+        .cocktail-simple-name {
+            font-size: 1.1rem;
+        }
+
         /* Portfolio Section */
         .portfolio-grid {
             display: grid;
@@ -776,6 +808,15 @@
             .process-step {
                 flex: 0 0 100%;
             }
+            
+            .cocktail-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-btn {
+                margin: 5px 0;
+            }
         }
 
         @media (max-width: 576px) {
@@ -783,13 +824,11 @@
                 font-size: 2rem;
             }
             
-            .cocktail-categories,
             .kitchen-categories {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .category-btn,
             .kitchen-category-btn {
                 margin: 5px 0;
             }
@@ -843,8 +882,8 @@
                 <li><a href="#process" class="nav-link" data-page="process">Процесс</a></li>
                 <li><a href="#services" class="nav-link" data-page="services">Услуги</a></li>
                 <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейльная карта</a></li>
-                <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
                 <li><a href="#kitchen" class="nav-link" data-page="kitchen">Кухня</a></li>
+                <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
                 <li><a href="#about" class="nav-link" data-page="about">О нас</a></li>
                 <li><a href="#contact" class="nav-link" data-page="contact">Контакты</a></li>
             </ul>
@@ -1068,74 +1107,13 @@
         <section class="cocktail-menu">
             <div class="container">
                 <div class="cocktail-categories">
-                    <button class="category-btn active" data-category="alcoholic">Алкогольные коктейли</button>
+                    <button class="category-btn active" data-category="classic">Классические коктейли</button>
+                    <button class="category-btn" data-category="alcoholic">Алкогольные коктейли</button>
                     <button class="category-btn" data-category="non-alcoholic">Безалкогольные коктейли</button>
-                    <button class="category-btn" data-category="classic">Классические коктейли</button>
                 </div>
                 
-                <div class="cocktail-list" id="alcoholic-cocktails">
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Лонг Айленд Айс Ти</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Дайкири</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Мятный экстази</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Черный русский</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Том Колинз</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Вайт Леди</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Кайпиринья</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Поцелуй VS</h3>
-                    </div>
-                </div>
-                
-                <div class="cocktail-list" id="non-alcoholic-cocktails" style="display: none;">
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Манго-маракуя</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Грейпфрут-соленая карамель</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Малиновый рассвет</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Мохито</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Арбуз-базилик</h3>
-                    </div>
-                    <div class="cocktail-item">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Лавандовый-бергамот</h3>
-                    </div>
-                </div>
-                
-                <div class="cocktail-list" id="classic-cocktails" style="display: none;">
+                <!-- Классические коктейли (сетка) -->
+                <div class="cocktail-list" id="classic-cocktails">
                     <div class="cocktail-item">
                         <div class="cocktail-image">Фото коктейля</div>
                         <h3 class="cocktail-name">White Russian</h3>
@@ -1151,8 +1129,118 @@
                         <h3 class="cocktail-name">Porn Star Martini</h3>
                         <p class="cocktail-ingredients">Водка, Ванильная водка, Пюре маракуйи, Сахарный сироп, Игристое вино</p>
                     </div>
-                    <!-- Добавьте остальные классические коктейли по аналогии -->
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Clover Club</h3>
+                        <p class="cocktail-ingredients">Джин, Малиновый сироп, Лимонный сок, Белок</p>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Pina Colada</h3>
+                        <p class="cocktail-ingredients">Белый ром, Кокосовые сливки, Ананасовый сок</p>
+                    </div>
+                    <div class="cocktail-item">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Blue Hawaii</h3>
+                        <p class="cocktail-ingredients">Белый ром, Голубой Кюрасао, Ананасовый сок, Сок лайма</p>
+                    </div>
                 </div>
+                
+                <!-- Алкогольные коктейли (список) -->
+                <div class="cocktail-simple-list" id="alcoholic-cocktails" style="display: none;">
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Лонг Айленд Айс Ти</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Дайкири</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Мятный экстази</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Черный русский</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Том Колинз</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Вайт Леди</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Кайпиринья</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Поцелуй VS</span>
+                    </div>
+                </div>
+                
+                <!-- Безалкогольные коктейли (список) -->
+                <div class="cocktail-simple-list" id="non-alcoholic-cocktails" style="display: none;">
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Манго-маракуя</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Грейпфрут-соленая карамель</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Малиновый рассвет</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Мохито</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Арбуз-базилик</span>
+                    </div>
+                    <div class="cocktail-simple-item">
+                        <span class="cocktail-simple-name">Лавандовый-бергамот</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница кухни -->
+    <div id="kitchen-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Кухня</h1>
+                <p>Вкусные и изысканные блюда для вашего мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="kitchen">
+            <div class="container">
+                <div class="kitchen-categories">
+                    <button class="kitchen-category-btn active" data-category="tartlets">Тарталетки</button>
+                    <button class="kitchen-category-btn" data-category="bruschetta">Брускетты</button>
+                    <button class="kitchen-category-btn" data-category="canape">Канапе</button>
+                    <button class="kitchen-category-btn" data-category="other">Разное</button>
+                </div>
+                
+                <div class="kitchen-items" id="tartlets-items">
+                    <div class="kitchen-item">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка кремчиз-икра</h3>
+                    </div>
+                    <div class="kitchen-item">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка кремчиз-лосось</h3>
+                    </div>
+                    <div class="kitchen-item">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка Салями</h3>
+                    </div>
+                    <div class="kitchen-item">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка Гусиная печень с перепелинным яйцом</h3>
+                    </div>
+                    <div class="kitchen-item">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка с паштотом из тунца с черри</h3>
+                    </div>
+                </div>
+                
+                <!-- Остальные категории кухни по аналогии -->
             </div>
         </section>
     </div>
@@ -1212,52 +1300,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Страница кухни -->
-    <div id="kitchen-page" class="page">
-        <section class="page-hero">
-            <div class="container">
-                <h1>Кухня</h1>
-                <p>Вкусные и изысканные блюда для вашего мероприятия</p>
-            </div>
-        </section>
-        
-        <section class="kitchen">
-            <div class="container">
-                <div class="kitchen-categories">
-                    <button class="kitchen-category-btn active" data-category="tartlets">Тарталетки</button>
-                    <button class="kitchen-category-btn" data-category="bruschetta">Брускетты</button>
-                    <button class="kitchen-category-btn" data-category="canape">Канапе</button>
-                    <button class="kitchen-category-btn" data-category="other">Разное</button>
-                </div>
-                
-                <div class="kitchen-items" id="tartlets-items">
-                    <div class="kitchen-item">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Тарталетка кремчиз-икра</h3>
-                    </div>
-                    <div class="kitchen-item">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Тарталетка кремчиз-лосось</h3>
-                    </div>
-                    <div class="kitchen-item">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Тарталетка Салями</h3>
-                    </div>
-                    <div class="kitchen-item">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Тарталетка Гусиная печень с перепелинным яйцом</h3>
-                    </div>
-                    <div class="kitchen-item">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Тарталетка с паштотом из тунца с черри</h3>
-                    </div>
-                </div>
-                
-                <!-- Остальные категории кухни по аналогии -->
             </div>
         </section>
     </div>
@@ -1369,6 +1411,7 @@
                         <li><a href="#process" class="nav-link" data-page="process">Процесс</a></li>
                         <li><a href="#services" class="nav-link" data-page="services">Услуги</a></li>
                         <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейльная карта</a></li>
+                        <li><a href="#kitchen" class="nav-link" data-page="kitchen">Кухня</a></li>
                         <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
                         <li><a href="#contact" class="nav-link" data-page="contact">Контакты</a></li>
                     </ul>
@@ -1437,7 +1480,6 @@
         
         // Переключение категорий коктейлей
         const categoryBtns = document.querySelectorAll('.category-btn');
-        const cocktailLists = document.querySelectorAll('.cocktail-list');
         
         categoryBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1447,13 +1489,14 @@
                 btn.classList.add('active');
                 
                 // Скрываем все списки коктейлей
-                cocktailLists.forEach(list => {
+                document.querySelectorAll('.cocktail-list, .cocktail-simple-list').forEach(list => {
                     list.style.display = 'none';
                 });
                 
                 // Показываем выбранный список
                 const category = btn.getAttribute('data-category');
-                document.getElementById(`${category}-cocktails`).style.display = 'grid';
+                document.getElementById(`${category}-cocktails`).style.display = 
+                    category === 'classic' ? 'grid' : 'block';
             });
         });
         
@@ -1486,7 +1529,7 @@
         }, observerOptions);
         
         // Наблюдаем за всеми элементами, которые должны появляться при скролле
-        document.querySelectorAll('.section-title, .service-card, .cocktail-item, .process-step, .portfolio-item, .kitchen-item, .about-text, .about-image, .contact-info, .contact-form').forEach(el => {
+        document.querySelectorAll('.section-title, .service-card, .cocktail-item, .cocktail-simple-item, .process-step, .portfolio-item, .kitchen-item, .about-text, .about-image, .contact-info, .contact-form').forEach(el => {
             observer.observe(el);
         });
         
