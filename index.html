@@ -1118,7 +1118,7 @@
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
-            <div class="logo" id="home-link">Пить и <span>Танцевать</span></div>
+            <div class="logo" id="about-link">Пить и <span>Танцевать</span></div>
             
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
@@ -1776,7 +1776,7 @@
         // Навигация по страницам
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page');
-        const homeLink = document.getElementById('home-link');
+        const aboutLink = document.getElementById('about-link');
         
         // Функция для переключения страниц
         function switchPage(targetPage) {
@@ -1808,10 +1808,10 @@
             });
         });
         
-        // Обработчик для логотипа (возврат на главную)
-        homeLink.addEventListener('click', (e) => {
+        // Обработчик для логотипа (переход на страницу "О нас")
+        aboutLink.addEventListener('click', (e) => {
             e.preventDefault();
-            switchPage('home');
+            switchPage('about');
         });
         
         // Изменение header при скролле
