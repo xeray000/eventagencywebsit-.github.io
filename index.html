@@ -169,6 +169,8 @@
             background: transparent;
             border: none;
             cursor: pointer;
+            position: relative;
+            z-index: 1001;
         }
         
         .burger span {
@@ -177,6 +179,91 @@
             background: #fff;
             margin: 3px 0;
             transition: 0.3s;
+        }
+        
+        .burger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .burger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* Мобильное меню */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 999;
+            transition: right 0.4s ease;
+            padding: 80px 30px 30px;
+            border-left: 1px solid rgba(200, 169, 126, 0.2);
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu__list {
+            list-style: none;
+        }
+        
+        .mobile-menu__item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+        
+        .mobile-menu__link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            display: block;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu__link:hover, .mobile-menu__link.active {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-left: 10px;
+        }
+        
+        .mobile-menu__contacts {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu__phone {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: 'Cinzel', serif;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu__address {
+            color: #ccc;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu__hours {
+            color: #ccc;
+            font-size: 14px;
         }
         
         /* Главный экран */
@@ -614,6 +701,28 @@
         </div>
     </header>
 
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu__list">
+            <li class="mobile-menu__item"><a class="mobile-menu__link active" data-page="index">Главная</a></li>
+            <li class="mobile-menu__item"><a class="mobile-menu__link" data-page="services">Услуги</a></li>
+            <li class="mobile-menu__item"><a class="mobile-menu__link" data-page="cocktails">Коктейли</a></li>
+            <li class="mobile-menu__item"><a class="mobile-menu__link" data-page="kitchen">Кухня</a></li>
+            <li class="mobile-menu__item"><a class="mobile-menu__link" data-page="portfolio">Портфолио</a></li>
+            <li class="mobile-menu__item"><a class="mobile-menu__link" data-page="contacts">Контакты</a></li>
+        </ul>
+        
+        <div class="mobile-menu__contacts">
+            <a href="tel:+79991234567" class="mobile-menu__phone">+7 (999) 123-45-67</a>
+            <div class="mobile-menu__address">г. Москва, ул. Тверская, д. 10</div>
+            <div class="mobile-menu__hours">
+                <div>Пн-Чт: 12:00 - 00:00</div>
+                <div>Пт-Сб: 12:00 - 02:00</div>
+                <div>Вс: 12:00 - 00:00</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Главная страница -->
     <section id="index" class="page active">
         <!-- Герой секция -->
@@ -992,8 +1101,10 @@
     <script>
         // Навигация между страницами
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav__link, .logo, .btn[data-page]');
+            const navLinks = document.querySelectorAll('.nav__link, .logo, .btn[data-page], .mobile-menu__link');
             const pages = document.querySelectorAll('.page');
+            const burger = document.getElementById('burger');
+            const mobileMenu = document.getElementById('mobileMenu');
             
             // Функция переключения страниц
             function showPage(pageId) {
@@ -1013,6 +1124,12 @@
                     }
                 });
                 
+                // Закрыть мобильное меню при переходе на страницу
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    burger.classList.remove('active');
+                }
+                
                 // Прокрутить к верху страницы
                 window.scrollTo(0, 0);
             }
@@ -1029,12 +1146,9 @@
             });
             
             // Бургер-меню для мобильных устройств
-            const burger = document.getElementById('burger');
-            const nav = document.querySelector('.nav');
-            
             burger.addEventListener('click', function() {
-                nav.classList.toggle('active');
                 burger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
             });
             
             // Обработчик формы
