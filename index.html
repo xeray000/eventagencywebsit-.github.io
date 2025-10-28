@@ -263,6 +263,8 @@
             opacity: 0;
             transform: translateY(30px);
             padding: 20px 15px;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
         }
 
         .process-step.visible {
@@ -313,6 +315,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
         }
 
         .service-card.visible {
@@ -390,6 +394,8 @@
             opacity: 0;
             transform: translateY(30px);
             padding: 20px 15px;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
         }
 
         .feature-item.visible {
@@ -420,6 +426,7 @@
             opacity: 0;
             transform: translateY(30px);
             padding: 20px;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .why-us.visible {
@@ -491,6 +498,8 @@
             transition: var(--transition);
             opacity: 0;
             transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
         }
 
         .cocktail-item.visible {
@@ -548,6 +557,8 @@
             transition: var(--transition);
             opacity: 0;
             transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
         }
 
         .cocktail-simple-item.visible {
@@ -578,6 +589,8 @@
             height: 250px;
             opacity: 0;
             transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
         }
 
         .portfolio-item.visible {
@@ -668,6 +681,8 @@
             transition: var(--transition);
             opacity: 0;
             transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
         }
 
         .kitchen-item.visible {
@@ -702,6 +717,7 @@
             flex: 1;
             opacity: 0;
             transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .about-text.visible {
@@ -720,6 +736,7 @@
             color: var(--text-secondary);
             opacity: 0;
             transform: translateX(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .about-image.visible {
@@ -737,6 +754,7 @@
             flex: 1;
             opacity: 0;
             transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .contact-info.visible {
@@ -748,6 +766,7 @@
             flex: 1;
             opacity: 0;
             transform: translateX(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .contact-form.visible {
@@ -1037,25 +1056,49 @@
             transform: translateY(-5px);
         }
 
-        .loading-spinner {
-            display: none;
-            text-align: center;
-            padding: 20px;
+        /* Анимации появления */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top: 4px solid var(--accent-color);
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
         }
     </style>
 </head>
@@ -1117,22 +1160,22 @@
             <div class="container">
                 <h2 class="section-title">Наш процесс работы</h2>
                 <div class="process-steps">
-                    <div class="process-step">
+                    <div class="process-step" style="--delay: 1">
                         <div class="step-number">1</div>
                         <h3 class="step-title">Консультация</h3>
                         <p class="step-description">Обсуждаем ваши пожелания, бюджет и особенности мероприятия</p>
                     </div>
-                    <div class="process-step">
+                    <div class="process-step" style="--delay: 2">
                         <div class="step-number">2</div>
                         <h3 class="step-title">Концепция</h3>
                         <p class="step-description">Разрабатываем уникальную концепцию мероприятия и подбираем услуги</p>
                     </div>
-                    <div class="process-step">
+                    <div class="process-step" style="--delay: 3">
                         <div class="step-number">3</div>
                         <h3 class="step-title">Планирование</h3>
                         <p class="step-description">Составляем детальный план мероприятия и согласовываем все детали</p>
                     </div>
-                    <div class="process-step">
+                    <div class="process-step" style="--delay: 4">
                         <div class="step-number">4</div>
                         <h3 class="step-title">Реализация</h3>
                         <p class="step-description">Организуем и проводим мероприятие, обеспечивая безупречный результат</p>
@@ -1146,35 +1189,35 @@
             <div class="container">
                 <h2 class="section-title">Что включает выездной бар?</h2>
                 <div class="features-grid">
-                    <div class="feature-item">
+                    <div class="feature-item" style="--delay: 1">
                         <div class="feature-icon">
                             <i class="fas fa-cocktail"></i>
                         </div>
                         <h3 class="feature-title">Авторские коктейли</h3>
                         <p class="feature-description">Уникальные рецепты, разработанные нашими барменами специально для вашего мероприятия</p>
                     </div>
-                    <div class="feature-item">
+                    <div class="feature-item" style="--delay: 2">
                         <div class="feature-icon">
                             <i class="fas fa-wine-glass-alt"></i>
                         </div>
                         <h3 class="feature-title">Эстетичные стойки</h3>
                         <p class="feature-description">Стильное и современное оборудование, которое создает атмосферу премиального бара</p>
                     </div>
-                    <div class="feature-item">
+                    <div class="feature-item" style="--delay: 3">
                         <div class="feature-icon">
                             <i class="fas fa-palette"></i>
                         </div>
                         <h3 class="feature-title">Индивидуальный декор</h3>
                         <p class="feature-description">Оформление в соответствии с тематикой и стилистикой вашего мероприятия</p>
                     </div>
-                    <div class="feature-item">
+                    <div class="feature-item" style="--delay: 4">
                         <div class="feature-icon">
                             <i class="fas fa-users"></i>
                         </div>
                         <h3 class="feature-title">Обученный персонал</h3>
                         <p class="feature-description">Профессиональные бармены с опытом работы на мероприятиях любого масштаба</p>
                     </div>
-                    <div class="feature-item">
+                    <div class="feature-item" style="--delay: 5">
                         <div class="feature-icon">
                             <i class="fas fa-truck"></i>
                         </div>
@@ -1195,7 +1238,7 @@
             <div class="container">
                 <h2 class="section-title">Наши услуги</h2>
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card" style="--delay: 1">
                         <div class="service-icon">
                             <i class="fas fa-smog"></i>
                         </div>
@@ -1207,7 +1250,7 @@
                         </a>
                     </div>
                     
-                    <div class="service-card">
+                    <div class="service-card" style="--delay: 2">
                         <div class="service-icon">
                             <i class="fas fa-glass-cheers"></i>
                         </div>
@@ -1222,7 +1265,7 @@
                         </a>
                     </div>
                     
-                    <div class="service-card">
+                    <div class="service-card" style="--delay: 3">
                         <div class="service-icon">
                             <i class="fas fa-cocktail"></i>
                         </div>
@@ -1257,7 +1300,7 @@
         <section class="services">
             <div class="container">
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card" style="--delay: 1">
                         <div class="service-icon">
                             <i class="fas fa-smog"></i>
                         </div>
@@ -1269,7 +1312,7 @@
                         </a>
                     </div>
                     
-                    <div class="service-card">
+                    <div class="service-card" style="--delay: 2">
                         <div class="service-icon">
                             <i class="fas fa-glass-cheers"></i>
                         </div>
@@ -1284,7 +1327,7 @@
                         </a>
                     </div>
                     
-                    <div class="service-card">
+                    <div class="service-card" style="--delay: 3">
                         <div class="service-icon">
                             <i class="fas fa-cocktail"></i>
                         </div>
@@ -1325,32 +1368,32 @@
                 
                 <!-- Классические коктейли (сетка) -->
                 <div class="cocktail-list" id="classic-cocktails">
-                    <div class="cocktail-item">
+                    <div class="cocktail-item" style="--delay: 1">
                         <div class="cocktail-image">Фото коктейля</div>
                         <h3 class="cocktail-name">White Russian</h3>
                         <p class="cocktail-ingredients">Водка, Кофейный ликер, Сливки</p>
                     </div>
-                    <div class="cocktail-item">
+                    <div class="cocktail-item" style="--delay: 2">
                         <div class="cocktail-image">Фото коктейля</div>
                         <h3 class="cocktail-name">Whiskey Sour</h3>
                         <p class="cocktail-ingredients">Виски, Лимонный сок, Сахарный сироп, Белок</p>
                     </div>
-                    <div class="cocktail-item">
+                    <div class="cocktail-item" style="--delay: 3">
                         <div class="cocktail-image">Фото коктейля</div>
                         <h3 class="cocktail-name">Porn Star Martini</h3>
                         <p class="cocktail-ingredients">Водка, Ванильная водка, Пюре маракуйи, Сахарный сироп, Игристое вино</p>
                     </div>
-                    <div class="cocktail-item">
+                    <div class="cocktail-item" style="--delay: 4">
                         <div class="cocktail-image">Фото коктейля</div>
                         <h3 class="cocktail-name">Clover Club</h3>
                         <p class="cocktail-ingredients">Джин, Малиновый сироп, Лимонный сок, Белок</p>
                     </div>
-                    <div class="cocktail-item">
+                    <div class="cocktail-item" style="--delay: 5">
                         <div class="cocktail-image">Фото коктейля</div>
                         <h3 class="cocktail-name">Pina Colada</h3>
                         <p class="cocktail-ingredients">Белый ром, Кокосовые сливки, Ананасовый сок</p>
                     </div>
-                    <div class="cocktail-item">
+                    <div class="cocktail-item" style="--delay: 6">
                         <div class="cocktail-image">Фото коктейля</div>
                         <h3 class="cocktail-name">Blue Hawaii</h3>
                         <p class="cocktail-ingredients">Белый ром, Голубой Кюрасао, Ананасовый сок, Сок лайма</p>
@@ -1359,50 +1402,50 @@
                 
                 <!-- Алкогольные коктейли (список) -->
                 <div class="cocktail-simple-list" id="alcoholic-cocktails" style="display: none;">
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 1">
                         <span class="cocktail-simple-name">Лонг Айленд Айс Ти</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 2">
                         <span class="cocktail-simple-name">Дайкири</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 3">
                         <span class="cocktail-simple-name">Мятный экстази</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 4">
                         <span class="cocktail-simple-name">Черный русский</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 5">
                         <span class="cocktail-simple-name">Том Колинз</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 6">
                         <span class="cocktail-simple-name">Вайт Леди</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 7">
                         <span class="cocktail-simple-name">Кайпиринья</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 8">
                         <span class="cocktail-simple-name">Поцелуй VS</span>
                     </div>
                 </div>
                 
                 <!-- Безалкогольные коктейли (список) -->
                 <div class="cocktail-simple-list" id="non-alcoholic-cocktails" style="display: none;">
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 1">
                         <span class="cocktail-simple-name">Манго-маракуя</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 2">
                         <span class="cocktail-simple-name">Грейпфрут-соленая карамель</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 3">
                         <span class="cocktail-simple-name">Малиновый рассвет</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 4">
                         <span class="cocktail-simple-name">Мохито</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 5">
                         <span class="cocktail-simple-name">Арбуз-базилик</span>
                     </div>
-                    <div class="cocktail-simple-item">
+                    <div class="cocktail-simple-item" style="--delay: 6">
                         <span class="cocktail-simple-name">Лавандовый-бергамот</span>
                     </div>
                 </div>
@@ -1491,6 +1534,9 @@
             
             // Прокручиваем к верху страницы
             window.scrollTo(0, 0);
+            
+            // Сбрасываем анимации для новой страницы
+            resetAnimations();
         }
         
         // Обработчики для навигационных ссылок
@@ -1525,6 +1571,9 @@
             } else {
                 backToTop.classList.remove('visible');
             }
+            
+            // Активируем анимации при скролле
+            activateAnimations();
         });
         
         // Кнопка "Наверх"
@@ -1554,45 +1603,50 @@
                 const category = btn.getAttribute('data-category');
                 document.getElementById(`${category}-cocktails`).style.display = 
                     category === 'classic' ? 'grid' : 'block';
-            });
-        });
-        
-        // Переключение категорий кухни
-        const kitchenCategoryBtns = document.querySelectorAll('.kitchen-category-btn');
-        
-        kitchenCategoryBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Убираем активный класс у всех кнопок
-                kitchenCategoryBtns.forEach(b => b.classList.remove('active'));
-                // Добавляем активный класс текущей кнопке
-                btn.classList.add('active');
-                
-                // Здесь можно добавить логику для отображения соответствующих блюд
+                    
+                // Активируем анимации для нового контента
+                setTimeout(() => {
+                    activateAnimations();
+                }, 100);
             });
         });
         
         // Анимация появления элементов при скролле
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        function activateAnimations() {
+            const animatedElements = document.querySelectorAll('.section-title, .service-card, .cocktail-item, .cocktail-simple-item, .process-step, .portfolio-item, .kitchen-item, .about-text, .about-image, .contact-info, .contact-form, .feature-item, .why-us');
+            
+            animatedElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    el.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }
         
-        // Наблюдаем за всеми элементами, которые должны появляться при скролле
-        document.querySelectorAll('.section-title, .service-card, .cocktail-item, .cocktail-simple-item, .process-step, .portfolio-item, .kitchen-item, .about-text, .about-image, .contact-info, .contact-form, .feature-item, .why-us').forEach(el => {
-            observer.observe(el);
-        });
+        // Сброс анимаций при смене страницы
+        function resetAnimations() {
+            const animatedElements = document.querySelectorAll('.section-title, .service-card, .cocktail-item, .cocktail-simple-item, .process-step, .portfolio-item, .kitchen-item, .about-text, .about-image, .contact-info, .contact-form, .feature-item, .why-us');
+            
+            animatedElements.forEach(el => {
+                el.classList.remove('visible');
+            });
+            
+            // Активируем анимации после небольшой задержки
+            setTimeout(() => {
+                activateAnimations();
+            }, 300);
+        }
         
         // Анимация для hero section
         window.addEventListener('load', () => {
             document.querySelector('.hero-content').classList.add('visible');
+            
+            // Активируем анимации после загрузки страницы
+            setTimeout(() => {
+                activateAnimations();
+            }, 500);
         });
         
         // Обработчик формы обратной связи
@@ -1604,18 +1658,6 @@
             alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
             this.reset();
         });
-        
-        // Имитация загрузки данных (для демонстрации)
-        function simulateLoading() {
-            const loadingSpinner = document.createElement('div');
-            loadingSpinner.className = 'loading-spinner';
-            loadingSpinner.innerHTML = '<div class="spinner"></div><p>Загрузка данных...</p>';
-            
-            // В реальном приложении здесь был бы AJAX-запрос
-            setTimeout(() => {
-                loadingSpinner.style.display = 'none';
-            }, 1500);
-        }
     </script>
 </body>
 </html>
