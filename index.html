@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Пить и Танцевать - Event-агентство</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Базовые стили */
         :root {
@@ -25,7 +25,7 @@
 
         /* ОБНОВЛЕННЫЕ ШРИФТЫ */
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--primary-color);
             color: var(--text-primary);
             line-height: 1.6;
@@ -34,14 +34,14 @@
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', 'Times New Roman', serif;
-            font-weight: 600;
+            font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+            font-weight: 500;
             letter-spacing: 0.5px;
         }
 
         .logo {
-            font-family: 'Playfair Display', 'Times New Roman', serif;
-            font-weight: 700;
+            font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+            font-weight: 600;
         }
 
         html {
@@ -70,12 +70,13 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             margin-bottom: 50px;
             position: relative;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
+            font-weight: 400;
         }
 
         .section-title.visible {
@@ -90,21 +91,24 @@
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
+            height: 2px;
             background-color: var(--accent-color);
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 14px 32px;
             background-color: var(--accent-color);
             color: var(--primary-color);
             border: none;
-            border-radius: 4px;
-            font-weight: 600;
+            border-radius: 2px;
+            font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
         .btn:hover {
@@ -138,12 +142,13 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 500;
             color: var(--accent-color);
             cursor: pointer;
             transition: var(--transition);
             white-space: nowrap;
+            letter-spacing: 1px;
         }
 
         .logo:hover {
@@ -164,17 +169,18 @@
         }
 
         .nav-menu li {
-            margin: 0 12px;
+            margin: 0 15px;
         }
 
         .nav-menu a {
-            font-weight: 500;
+            font-weight: 400;
             transition: var(--transition);
             position: relative;
             font-size: 0.95rem;
             white-space: nowrap;
             padding: 5px 0;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         .nav-menu a:hover {
@@ -187,7 +193,7 @@
             bottom: -2px;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1px;
             background-color: var(--accent-color);
             transition: var(--transition);
         }
@@ -204,11 +210,12 @@
         }
 
         .phone {
-            font-weight: 600;
+            font-weight: 400;
             transition: var(--transition);
             white-space: nowrap;
             font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         .phone:hover {
@@ -256,9 +263,9 @@
         }
 
         .mobile-phone {
-            font-weight: 600;
+            font-weight: 500;
             font-size: 1.1rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .mobile-social-icons {
@@ -301,19 +308,23 @@
         }
 
         .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            font-size: 4rem;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            font-weight: 400;
+            letter-spacing: 1px;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 35px;
             color: var(--text-secondary);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
-        /* Process Section - ВЫРОВНЯННЫЙ ТЕКСТ */
+        /* Process Section */
         .process-steps {
             display: flex;
             justify-content: space-between;
@@ -326,7 +337,7 @@
             margin-bottom: 20px;
             opacity: 0;
             transform: translateY(30px);
-            padding: 30px 20px;
+            padding: 40px 25px;
             transition: opacity 0.8s ease, transform 0.8s ease;
             transition-delay: calc(var(--delay) * 0.1s);
             display: flex;
@@ -351,19 +362,20 @@
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0 auto 25px;
-            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            margin: 0 auto 30px;
+            font-family: 'Cormorant Garamond', serif;
         }
 
         .step-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 20px;
             line-height: 1.3;
             min-height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 400;
         }
 
         .step-description {
@@ -371,20 +383,21 @@
             font-size: 1rem;
             line-height: 1.6;
             text-align: center;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
         }
 
         /* Services Section */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            gap: 30px;
         }
 
         .service-card {
             background-color: var(--secondary-color);
-            border-radius: 8px;
-            padding: 25px;
+            border-radius: 4px;
+            padding: 35px 30px;
             text-align: center;
             transition: var(--transition);
             opacity: 0;
@@ -395,6 +408,7 @@
             justify-content: space-between;
             transition: opacity 0.8s ease, transform 0.8s ease;
             transition-delay: calc(var(--delay) * 0.1s);
+            border: 1px solid #2a2a2a;
         }
 
         .service-card.visible {
@@ -404,46 +418,53 @@
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
         }
 
         .service-icon {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--accent-color);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 400;
         }
 
         .service-card p {
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             flex-grow: 1;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
         }
 
         .service-price {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.3rem;
+            font-weight: 500;
             color: var(--accent-color);
-            margin-bottom: 20px;
-            font-family: 'Inter', sans-serif;
+            margin-bottom: 25px;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .whatsapp-btn {
             background-color: #25D366;
             color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
+            padding: 12px 24px;
+            border-radius: 2px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
         }
 
         .whatsapp-btn:hover {
@@ -458,23 +479,24 @@
         /* Bar Features Section */
         .bar-features {
             background-color: var(--secondary-color);
-            border-radius: 10px;
-            padding: 50px 30px;
+            border-radius: 4px;
+            padding: 60px 40px;
             margin: 50px 0;
+            border: 1px solid #2a2a2a;
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
         .feature-item {
             text-align: center;
             opacity: 0;
             transform: translateY(30px);
-            padding: 20px 15px;
+            padding: 30px 20px;
             transition: opacity 0.8s ease, transform 0.8s ease;
             transition-delay: calc(var(--delay) * 0.1s);
         }
@@ -485,20 +507,23 @@
         }
 
         .feature-icon {
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             color: var(--accent-color);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .feature-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 400;
         }
 
         .feature-description {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
         }
 
         .why-us {
@@ -507,7 +532,7 @@
             margin: 0 auto;
             opacity: 0;
             transform: translateY(30px);
-            padding: 20px;
+            padding: 30px;
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
@@ -517,23 +542,25 @@
         }
 
         .why-us h3 {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
             color: var(--accent-color);
+            font-weight: 400;
         }
 
         .why-us p {
-            font-size: 1.1rem;
-            line-height: 1.7;
+            font-size: 1.2rem;
+            line-height: 1.8;
             color: var(--text-secondary);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
         }
 
         /* Cocktail Menu Section */
         .cocktail-categories {
             display: flex;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             flex-wrap: wrap;
         }
 
@@ -541,13 +568,15 @@
             background: none;
             border: none;
             color: var(--text-secondary);
-            font-size: 1.1rem;
-            padding: 10px 20px;
+            font-size: 1.2rem;
+            padding: 12px 25px;
             margin: 5px 10px;
             cursor: pointer;
             transition: var(--transition);
             position: relative;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.5px;
         }
 
         .category-btn.active {
@@ -560,7 +589,7 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1px;
             background-color: var(--accent-color);
             transition: var(--transition);
         }
@@ -571,20 +600,24 @@
 
         .cocktail-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .cocktail-item {
             background-color: var(--secondary-color);
-            border-radius: 8px;
-            padding: 20px;
+            border-radius: 4px;
+            padding: 25px;
             transition: var(--transition);
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
             transition-delay: calc(var(--delay) * 0.1s);
             cursor: pointer;
+            border: 1px solid #2a2a2a;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .cocktail-item.visible {
@@ -593,15 +626,17 @@
         }
 
         .cocktail-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
         }
 
         .cocktail-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             background-color: #333;
-            border-radius: 6px;
-            margin-bottom: 15px;
+            border-radius: 2px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -622,35 +657,32 @@
         }
 
         .cocktail-name {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            font-weight: 400;
+            line-height: 1.3;
         }
 
         .cocktail-ingredients {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .cocktail-price {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            margin-top: 10px;
-            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            flex-grow: 1;
         }
 
         /* Списки для алкогольных и безалкогольных коктейлей */
         .cocktail-simple-list {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .cocktail-simple-item {
             background-color: var(--secondary-color);
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin-bottom: 10px;
+            border-radius: 4px;
+            padding: 20px 25px;
+            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -659,6 +691,7 @@
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
             transition-delay: calc(var(--delay) * 0.1s);
+            border: 1px solid #2a2a2a;
         }
 
         .cocktail-simple-item.visible {
@@ -669,42 +702,40 @@
         .cocktail-simple-item:hover {
             background-color: #2a2a2a;
             transform: translateX(5px);
+            border-color: var(--accent-color);
         }
 
         .cocktail-simple-name {
-            font-size: 1.1rem;
-        }
-
-        .cocktail-simple-price {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 400;
         }
 
         .cocktail-simple-ingredients {
             color: var(--text-secondary);
             font-size: 0.9rem;
             margin-top: 5px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
         }
 
         /* Portfolio Section */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
 
         .portfolio-item {
             position: relative;
-            border-radius: 8px;
+            border-radius: 4px;
             overflow: hidden;
-            height: 250px;
+            height: 280px;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
             transition-delay: calc(var(--delay) * 0.1s);
             cursor: pointer;
+            border: 1px solid #2a2a2a;
         }
 
         .portfolio-item.visible {
@@ -737,8 +768,8 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 20px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 25px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
             transform: translateY(100%);
             transition: var(--transition);
         }
@@ -755,7 +786,7 @@
         .about-content {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 60px;
         }
 
         .about-text {
@@ -770,11 +801,26 @@
             transform: translateX(0);
         }
 
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
         .about-image {
             flex: 1;
-            height: 400px;
+            height: 450px;
             background-color: #333;
-            border-radius: 8px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -784,6 +830,7 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
             overflow: hidden;
             position: relative;
+            border: 1px solid #2a2a2a;
         }
 
         .about-image img {
@@ -800,7 +847,7 @@
         /* Contact Section */
         .contact-content {
             display: flex;
-            gap: 50px;
+            gap: 60px;
         }
 
         .contact-info {
@@ -828,7 +875,7 @@
         }
 
         .contact-item {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
         }
@@ -836,24 +883,25 @@
         .contact-item i {
             color: var(--accent-color);
             margin-right: 15px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             width: 20px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 18px;
             background-color: var(--secondary-color);
             border: 1px solid #333;
-            border-radius: 4px;
+            border-radius: 2px;
             color: var(--text-primary);
             transition: var(--transition);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
         }
 
         .form-group input:focus,
@@ -870,36 +918,39 @@
         /* Footer */
         footer {
             background-color: var(--secondary-color);
-            padding: 50px 0 25px;
+            padding: 60px 0 30px;
+            border-top: 1px solid #2a2a2a;
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .footer-column {
             flex: 1;
             min-width: 250px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
             color: var(--accent-color);
+            font-weight: 400;
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
             color: var(--text-secondary);
             transition: var(--transition);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
         }
 
         .footer-links a:hover {
@@ -908,26 +959,27 @@
 
         .copyright {
             text-align: center;
-            padding-top: 25px;
+            padding-top: 30px;
             border-top: 1px solid #333;
             color: var(--text-secondary);
             font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
         }
 
         .back-to-top {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             background-color: var(--accent-color);
             color: var(--primary-color);
             width: 50px;
             height: 50px;
-            border-radius: 50%;
+            border-radius: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: var(--transition);
             opacity: 0;
@@ -953,7 +1005,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             animation: fadeIn 0.3s ease;
         }
 
@@ -971,8 +1023,8 @@
             max-height: 90%;
             top: 50%;
             transform: translateY(-50%);
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            border-radius: 4px;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
         }
 
         .modal-content img {
@@ -984,11 +1036,11 @@
 
         .close {
             position: absolute;
-            top: 20px;
-            right: 30px;
+            top: 25px;
+            right: 35px;
             color: var(--accent-color);
-            font-size: 40px;
-            font-weight: bold;
+            font-size: 35px;
+            font-weight: 300;
             cursor: pointer;
             transition: var(--transition);
             z-index: 2001;
@@ -1001,13 +1053,15 @@
 
         .modal-caption {
             position: absolute;
-            bottom: 20px;
+            bottom: 25px;
             left: 0;
             width: 100%;
             text-align: center;
             color: white;
-            padding: 10px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
         }
 
         /* Страницы */
@@ -1031,22 +1085,24 @@
         }
 
         .page-hero h1 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
+            font-weight: 400;
         }
 
         .page-hero p {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
         }
 
         /* Адаптивность */
         @media (max-width: 1200px) {
             .nav-menu li {
-                margin: 0 8px;
+                margin: 0 12px;
             }
             
             .nav-menu a {
@@ -1064,7 +1120,7 @@
             }
             
             .nav-menu li {
-                margin: 0 6px;
+                margin: 0 8px;
             }
             
             .nav-menu a {
@@ -1097,7 +1153,7 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
-                padding: 20px 0;
+                padding: 25px 0;
                 transition: var(--transition);
                 margin: 0;
             }
@@ -1107,12 +1163,12 @@
             }
             
             .nav-menu li {
-                margin: 12px 0;
+                margin: 15px 0;
             }
             
             .nav-menu a {
                 font-size: 1.1rem;
-                padding: 10px 20px;
+                padding: 12px 25px;
             }
             
             .header-contact {
@@ -1124,17 +1180,17 @@
             }
             
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.8rem;
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
             
             .process-step {
                 flex: 0 0 100%;
                 min-height: auto;
-                padding: 25px 15px;
+                padding: 30px 20px;
             }
             
             .step-title {
@@ -1144,11 +1200,11 @@
             
             .cocktail-image,
             .portfolio-image {
-                height: 150px;
+                height: 180px;
             }
             
             .about-image {
-                height: 300px;
+                height: 350px;
             }
             
             .modal-content {
@@ -1157,36 +1213,36 @@
             }
             
             .close {
-                top: 10px;
-                right: 15px;
+                top: 15px;
+                right: 20px;
                 font-size: 30px;
             }
         }
 
         @media (max-width: 576px) {
             .logo {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .section-title {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             
             .cocktail-image,
             .portfolio-image {
-                height: 120px;
+                height: 160px;
             }
             
             .about-image {
-                height: 250px;
+                height: 280px;
             }
         }
     </style>
@@ -1549,7 +1605,6 @@
                         </div>
                         <h3 class="cocktail-name">White Russian</h3>
                         <p class="cocktail-ingredients">Водка, Кофейный ликер, Сливки</p>
-                        <div class="cocktail-price">550 руб.</div>
                     </div>
                     
                     <!-- Whiskey Sour -->
@@ -1559,7 +1614,6 @@
                         </div>
                         <h3 class="cocktail-name">Whiskey Sour</h3>
                         <p class="cocktail-ingredients">Виски, Лимонный сок, Сахарный сироп, Белок</p>
-                        <div class="cocktail-price">500 руб.</div>
                     </div>
                     
                     <!-- Porn Star Martini -->
@@ -1569,7 +1623,6 @@
                         </div>
                         <h3 class="cocktail-name">Porn Star Martini</h3>
                         <p class="cocktail-ingredients">Водка, Ванильная водка, Пюре маракуйи, Сахарный сироп, Игристое вино</p>
-                        <div class="cocktail-price">600 руб.</div>
                     </div>
                     
                     <!-- Clover Club -->
@@ -1579,7 +1632,6 @@
                         </div>
                         <h3 class="cocktail-name">Clover Club</h3>
                         <p class="cocktail-ingredients">Джин, Малиновый сироп, Лимонный сок, Белок</p>
-                        <div class="cocktail-price">520 руб.</div>
                     </div>
                     
                     <!-- Pina Colada -->
@@ -1589,7 +1641,6 @@
                         </div>
                         <h3 class="cocktail-name">Pina Colada</h3>
                         <p class="cocktail-ingredients">Белый ром, Кокосовые сливки, Ананасовый сок</p>
-                        <div class="cocktail-price">480 руб.</div>
                     </div>
                     
                     <!-- Blue Hawaii -->
@@ -1599,7 +1650,6 @@
                         </div>
                         <h3 class="cocktail-name">Blue Hawaii</h3>
                         <p class="cocktail-ingredients">Белый ром, Голубой Кюрасао, Ананасовый сок, Сок лайма</p>
-                        <div class="cocktail-price">490 руб.</div>
                     </div>
                     
                     <!-- Tequila Sunrise -->
@@ -1609,7 +1659,6 @@
                         </div>
                         <h3 class="cocktail-name">Tequila Sunrise</h3>
                         <p class="cocktail-ingredients">Текила, Апельсиновый сок, Гренадин</p>
-                        <div class="cocktail-price">470 руб.</div>
                     </div>
                     
                     <!-- Mojito -->
@@ -1619,7 +1668,6 @@
                         </div>
                         <h3 class="cocktail-name">Mojito</h3>
                         <p class="cocktail-ingredients">Белый ром, Сахарный сироп, Содовая, Лайм, Мята</p>
-                        <div class="cocktail-price">450 руб.</div>
                     </div>
                     
                     <!-- Bellini -->
@@ -1629,7 +1677,6 @@
                         </div>
                         <h3 class="cocktail-name">Bellini</h3>
                         <p class="cocktail-ingredients">Игристое вино, Персиковое пюре</p>
-                        <div class="cocktail-price">520 руб.</div>
                     </div>
                     
                     <!-- Aperol Spritz -->
@@ -1639,7 +1686,6 @@
                         </div>
                         <h3 class="cocktail-name">Aperol Spritz</h3>
                         <p class="cocktail-ingredients">Aperol, Просекко, Содовая</p>
-                        <div class="cocktail-price">480 руб.</div>
                     </div>
                 </div>
                 
@@ -1650,56 +1696,48 @@
                             <span class="cocktail-simple-name">Лонг Айленд Айс Ти</span>
                             <p class="cocktail-simple-ingredients">Водка, Джин, Ром, Текила, Трипл-сек, Лимонад, Кола</p>
                         </div>
-                        <span class="cocktail-simple-price">590 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 2">
                         <div>
                             <span class="cocktail-simple-name">Дайкири</span>
                             <p class="cocktail-simple-ingredients">Белый ром, Лаймовый сок, Сахарный сироп</p>
                         </div>
-                        <span class="cocktail-simple-price">480 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 3">
                         <div>
                             <span class="cocktail-simple-name">Мятный Экстази</span>
                             <p class="cocktail-simple-ingredients">Водка, Мятный ликер, Сок лайма</p>
                         </div>
-                        <span class="cocktail-simple-price">520 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 4">
                         <div>
                             <span class="cocktail-simple-name">Черный Русский</span>
                             <p class="cocktail-simple-ingredients">Водка, Кофейный ликер</p>
                         </div>
-                        <span class="cocktail-simple-price">460 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 5">
                         <div>
                             <span class="cocktail-simple-name">Том Колинз</span>
                             <p class="cocktail-simple-ingredients">Джин, Лимонный сок, Сахарный сироп, Содовая</p>
                         </div>
-                        <span class="cocktail-simple-price">470 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 6">
                         <div>
                             <span class="cocktail-simple-name">Вайт Леди</span>
                             <p class="cocktail-simple-ingredients">Джин, Трипл-сек, Лимонный сок</p>
                         </div>
-                        <span class="cocktail-simple-price">510 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 7">
                         <div>
                             <span class="cocktail-simple-name">Кайпиринья</span>
                             <p class="cocktail-simple-ingredients">Кашаса, Лайм, Сахар</p>
                         </div>
-                        <span class="cocktail-simple-price">490 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 8">
                         <div>
                             <span class="cocktail-simple-name">Поцелуй</span>
                             <p class="cocktail-simple-ingredients">Водка, Клубничный ликер, Сливки</p>
                         </div>
-                        <span class="cocktail-simple-price">530 руб.</span>
                     </div>
                 </div>
                 
@@ -1710,42 +1748,36 @@
                             <span class="cocktail-simple-name">Манго-Маракуйя</span>
                             <p class="cocktail-simple-ingredients">Манговое пюре, Пюре маракуйи, Ананасовый сок, Лайм</p>
                         </div>
-                        <span class="cocktail-simple-price">350 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 2">
                         <div>
                             <span class="cocktail-simple-name">Грейпфрут-Соленая Карамель</span>
                             <p class="cocktail-simple-ingredients">Грейпфрутовый сок, Карамельный сироп, Содовая, Морская соль</p>
                         </div>
-                        <span class="cocktail-simple-price">380 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 3">
                         <div>
                             <span class="cocktail-simple-name">Малиновый Рассвет</span>
                             <p class="cocktail-simple-ingredients">Малиновое пюре, Гранатовый сироп, Лимонный сок, Имбирный эль</p>
                         </div>
-                        <span class="cocktail-simple-price">370 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 4">
                         <div>
                             <span class="cocktail-simple-name">Мохито Безалкогольный</span>
                             <p class="cocktail-simple-ingredients">Сахарный сироп, Содовая, Лайм, Мята</p>
                         </div>
-                        <span class="cocktail-simple-price">320 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 5">
                         <div>
                             <span class="cocktail-simple-name">Арбуз-Базилик</span>
                             <p class="cocktail-simple-ingredients">Арбузный сок, Базилик, Лимонный сок, Содовая</p>
                         </div>
-                        <span class="cocktail-simple-price">360 руб.</span>
                     </div>
                     <div class="cocktail-simple-item" style="--delay: 6">
                         <div>
                             <span class="cocktail-simple-name">Лавандовый Бергамот</span>
                             <p class="cocktail-simple-ingredients">Лавандовый сироп, Чай бергамот, Лимон, Содовая</p>
                         </div>
-                        <span class="cocktail-simple-price">390 руб.</span>
                     </div>
                 </div>
             </div>
