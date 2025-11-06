@@ -294,6 +294,709 @@
             color: var(--text-secondary);
         }
 
+        /* Process Section */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .process-step {
+            flex: 0 0 23%;
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            padding: 20px 15px;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .process-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .service-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-weight: bold;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+        }
+
+        .whatsapp-btn i {
+            margin-right: 8px;
+        }
+
+        /* Bar Features Section */
+        .bar-features {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 50px 30px;
+            margin: 50px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .feature-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            padding: 20px 15px;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .feature-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-icon {
+            font-size: 2.8rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .why-us {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            padding: 20px;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .why-us.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .why-us h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--accent-color);
+        }
+
+        .why-us p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* Cocktail Menu Section */
+        .cocktail-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            margin: 5px 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .category-btn.active {
+            color: var(--accent-color);
+        }
+
+        .category-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .category-btn.active::after {
+            width: 100%;
+        }
+
+        .cocktail-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .cocktail-item {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 20px;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .cocktail-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cocktail-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .cocktail-image {
+            width: 100%;
+            height: 200px;
+            background-color: #333;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            overflow: hidden;
+        }
+
+        .cocktail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cocktail-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .cocktail-ingredients {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Списки для алкогольных и безалкогольных коктейлей */
+        .cocktail-simple-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cocktail-simple-item {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .cocktail-simple-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cocktail-simple-item:hover {
+            background-color: #2a2a2a;
+            transform: translateX(5px);
+        }
+
+        .cocktail-simple-name {
+            font-size: 1.1rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .portfolio-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.05);
+        }
+
+        /* Kitchen Section */
+        .kitchen-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .kitchen-category-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            margin: 5px 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .kitchen-category-btn.active {
+            color: var(--accent-color);
+        }
+
+        .kitchen-category-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .kitchen-category-btn.active::after {
+            width: 100%;
+        }
+
+        .kitchen-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .kitchen-item {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .kitchen-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .kitchen-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .kitchen-image {
+            width: 100%;
+            height: 180px;
+            background-color: #333;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            overflow: hidden;
+        }
+
+        .kitchen-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .kitchen-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .about-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background-color: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .about-image.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .contact-info.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-form {
+            flex: 1;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .contact-form.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--secondary-color);
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            padding: 50px 0 25px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 25px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid #333;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Quick Contact */
+        .quick-contact {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .quick-contact .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .quick-contact p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Страницы */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-hero {
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80') no-repeat center center/cover;
+        }
+
+        .page-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         /* Адаптивность для шапки */
         @media (max-width: 1200px) {
             .nav-menu li {
@@ -320,6 +1023,11 @@
             
             .nav-menu a {
                 font-size: 0.85rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                flex-direction: column;
             }
         }
 
@@ -367,6 +1075,10 @@
             .hero h1 {
                 font-size: 2.2rem;
             }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -381,47 +1093,11 @@
             .hero p {
                 font-size: 1rem;
             }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
         }
-
-        /* Остальные стили остаются без изменений */
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .process-step {
-            flex: 0 0 23%;
-            text-align: center;
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            padding: 20px 15px;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
-        }
-
-        .process-step.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 20px;
-        }
-
-        /* ... остальные стили остаются такими же ... */
-
     </style>
 </head>
 <body>
@@ -632,7 +1308,470 @@
         </section>
     </div>
 
-    <!-- Остальные страницы остаются без изменений -->
+    <!-- Страница услуг -->
+    <div id="services-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Наши услуги</h1>
+                <p>Полный спектр услуг для организации незабываемого мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="services">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="service-card" style="--delay: 1">
+                        <div class="service-icon">
+                            <i class="fas fa-smog"></i>
+                        </div>
+                        <h3>Тяжелый дым на свадебный танец</h3>
+                        <p>Создадим незабываемую атмосферу для вашего первого танца как молодоженов. Наш профессиональный дымовой эффект добавит волшебства и романтики в этот особенный момент.</p>
+                        <div class="service-price">от 8000 руб.</div>
+                        <a href="https://wa.me/79991234567" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Заказать
+                        </a>
+                    </div>
+                    
+                    <div class="service-card" style="--delay: 2">
+                        <div class="service-icon">
+                            <i class="fas fa-glass-cheers"></i>
+                        </div>
+                        <h3>Пирамида из бокалов с шампанским</h3>
+                        <p>Эффектная подача шампанского для вашего праздника. Идеальное решение для торжественного тоста, которое произведет впечатление на всех гостей.</p>
+                        <div class="service-subcategories">
+                            <p>35 бокалов | 55 бокалов</p>
+                        </div>
+                        <div class="service-price">от 6000 руб.</div>
+                        <a href="https://wa.me/79991234567" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Заказать
+                        </a>
+                    </div>
+                    
+                    <div class="service-card" style="--delay: 3">
+                        <div class="service-icon">
+                            <i class="fas fa-cocktail"></i>
+                        </div>
+                        <h3>Коктейльный бар под ключ</h3>
+                        <p>Полный комплекс услуг по организации коктейльного бара на вашем мероприятии. Наши профессиональные бармены создадут уникальные коктейли по вашему выбору.</p>
+                        <ul>
+                            <li>На выбор от 5 коктейлей</li>
+                            <li>Выезд от 1 бармена</li>
+                            <li>Заказ от 100 позиций</li>
+                            <li>Продолжительность: 3 часа</li>
+                        </ul>
+                        <div class="service-price">от 25000 руб.</div>
+                        <a href="https://wa.me/79991234567" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Заказать
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница коктейльной карты -->
+    <div id="cocktail-menu-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Коктейльная карта</h1>
+                <p>Широкий выбор алкогольных и безалкогольных коктейлей для вашего мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="cocktail-menu">
+            <div class="container">
+                <div class="cocktail-categories">
+                    <button class="category-btn active" data-category="classic">Классические коктейли</button>
+                    <button class="category-btn" data-category="alcoholic">Алкогольные коктейли</button>
+                    <button class="category-btn" data-category="non-alcoholic">Безалкогольные коктейли</button>
+                </div>
+                
+                <!-- Классические коктейли (сетка) -->
+                <div class="cocktail-list" id="classic-cocktails">
+                    <div class="cocktail-item" style="--delay: 1">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">White Russian</h3>
+                        <p class="cocktail-ingredients">Водка, Кофейный ликер, Сливки</p>
+                    </div>
+                    <div class="cocktail-item" style="--delay: 2">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Whiskey Sour</h3>
+                        <p class="cocktail-ingredients">Виски, Лимонный сок, Сахарный сироп, Белок</p>
+                    </div>
+                    <div class="cocktail-item" style="--delay: 3">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Porn Star Martini</h3>
+                        <p class="cocktail-ingredients">Водка, Ванильная водка, Пюре маракуйи, Сахарный сироп, Игристое вино</p>
+                    </div>
+                    <div class="cocktail-item" style="--delay: 4">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Clover Club</h3>
+                        <p class="cocktail-ingredients">Джин, Малиновый сироп, Лимонный сок, Белок</p>
+                    </div>
+                    <div class="cocktail-item" style="--delay: 5">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Pina Colada</h3>
+                        <p class="cocktail-ingredients">Белый ром, Кокосовые сливки, Ананасовый сок</p>
+                    </div>
+                    <div class="cocktail-item" style="--delay: 6">
+                        <div class="cocktail-image">Фото коктейля</div>
+                        <h3 class="cocktail-name">Blue Hawaii</h3>
+                        <p class="cocktail-ingredients">Белый ром, Голубой Кюрасао, Ананасовый сок, Сок лайма</p>
+                    </div>
+                </div>
+                
+                <!-- Алкогольные коктейли (список) -->
+                <div class="cocktail-simple-list" id="alcoholic-cocktails" style="display: none;">
+                    <div class="cocktail-simple-item" style="--delay: 1">
+                        <span class="cocktail-simple-name">Лонг Айленд Айс Ти</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 2">
+                        <span class="cocktail-simple-name">Дайкири</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 3">
+                        <span class="cocktail-simple-name">Мятный экстази</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 4">
+                        <span class="cocktail-simple-name">Черный русский</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 5">
+                        <span class="cocktail-simple-name">Том Колинз</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 6">
+                        <span class="cocktail-simple-name">Вайт Леди</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 7">
+                        <span class="cocktail-simple-name">Кайпиринья</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 8">
+                        <span class="cocktail-simple-name">Поцелуй VS</span>
+                    </div>
+                </div>
+                
+                <!-- Безалкогольные коктейли (список) -->
+                <div class="cocktail-simple-list" id="non-alcoholic-cocktails" style="display: none;">
+                    <div class="cocktail-simple-item" style="--delay: 1">
+                        <span class="cocktail-simple-name">Манго-маракуя</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 2">
+                        <span class="cocktail-simple-name">Грейпфрут-соленая карамель</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 3">
+                        <span class="cocktail-simple-name">Малиновый рассвет</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 4">
+                        <span class="cocktail-simple-name">Мохито</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 5">
+                        <span class="cocktail-simple-name">Арбуз-базилик</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 6">
+                        <span class="cocktail-simple-name">Лавандовый-бергамот</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница кухни -->
+    <div id="kitchen-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Кухня</h1>
+                <p>Вкусные и изысканные блюда для вашего мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="kitchen">
+            <div class="container">
+                <div class="kitchen-categories">
+                    <button class="kitchen-category-btn active" data-category="tartlets">Тарталетки</button>
+                    <button class="kitchen-category-btn" data-category="bruschetta">Брускетты</button>
+                    <button class="kitchen-category-btn" data-category="canape">Канапе</button>
+                    <button class="kitchen-category-btn" data-category="other">Разное</button>
+                </div>
+                
+                <!-- Тарталетки -->
+                <div class="kitchen-items" id="tartlets-items">
+                    <div class="kitchen-item" style="--delay: 1">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка кремчиз-икра</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 2">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка кремчиз-лосось</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 3">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка Салями</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 4">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка Гусиная печень с перепелинным яйцом</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 5">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тарталетка с паштотом из тунца с черри</h3>
+                    </div>
+                </div>
+                
+                <!-- Брускетты -->
+                <div class="kitchen-items" id="bruschetta-items" style="display: none;">
+                    <div class="kitchen-item" style="--delay: 1">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Брускета Салями</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 2">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Брускета Сельдь на сыре с корнишонами</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 3">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Брускета с лососем</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 4">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Брускетта Капрезе</h3>
+                    </div>
+                </div>
+                
+                <!-- Канапе -->
+                <div class="kitchen-items" id="canape-items" style="display: none;">
+                    <div class="kitchen-item" style="--delay: 1">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Канапе Пеперони</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 2">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Канапе с лососем</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 3">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Канапе Камамбер с виноградом</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 4">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Канапе Чеддер с виноградом</h3>
+                    </div>
+                </div>
+                
+                <!-- Разное -->
+                <div class="kitchen-items" id="other-items" style="display: none;">
+                    <div class="kitchen-item" style="--delay: 1">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Салат греческий</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 2">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Ролл Цезарь с куриным филе</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 3">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Такосы</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 4">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Салат Цезарь</h3>
+                    </div>
+                    <div class="kitchen-item" style="--delay: 5">
+                        <div class="kitchen-image">Фото блюда</div>
+                        <h3>Тар-тар с тунцом и авокадо</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница портфолио -->
+    <div id="portfolio-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Наши работы</h1>
+                <p>Реализованные проекты и мероприятия, которые мы организовали</p>
+            </div>
+        </section>
+        
+        <section class="portfolio">
+            <div class="container">
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" style="--delay: 1">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Тяжелый дым на свадебный танец</h3>
+                            <p>Свадьба Анны и Михаила, июль 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 2">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Пирамида шампанского</h3>
+                            <p>Корпоратив IT-компании, декабрь 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 3">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Выездной бар</h3>
+                            <p>День рождения ресторана, май 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 4">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Коктейльный бар</h3>
+                            <p>Свадьба Екатерины и Дмитрия, сентябрь 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 5">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Тематическая вечеринка</h3>
+                            <p>Выпускной вечер, июнь 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 6">
+                        <div class="portfolio-image">Фото работы</div>
+                        <div class="portfolio-overlay">
+                            <h3>Корпоративное мероприятие</h3>
+                            <p>Тимбилдинг компании, август 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница о нас -->
+    <div id="about-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>О нас</h1>
+                <p>Узнайте больше о нашем event-агентстве</p>
+            </div>
+        </section>
+        
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Event-агентство "Пить и Танцевать" - это команда профессионалов, которая превращает ваши мечты о идеальном празднике в реальность.</p>
+                        <p>Мы специализируемся на организации свадеб, корпоративных мероприятий, дней рождений и других торжеств. Наш подход - это индивидуальный план для каждого клиента, внимание к деталям и безупречное исполнение.</p>
+                        <p>С нами ваш праздник станет незабываемым событием, которое будут вспоминать с теплотой и восторгом!</p>
+                        <p>Наша команда состоит из опытных организаторов, дизайнеров, барменов и техников, которые работают слаженно, чтобы обеспечить высочайший уровень сервиса.</p>
+                        <p>Мы гордимся каждым проведенным мероприятием и стремимся превзойти ожидания наших клиентов.</p>
+                    </div>
+                    <div class="about-image">
+                        Фото команды
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница контактов -->
+    <div id="contact-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Контакты</h1>
+                <p>Свяжитесь с нами для организации вашего мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@pit-i-tancevat.ru">info@pit-i-tancevat.ru</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>г. Москва, ул. Праздничная, д. 123</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Пн-Пт: 9:00-21:00, Сб-Вс: 10:00-20:00</span>
+                        </div>
+                        <div class="social-icons">
+                            <a href="https://vk.com/ваш_аккаунт" target="_blank"><i class="fab fa-vk"></i></a>
+                            <a href="https://wa.me/79991234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://instagram.com/ваш_аккаунт" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://t.me/ваш_бот" target="_blank"><i class="fab fa-telegram"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" placeholder="Ваш телефон" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Ваш email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Сообщение" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Отправить сообщение</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Кнопка "Наверх" -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Пить и Танцевать</h3>
+                    <p>Event-агентство, создающее незабываемые праздники под ключ.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Услуги</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services" class="nav-link" data-page="services">Тяжелый дым</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Пирамида шампанского</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Коктейльный бар</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services" class="nav-link" data-page="services">Услуги</a></li>
+                        <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейли</a></li>
+                        <li><a href="#kitchen" class="nav-link" data-page="kitchen">Кухня</a></li>
+                        <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
+                        <li><a href="#about" class="nav-link" data-page="about">О нас</a></li>
+                        <li><a href="#contact" class="nav-link" data-page="contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+79991234567">+7 (999) 123-45-67</a></li>
+                        <li><a href="mailto:info@pit-i-tancevat.ru">info@pit-i-tancevat.ru</a></li>
+                        <li>г. Москва, ул. Праздничная, д. 123</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Event-агентство "Пить и Танцевать". Все права защищены.
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Мобильное меню
@@ -703,6 +1842,67 @@
             activateAnimations();
         });
         
+        // Кнопка "Наверх"
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Переключение категорий коктейлей
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Убираем активный класс у всех кнопок
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Добавляем активный класс текущей кнопке
+                btn.classList.add('active');
+                
+                // Скрываем все списки коктейлей
+                document.querySelectorAll('.cocktail-list, .cocktail-simple-list').forEach(list => {
+                    list.style.display = 'none';
+                });
+                
+                // Показываем выбранный список
+                const category = btn.getAttribute('data-category');
+                document.getElementById(`${category}-cocktails`).style.display = 
+                    category === 'classic' ? 'grid' : 'block';
+                    
+                // Активируем анимации для нового контента
+                setTimeout(() => {
+                    activateAnimations();
+                }, 100);
+            });
+        });
+        
+        // Переключение категорий кухни
+        const kitchenCategoryBtns = document.querySelectorAll('.kitchen-category-btn');
+        
+        kitchenCategoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Убираем активный класс у всех кнопок
+                kitchenCategoryBtns.forEach(b => b.classList.remove('active'));
+                // Добавляем активный класс текущей кнопке
+                btn.classList.add('active');
+                
+                // Скрываем все категории блюд
+                document.querySelectorAll('.kitchen-items').forEach(category => {
+                    category.style.display = 'none';
+                });
+                
+                // Показываем выбранную категорию
+                const category = btn.getAttribute('data-category');
+                document.getElementById(`${category}-items`).style.display = 'grid';
+                    
+                // Активируем анимации для нового контента
+                setTimeout(() => {
+                    activateAnimations();
+                }, 100);
+            });
+        });
+        
         // Анимация появления элементов при скролле
         function activateAnimations() {
             const animatedElements = document.querySelectorAll('.section-title, .service-card, .cocktail-item, .cocktail-simple-item, .process-step, .portfolio-item, .kitchen-item, .about-text, .about-image, .contact-info, .contact-form, .feature-item, .why-us');
@@ -739,6 +1939,16 @@
             setTimeout(() => {
                 activateAnimations();
             }, 500);
+        });
+        
+        // Обработчик формы обратной связи
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Здесь можно добавить код для отправки формы
+            // Например, с помощью AJAX или перенаправления на email
+            alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
         });
         
         // Закрытие меню при клике на ссылку
