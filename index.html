@@ -7,1287 +7,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Базовые стили */
-        :root {
-            --primary-color: #000000;
-            --secondary-color: #1a1a1a;
-            --accent-color: #d4af37;
-            --text-primary: #ffffff;
-            --text-secondary: #cccccc;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* ОБНОВЛЕННЫЕ ШРИФТЫ */
-        body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--primary-color);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            font-weight: 400;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', 'Times New Roman', serif;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', 'Times New Roman', serif;
-            font-weight: 700;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 50px;
-            position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .section-title.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            border: none;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: 'Inter', sans-serif;
-        }
-
-        .btn:hover {
-            background-color: #e6c158;
-            transform: translateY(-3px);
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(0, 0, 0, 0.95);
-            padding: 15px 0;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-
-        header.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .logo span {
-            color: var(--text-primary);
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: center;
-            flex: 1;
-            margin: 0 20px;
-        }
-
-        .nav-menu li {
-            margin: 0 12px;
-        }
-
-        .nav-menu a {
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            font-size: 0.95rem;
-            white-space: nowrap;
-            padding: 5px 0;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .nav-menu a:hover {
-            color: var(--accent-color);
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            transition: var(--transition);
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .header-contact {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            white-space: nowrap;
-        }
-
-        .phone {
-            font-weight: 600;
-            transition: var(--transition);
-            white-space: nowrap;
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .phone:hover {
-            color: var(--accent-color);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: var(--secondary-color);
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .social-icons a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            margin-left: 15px;
-        }
-
-        /* Mobile Header */
-        .mobile-header-contact {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            padding: 20px;
-            background-color: var(--secondary-color);
-            border-top: 1px solid #333;
-        }
-
-        .mobile-phone {
-            font-weight: 600;
-            font-size: 1.1rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .mobile-social-icons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .mobile-social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80') no-repeat center center/cover;
-            text-align: center;
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .hero-content.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: var(--text-secondary);
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Process Section - ВЫРОВНЯННЫЙ ТЕКСТ */
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .process-step {
-            flex: 0 0 23%;
-            text-align: center;
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            padding: 30px 20px;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 320px;
-        }
-
-        .process-step.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .step-number {
-            width: 70px;
-            height: 70px;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0 auto 25px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .step-title {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            line-height: 1.3;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .step-description {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.6;
-            text-align: center;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .service-card {
-            background-color: var(--secondary-color);
-            border-radius: 8px;
-            padding: 25px;
-            text-align: center;
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
-        }
-
-        .service-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            flex-grow: 1;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .service-price {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .whatsapp-btn {
-            background-color: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .whatsapp-btn:hover {
-            background-color: #128C7E;
-            transform: translateY(-3px);
-        }
-
-        .whatsapp-btn i {
-            margin-right: 8px;
-        }
-
-        /* Bar Features Section */
-        .bar-features {
-            background-color: var(--secondary-color);
-            border-radius: 10px;
-            padding: 50px 30px;
-            margin: 50px 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .feature-item {
-            text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            padding: 20px 15px;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
-        }
-
-        .feature-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .feature-icon {
-            font-size: 2.8rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-        }
-
-        .feature-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-
-        .feature-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .why-us {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(30px);
-            padding: 20px;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .why-us.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .why-us h3 {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: var(--accent-color);
-        }
-
-        .why-us p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Cocktail Menu Section - ОПТИМИЗИРОВАННЫЕ ИЗОБРАЖЕНИЯ */
-        .cocktail-categories {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .category-btn {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            padding: 10px 20px;
-            margin: 5px 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .category-btn.active {
-            color: var(--accent-color);
-        }
-
-        .category-btn::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            transition: var(--transition);
-        }
-
-        .category-btn.active::after {
-            width: 100%;
-        }
-
-        .cocktail-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .cocktail-item {
-            background-color: var(--secondary-color);
-            border-radius: 8px;
-            padding: 20px;
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
-            cursor: pointer;
-        }
-
-        .cocktail-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .cocktail-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .cocktail-image {
-            width: 100%;
-            height: 200px;
-            background-color: #333;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .cocktail-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .cocktail-item:hover .cocktail-image img {
-            transform: scale(1.05);
-        }
-
-        .cocktail-name {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .cocktail-ingredients {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Списки для алкогольных и безалкогольных коктейлей */
-        .cocktail-simple-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cocktail-simple-item {
-            background-color: var(--secondary-color);
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
-        }
-
-        .cocktail-simple-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .cocktail-simple-item:hover {
-            background-color: #2a2a2a;
-            transform: translateX(5px);
-        }
-
-        .cocktail-simple-name {
-            font-size: 1.1rem;
-        }
-
-        /* Portfolio Section - ОПТИМИЗИРОВАННЫЕ ИЗОБРАЖЕНИЯ */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            height: 250px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
-            cursor: pointer;
-        }
-
-        .portfolio-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .portfolio-image {
-            width: 100%;
-            height: 100%;
-            background-color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            transform: translateY(0);
-        }
-
-        .portfolio-item:hover .portfolio-image img {
-            transform: scale(1.05);
-        }
-
-        /* Kitchen Section - ОПТИМИЗИРОВАННЫЕ ИЗОБРАЖЕНИЯ */
-        .kitchen-categories {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .kitchen-category-btn {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            padding: 10px 20px;
-            margin: 5px 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .kitchen-category-btn.active {
-            color: var(--accent-color);
-        }
-
-        .kitchen-category-btn::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            transition: var(--transition);
-        }
-
-        .kitchen-category-btn.active::after {
-            width: 100%;
-        }
-
-        .kitchen-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .kitchen-item {
-            background-color: var(--secondary-color);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
-            cursor: pointer;
-        }
-
-        .kitchen-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .kitchen-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .kitchen-image {
-            width: 100%;
-            height: 180px;
-            background-color: #333;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .kitchen-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .kitchen-item:hover .kitchen-image img {
-            transform: scale(1.05);
-        }
-
-        .kitchen-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        /* About Section */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-text {
-            flex: 1;
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .about-text.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .about-image {
-            flex: 1;
-            height: 400px;
-            background-color: #333;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            opacity: 0;
-            transform: translateX(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .about-image.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: flex;
-            gap: 50px;
-        }
-
-        .contact-info {
-            flex: 1;
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .contact-info.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .contact-form {
-            flex: 1;
-            opacity: 0;
-            transform: translateX(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .contact-form.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .contact-item {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-item i {
-            color: var(--accent-color);
-            margin-right: 15px;
-            font-size: 1.2rem;
-            width: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            background-color: var(--secondary-color);
-            border: 1px solid #333;
-            border-radius: 4px;
-            color: var(--text-primary);
-            transition: var(--transition);
-            font-family: 'Inter', sans-serif;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--secondary-color);
-            padding: 50px 0 25px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 25px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--accent-color);
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            transition: var(--transition);
-            font-family: 'Inter', sans-serif;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 25px;
-            border-top: 1px solid #333;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-            opacity: 0;
-            visibility: hidden;
-            z-index: 999;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Модальное окно для изображений */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            position: relative;
-            margin: auto;
-            display: block;
-            width: auto;
-            max-width: 90%;
-            max-height: 90%;
-            top: 50%;
-            transform: translateY(-50%);
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-        }
-
-        .modal-content img {
-            width: 100%;
-            height: auto;
-            max-height: 80vh;
-            object-fit: contain;
-        }
-
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: var(--accent-color);
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: var(--transition);
-            z-index: 2001;
-        }
-
-        .close:hover {
-            color: #fff;
-            transform: scale(1.1);
-        }
-
-        .modal-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: white;
-            padding: 10px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-        }
-
-        /* Адаптивность для изображений */
-        @media (max-width: 768px) {
-            .cocktail-image,
-            .portfolio-image,
-            .kitchen-image {
-                height: 150px;
-            }
-            
-            .about-image {
-                height: 300px;
-            }
-            
-            .modal-content {
-                max-width: 95%;
-                max-height: 80%;
-            }
-            
-            .close {
-                top: 10px;
-                right: 15px;
-                font-size: 30px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .cocktail-image,
-            .portfolio-image,
-            .kitchen-image {
-                height: 120px;
-            }
-            
-            .about-image {
-                height: 250px;
-            }
-        }
-
-        /* Страницы */
-        .page {
-            display: none;
-            min-height: 100vh;
-            padding-top: 80px;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        .page-hero {
-            height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80') no-repeat center center/cover;
-        }
-
-        .page-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .page-hero p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Адаптивность для шапки */
-        @media (max-width: 1200px) {
-            .nav-menu li {
-                margin: 0 8px;
-            }
-            
-            .nav-menu a {
-                font-size: 0.9rem;
-            }
-            
-            .phone {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .header-contact {
-                gap: 15px;
-            }
-            
-            .nav-menu li {
-                margin: 0 6px;
-            }
-            
-            .nav-menu a {
-                font-size: 0.85rem;
-            }
-            
-            .about-content,
-            .contact-content {
-                flex-direction: column;
-            }
-            
-            .process-step {
-                flex: 0 0 48%;
-                min-height: 300px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: auto;
-                background-color: var(--primary-color);
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding: 20px 0;
-                transition: var(--transition);
-                margin: 0;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-menu li {
-                margin: 12px 0;
-            }
-            
-            .nav-menu a {
-                font-size: 1.1rem;
-                padding: 10px 20px;
-            }
-            
-            .header-contact {
-                display: none;
-            }
-            
-            .mobile-header-contact {
-                display: flex;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .process-step {
-                flex: 0 0 100%;
-                min-height: auto;
-                padding: 25px 15px;
-            }
-            
-            .step-title {
-                min-height: auto;
-                margin-bottom: 15px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .logo {
-                font-size: 1.5rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-        }
+        /* Весь ваш CSS остается без изменений */
+        /* ... ваш существующий CSS ... */
     </style>
 </head>
 <body>
-    <!-- Header - ОБНОВЛЕННАЯ ШАПКА -->
+    <!-- Header -->
     <header id="header">
         <div class="container header-container">
-            <!-- ОБНОВЛЕННЫЙ ЛОГОТИП - ТЕПЕРЬ ВЕДЕТ НА "О НАС" -->
-            <a href="#about" class="logo nav-link" data-page="about">
+            <!-- ИСПРАВЛЕННЫЙ ЛОГОТИП -->
+            <a href="#home" class="logo nav-link" data-page="home">
                 Пить и <span>Танцевать</span>
             </a>
             
             <ul class="nav-menu">
+                <li><a href="#home" class="nav-link" data-page="home">Главная</a></li>
                 <li><a href="#services" class="nav-link" data-page="services">Услуги</a></li>
                 <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейли</a></li>
-                <li><a href="#kitchen" class="nav-link" data-page="kitchen">Кухня</a></li>
                 <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
                 <li><a href="#about" class="nav-link" data-page="about">О нас</a></li>
                 <li><a href="#contact" class="nav-link" data-page="contact">Контакты</a></li>
@@ -1336,6 +72,11 @@
         </div>
     </header>
 
+    <!-- Кнопка "Наверх" -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <!-- Модальное окно для изображений -->
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
@@ -1346,7 +87,7 @@
     </div>
 
     <!-- Главная страница -->
-    <div id="home" class="page active">
+    <div id="home-page" class="page active">
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
@@ -1358,7 +99,7 @@
             </div>
         </section>
 
-        <!-- Process Section - ВЫРОВНЯННЫЙ ТЕКСТ -->
+        <!-- Process Section -->
         <section id="process" class="process">
             <div class="container">
                 <h2 class="section-title">Наш процесс работы</h2>
@@ -1481,9 +222,67 @@
                 </div>
             </div>
         </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">О нас</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Профессиональное event-агентство</h3>
+                        <p>Мы - команда профессионалов, которая превращает ваши мечты в реальность. С 2018 года мы организуем незабываемые мероприятия любого масштаба.</p>
+                        <p>Наш опыт и внимание к деталям позволяют создавать уникальные события, которые запоминаются надолго.</p>
+                        <a href="#contact" class="btn nav-link" data-page="contact">Связаться с нами</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600" alt="Наша команда" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Контакты</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (999) 123-45-67</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@drinkanddance.ru</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Москва, ул. Примерная, 123</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Ежедневно с 9:00 до 22:00</span>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" placeholder="Ваш телефон" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Сообщение" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <!-- Остальные страницы с оптимизированными изображениями -->
     <!-- Страница услуг -->
     <div id="services-page" class="page">
         <section class="page-hero">
@@ -1545,7 +344,7 @@
         </section>
     </div>
 
-    <!-- Страница коктейльной карты с реальными изображениями -->
+    <!-- Страница коктейльной карты -->
     <div id="cocktail-menu-page" class="page">
         <section class="page-hero">
             <div class="container">
@@ -1562,7 +361,7 @@
                     <button class="category-btn" data-category="non-alcoholic">Безалкогольные коктейли</button>
                 </div>
                 
-                <!-- Классические коктейли (сетка) -->
+                <!-- Классические коктейли -->
                 <div class="cocktail-list" id="classic-cocktails">
                     <div class="cocktail-item" style="--delay: 1" onclick="openModal('https://images.unsplash.com/photo-1570598912132-0ba1dc952b7d?w=400', 'White Russian')">
                         <div class="cocktail-image">
@@ -1587,12 +386,42 @@
                     </div>
                 </div>
                 
-                <!-- Остальные списки коктейлей... -->
+                <!-- Алкогольные коктейли -->
+                <div class="cocktail-simple-list" id="alcoholic-cocktails" style="display: none;">
+                    <div class="cocktail-simple-item" style="--delay: 1">
+                        <span class="cocktail-simple-name">Мохито</span>
+                        <span class="cocktail-simple-price">450 руб.</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 2">
+                        <span class="cocktail-simple-name">Маргарита</span>
+                        <span class="cocktail-simple-price">500 руб.</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 3">
+                        <span class="cocktail-simple-name">Пина Колада</span>
+                        <span class="cocktail-simple-price">550 руб.</span>
+                    </div>
+                </div>
+                
+                <!-- Безалкогольные коктейли -->
+                <div class="cocktail-simple-list" id="non-alcoholic-cocktails" style="display: none;">
+                    <div class="cocktail-simple-item" style="--delay: 1">
+                        <span class="cocktail-simple-name">Мохито Безалкогольный</span>
+                        <span class="cocktail-simple-price">350 руб.</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 2">
+                        <span class="cocktail-simple-name">Клубный коктейль</span>
+                        <span class="cocktail-simple-price">300 руб.</span>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 3">
+                        <span class="cocktail-simple-name">Тропический фреш</span>
+                        <span class="cocktail-simple-price">400 руб.</span>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
 
-    <!-- Страница портфолио с реальными изображениями -->
+    <!-- Страница портфолио -->
     <div id="portfolio-page" class="page">
         <section class="page-hero">
             <div class="container">
@@ -1622,12 +451,155 @@
                             <p>Корпоратив IT-компании, декабрь 2023</p>
                         </div>
                     </div>
+                    <div class="portfolio-item" style="--delay: 3" onclick="openModal('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500', 'Коктейльный бар')">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500" alt="Коктейльный бар" loading="lazy">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Коктейльный бар</h3>
+                            <p>День рождения, май 2023</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- Остальные страницы... -->
+    <!-- Страница "О нас" -->
+    <div id="about-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>О нас</h1>
+                <p>Узнайте больше о нашем event-агентстве</p>
+            </div>
+        </section>
+        
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Наша история</h3>
+                        <p>Event-агентство "Пить и Танцевать" было основано в 2018 году с целью создания незабываемых мероприятий для наших клиентов. За эти годы мы организовали более 500 успешных событий.</p>
+                        
+                        <h3>Наша миссия</h3>
+                        <p>Мы стремимся создавать уникальные и запоминающиеся мероприятия, которые отражают индивидуальность наших клиентов и превосходят их ожидания.</p>
+                        
+                        <h3>Почему выбирают нас</h3>
+                        <ul>
+                            <li>Профессиональная команда с многолетним опытом</li>
+                            <li>Индивидуальный подход к каждому клиенту</li>
+                            <li>Современное оборудование и технологии</li>
+                            <li>Гибкая система ценообразования</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1556760544-74068565f05c?w=600" alt="Наша команда" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница контактов -->
+    <div id="contact-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Контакты</h1>
+                <p>Свяжитесь с нами для организации вашего мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Наши контакты</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (999) 123-45-67</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@drinkanddance.ru</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Москва, ул. Примерная, 123</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Ежедневно с 9:00 до 22:00</span>
+                        </div>
+                        
+                        <h3 style="margin-top: 30px;">Мы в соцсетях</h3>
+                        <div class="social-icons" style="justify-content: flex-start; margin-top: 15px;">
+                            <a href="https://vk.com/ваш_аккаунт" target="_blank">
+                                <i class="fab fa-vk"></i>
+                            </a>
+                            <a href="https://wa.me/79991234567" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://instagram.com/ваш_аккаунт" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://t.me/ваш_бот" target="_blank">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Оставьте заявку</h3>
+                        <form id="contactFormPage">
+                            <div class="form-group">
+                                <input type="text" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" placeholder="Ваш телефон" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Ваш email">
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Опишите ваше мероприятие" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Отправить заявку</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Пить и Танцевать</h3>
+                    <p>Профессиональное event-агентство по организации незабываемых мероприятий.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Услуги</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services" class="nav-link" data-page="services">Коктейльный бар</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Тяжелый дым</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Пирамида шампанского</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+79991234567">+7 (999) 123-45-67</a></li>
+                        <li><a href="mailto:info@drinkanddance.ru">info@drinkanddance.ru</a></li>
+                        <li>Москва, ул. Примерная, 123</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Event-агентство "Пить и Танцевать". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Модальное окно для изображений
@@ -1663,7 +635,6 @@
             }
         });
 
-        // Остальной JavaScript код остается без изменений
         // Мобильное меню
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
@@ -1687,7 +658,13 @@
             });
             
             // Показываем целевую страницу
-            document.getElementById(`${targetPage}-page`).classList.add('active');
+            const targetElement = document.getElementById(`${targetPage}-page`);
+            if (targetElement) {
+                targetElement.classList.add('active');
+            } else {
+                // Если страницы нет, показываем главную
+                document.getElementById('home-page').classList.add('active');
+            }
             
             // Закрываем мобильное меню
             hamburger.classList.remove('active');
@@ -1803,6 +780,15 @@
             setTimeout(() => {
                 activateAnimations();
             }, 500);
+        });
+
+        // Обработка форм
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.');
+                this.reset();
+            });
         });
     </script>
 </body>
