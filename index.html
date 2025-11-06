@@ -1032,6 +1032,72 @@
             resize: vertical;
         }
 
+        /* Checkbox Styles */
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .checkbox-label input {
+            margin-top: 3px;
+        }
+
+        .checkbox-label a {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .checkbox-label a:hover {
+            color: #e6c158;
+        }
+
+        /* Privacy Policy Styles */
+        .privacy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .privacy-content h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        .privacy-content h3 {
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            color: var(--text-primary);
+        }
+
+        .privacy-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .privacy-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .privacy-content li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .update-date {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-top: 40px;
+            text-align: center;
+        }
+
         /* Footer */
         footer {
             background-color: var(--secondary-color);
@@ -1382,6 +1448,7 @@
                 <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
                 <li><a href="#about" class="nav-link" data-page="about">О нас</a></li>
                 <li><a href="#contact" class="nav-link" data-page="contact">Контакты</a></li>
+                <li><a href="#privacy" class="nav-link" data-page="privacy">Конфиденциальность</a></li>
             </ul>
             
             <div class="header-contact">
@@ -1629,6 +1696,12 @@
                             </div>
                             <div class="form-group">
                                 <textarea placeholder="Сообщение" required></textarea>
+                            </div>
+                            <div class="checkbox-label">
+                                <input type="checkbox" required>
+                                <span>Я согласен на обработку персональных данных в соответствии с 
+                                    <a href="#privacy" class="nav-link" data-page="privacy">Политикой конфиденциальности</a>
+                                </span>
                             </div>
                             <button type="submit" class="btn">Отправить</button>
                         </form>
@@ -2120,9 +2193,72 @@
                             <div class="form-group">
                                 <textarea placeholder="Опишите ваше мероприятие" required></textarea>
                             </div>
+                            <div class="checkbox-label">
+                                <input type="checkbox" required>
+                                <span>Я согласен на обработку персональных данных в соответствии с 
+                                    <a href="#privacy" class="nav-link" data-page="privacy">Политикой конфиденциальности</a>
+                                </span>
+                            </div>
                             <button type="submit" class="btn">Отправить заявку</button>
                         </form>
                     </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница политики конфиденциальности -->
+    <div id="privacy-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Политика конфиденциальности</h1>
+                <p>Как мы защищаем ваши данные</p>
+            </div>
+        </section>
+        
+        <section class="privacy-policy">
+            <div class="container">
+                <div class="privacy-content">
+                    <h2>Политика конфиденциальности сайта "Пить и Танцевать"</h2>
+                    
+                    <h3>1. Общие положения</h3>
+                    <p>1.1. Настоящая Политика конфиденциальности регулирует порядок обработки и защиты информации о физических лицах (далее - Пользователи), использующих сайт и услуги event-агентства "Пить и Танцевать".</p>
+                    
+                    <h3>2. Собираемая информация</h3>
+                    <p>2.1. При заполнении форм на сайте мы собираем:</p>
+                    <ul>
+                        <li>Имя и фамилия</li>
+                        <li>Контактный телефон</li>
+                        <li>Адрес электронной почты</li>
+                        <li>Информация о планируемом мероприятии</li>
+                    </ul>
+                    
+                    <h3>3. Цели сбора информации</h3>
+                    <p>3.1. Собранная информация используется для:</p>
+                    <ul>
+                        <li>Обработки заявок и связи с клиентами</li>
+                        <li>Организации мероприятий</li>
+                        <li>Информирования о наших услугах</li>
+                        <li>Улучшения качества обслуживания</li>
+                    </ul>
+                    
+                    <h3>4. Защита информации</h3>
+                    <p>4.1. Мы принимаем необходимые организационные и технические меры для защиты персональной информации от неправомерного доступа.</p>
+                    
+                    <h3>5. Передача информации третьим лицам</h3>
+                    <p>5.1. Мы не передаем персональные данные третьим лицам, за исключением случаев, предусмотренных законодательством РФ.</p>
+                    
+                    <h3>6. Cookies и аналитика</h3>
+                    <p>6.1. Сайт использует файлы cookie для улучшения работы сервиса. Вы можете отключить cookies в настройках браузера.</p>
+                    
+                    <h3>7. Контактная информация</h3>
+                    <p>7.1. По всем вопросам regarding обработки персональных данных обращайтесь:</p>
+                    <ul>
+                        <li>Email: info@drinkanddance.ru</li>
+                        <li>Телефон: +7 977-300-16-08</li>
+                    </ul>
+                    
+                    <p class="update-date">Дата последнего обновления: 01 января 2024 года</p>
                 </div>
             </div>
         </section>
@@ -2164,16 +2300,16 @@
                         <a href="https://www.instagram.com/drink_and_dance_event?igsh=MWYyNXludnlkY2tkaw==" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
-                       <!-- Замените ссылку в коде на: -->
-<a href="https://t.me/@xerayu" target="_blank" title="Telegram">
-    <i class="fab fa-telegram"></i>
-</a>
+                        <a href="https://t.me/DrinkAndDanceEventBot" target="_blank">
+                            <i class="fab fa-telegram"></i>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2024 Event-агентство "Пить и Танцевать". Все права защищены.</p>
+                <p>&copy; 2024 Event-агентство "Пить и Танцевать". Все права защищены. | 
+                   <a href="#privacy" class="nav-link" data-page="privacy" style="color: var(--accent-color);">Политика конфиденциальности</a>
+                </p>
             </div>
         </div>
     </footer>
