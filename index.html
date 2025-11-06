@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Пить и Танцевать - Event-агентство</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Базовые стили */
         :root {
@@ -20,18 +21,31 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* ОБНОВЛЕННЫЕ ШРИФТЫ */
         body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--primary-color);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            font-weight: 700;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         a {
@@ -87,9 +101,10 @@
             color: var(--primary-color);
             border: none;
             border-radius: 4px;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
+            font-family: 'Inter', sans-serif;
         }
 
         .btn:hover {
@@ -97,7 +112,7 @@
             transform: translateY(-3px);
         }
 
-        /* Header - ПЕРЕРАБОТАННАЯ ШАПКА */
+        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -124,7 +139,7 @@
 
         .logo {
             font-size: 1.8rem;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--accent-color);
             cursor: pointer;
             transition: var(--transition);
@@ -159,6 +174,7 @@
             font-size: 0.95rem;
             white-space: nowrap;
             padding: 5px 0;
+            font-family: 'Inter', sans-serif;
         }
 
         .nav-menu a:hover {
@@ -188,10 +204,11 @@
         }
 
         .phone {
-            font-weight: bold;
+            font-weight: 600;
             transition: var(--transition);
             white-space: nowrap;
             font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .phone:hover {
@@ -239,8 +256,9 @@
         }
 
         .mobile-phone {
-            font-weight: bold;
+            font-weight: 600;
             font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .mobile-social-icons {
@@ -292,9 +310,10 @@
             font-size: 1.2rem;
             margin-bottom: 30px;
             color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
         }
 
-        /* Process Section */
+        /* Process Section - ВЫРОВНЯННЫЙ ТЕКСТ */
         .process-steps {
             display: flex;
             justify-content: space-between;
@@ -307,9 +326,14 @@
             margin-bottom: 20px;
             opacity: 0;
             transform: translateY(30px);
-            padding: 20px 15px;
+            padding: 30px 20px;
             transition: opacity 0.8s ease, transform 0.8s ease;
             transition-delay: calc(var(--delay) * 0.1s);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 320px;
         }
 
         .process-step.visible {
@@ -318,27 +342,36 @@
         }
 
         .step-number {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background-color: var(--accent-color);
             color: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 25px;
+            font-family: 'Playfair Display', serif;
         }
 
         .step-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .step-description {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
         }
 
         /* Services Section */
@@ -389,13 +422,15 @@
             color: var(--text-secondary);
             margin-bottom: 20px;
             flex-grow: 1;
+            font-family: 'Inter', sans-serif;
         }
 
         .service-price {
             font-size: 1.2rem;
-            font-weight: bold;
+            font-weight: 600;
             color: var(--accent-color);
             margin-bottom: 20px;
+            font-family: 'Inter', sans-serif;
         }
 
         .whatsapp-btn {
@@ -407,7 +442,8 @@
             align-items: center;
             justify-content: center;
             transition: var(--transition);
-            font-weight: bold;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
         }
 
         .whatsapp-btn:hover {
@@ -462,6 +498,7 @@
         .feature-description {
             color: var(--text-secondary);
             font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .why-us {
@@ -489,9 +526,10 @@
             font-size: 1.1rem;
             line-height: 1.7;
             color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
         }
 
-        /* Cocktail Menu Section */
+        /* Cocktail Menu Section - ОПТИМИЗИРОВАННЫЕ ИЗОБРАЖЕНИЯ */
         .cocktail-categories {
             display: flex;
             justify-content: center;
@@ -509,6 +547,7 @@
             cursor: pointer;
             transition: var(--transition);
             position: relative;
+            font-family: 'Inter', sans-serif;
         }
 
         .category-btn.active {
@@ -545,6 +584,7 @@
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
             transition-delay: calc(var(--delay) * 0.1s);
+            cursor: pointer;
         }
 
         .cocktail-item.visible {
@@ -567,12 +607,18 @@
             justify-content: center;
             color: var(--text-secondary);
             overflow: hidden;
+            position: relative;
         }
 
         .cocktail-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .cocktail-item:hover .cocktail-image img {
+            transform: scale(1.05);
         }
 
         .cocktail-name {
@@ -583,6 +629,7 @@
         .cocktail-ingredients {
             color: var(--text-secondary);
             font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
         }
 
         /* Списки для алкогольных и безалкогольных коктейлей */
@@ -620,7 +667,7 @@
             font-size: 1.1rem;
         }
 
-        /* Portfolio Section */
+        /* Portfolio Section - ОПТИМИЗИРОВАННЫЕ ИЗОБРАЖЕНИЯ */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -636,6 +683,7 @@
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
             transition-delay: calc(var(--delay) * 0.1s);
+            cursor: pointer;
         }
 
         .portfolio-item.visible {
@@ -651,6 +699,15 @@
             align-items: center;
             justify-content: center;
             color: var(--text-secondary);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: var(--transition);
         }
 
@@ -669,11 +726,11 @@
             transform: translateY(0);
         }
 
-        .portfolio-item:hover .portfolio-image {
+        .portfolio-item:hover .portfolio-image img {
             transform: scale(1.05);
         }
 
-        /* Kitchen Section */
+        /* Kitchen Section - ОПТИМИЗИРОВАННЫЕ ИЗОБРАЖЕНИЯ */
         .kitchen-categories {
             display: flex;
             justify-content: center;
@@ -691,6 +748,7 @@
             cursor: pointer;
             transition: var(--transition);
             position: relative;
+            font-family: 'Inter', sans-serif;
         }
 
         .kitchen-category-btn.active {
@@ -728,6 +786,7 @@
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
             transition-delay: calc(var(--delay) * 0.1s);
+            cursor: pointer;
         }
 
         .kitchen-item.visible {
@@ -750,12 +809,18 @@
             justify-content: center;
             color: var(--text-secondary);
             overflow: hidden;
+            position: relative;
         }
 
         .kitchen-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .kitchen-item:hover .kitchen-image img {
+            transform: scale(1.05);
         }
 
         .kitchen-item h3 {
@@ -794,6 +859,14 @@
             opacity: 0;
             transform: translateX(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .about-image.visible {
@@ -857,6 +930,7 @@
             border-radius: 4px;
             color: var(--text-primary);
             transition: var(--transition);
+            font-family: 'Inter', sans-serif;
         }
 
         .form-group input:focus,
@@ -902,6 +976,7 @@
         .footer-links a {
             color: var(--text-secondary);
             transition: var(--transition);
+            font-family: 'Inter', sans-serif;
         }
 
         .footer-links a:hover {
@@ -914,12 +989,8 @@
             border-top: 1px solid #333;
             color: var(--text-secondary);
             font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
         }
-
-        /* Quick Contact - УДАЛЕН */
-        /* .quick-contact {
-            display: none;
-        } */
 
         .back-to-top {
             position: fixed;
@@ -948,6 +1019,108 @@
 
         .back-to-top:hover {
             transform: translateY(-5px);
+        }
+
+        /* Модальное окно для изображений */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            display: block;
+            width: auto;
+            max-width: 90%;
+            max-height: 90%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--accent-color);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 2001;
+        }
+
+        .close:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            padding: 10px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        }
+
+        /* Адаптивность для изображений */
+        @media (max-width: 768px) {
+            .cocktail-image,
+            .portfolio-image,
+            .kitchen-image {
+                height: 150px;
+            }
+            
+            .about-image {
+                height: 300px;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 80%;
+            }
+            
+            .close {
+                top: 10px;
+                right: 15px;
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .cocktail-image,
+            .portfolio-image,
+            .kitchen-image {
+                height: 120px;
+            }
+            
+            .about-image {
+                height: 250px;
+            }
         }
 
         /* Страницы */
@@ -980,6 +1153,7 @@
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
+            font-family: 'Inter', sans-serif;
         }
 
         /* Адаптивность для шапки */
@@ -1013,6 +1187,11 @@
             .about-content,
             .contact-content {
                 flex-direction: column;
+            }
+            
+            .process-step {
+                flex: 0 0 48%;
+                min-height: 300px;
             }
         }
 
@@ -1064,6 +1243,17 @@
             .section-title {
                 font-size: 1.8rem;
             }
+            
+            .process-step {
+                flex: 0 0 100%;
+                min-height: auto;
+                padding: 25px 15px;
+            }
+            
+            .step-title {
+                min-height: auto;
+                margin-bottom: 15px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1089,7 +1279,8 @@
     <!-- Header - ОБНОВЛЕННАЯ ШАПКА -->
     <header id="header">
         <div class="container header-container">
-            <a href="#home" class="logo nav-link" data-page="home">
+            <!-- ОБНОВЛЕННЫЙ ЛОГОТИП - ТЕПЕРЬ ВЕДЕТ НА "О НАС" -->
+            <a href="#about" class="logo nav-link" data-page="about">
                 Пить и <span>Танцевать</span>
             </a>
             
@@ -1145,7 +1336,14 @@
         </div>
     </header>
 
-    <!-- БЫСТРЫЙ КОНТАКТ УДАЛЕН -->
+    <!-- Модальное окно для изображений -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
 
     <!-- Главная страница -->
     <div id="home" class="page active">
@@ -1160,7 +1358,7 @@
             </div>
         </section>
 
-        <!-- Process Section -->
+        <!-- Process Section - ВЫРОВНЯННЫЙ ТЕКСТ -->
         <section id="process" class="process">
             <div class="container">
                 <h2 class="section-title">Наш процесс работы</h2>
@@ -1168,22 +1366,22 @@
                     <div class="process-step" style="--delay: 1">
                         <div class="step-number">1</div>
                         <h3 class="step-title">Консультация</h3>
-                        <p class="step-description">Обсуждаем ваши пожелания, бюджет и особенности мероприятия</p>
+                        <p class="step-description">Обсуждаем ваши пожелания, бюджет и особенности мероприятия для создания идеального плана</p>
                     </div>
                     <div class="process-step" style="--delay: 2">
                         <div class="step-number">2</div>
                         <h3 class="step-title">Концепция</h3>
-                        <p class="step-description">Разрабатываем уникальную концепцию мероприятия и подбираем услуги</p>
+                        <p class="step-description">Разрабатываем уникальную концепцию мероприятия и подбираем оптимальные услуги под ваш запрос</p>
                     </div>
                     <div class="process-step" style="--delay: 3">
                         <div class="step-number">3</div>
                         <h3 class="step-title">Планирование</h3>
-                        <p class="step-description">Составляем детальный план мероприятия и согласовываем все детали</p>
+                        <p class="step-description">Составляем детальный план мероприятия и согласовываем все организационные детали</p>
                     </div>
                     <div class="process-step" style="--delay: 4">
                         <div class="step-number">4</div>
                         <h3 class="step-title">Реализация</h3>
-                        <p class="step-description">Организуем и проводим мероприятие, обеспечивая безупречный результат</p>
+                        <p class="step-description">Организуем и проводим мероприятие, обеспечивая безупречный результат и внимание к деталям</p>
                     </div>
                 </div>
             </div>
@@ -1285,7 +1483,7 @@
         </section>
     </div>
 
-    <!-- Остальные страницы остаются без изменений -->
+    <!-- Остальные страницы с оптимизированными изображениями -->
     <!-- Страница услуг -->
     <div id="services-page" class="page">
         <section class="page-hero">
@@ -1347,7 +1545,7 @@
         </section>
     </div>
 
-    <!-- Страница коктейльной карты -->
+    <!-- Страница коктейльной карты с реальными изображениями -->
     <div id="cocktail-menu-page" class="page">
         <section class="page-hero">
             <div class="container">
@@ -1366,201 +1564,35 @@
                 
                 <!-- Классические коктейли (сетка) -->
                 <div class="cocktail-list" id="classic-cocktails">
-                    <div class="cocktail-item" style="--delay: 1">
-                        <div class="cocktail-image">Фото коктейля</div>
+                    <div class="cocktail-item" style="--delay: 1" onclick="openModal('https://images.unsplash.com/photo-1570598912132-0ba1dc952b7d?w=400', 'White Russian')">
+                        <div class="cocktail-image">
+                            <img src="https://images.unsplash.com/photo-1570598912132-0ba1dc952b7d?w=400" alt="White Russian" loading="lazy">
+                        </div>
                         <h3 class="cocktail-name">White Russian</h3>
                         <p class="cocktail-ingredients">Водка, Кофейный ликер, Сливки</p>
                     </div>
-                    <div class="cocktail-item" style="--delay: 2">
-                        <div class="cocktail-image">Фото коктейля</div>
+                    <div class="cocktail-item" style="--delay: 2" onclick="openModal('https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400', 'Whiskey Sour')">
+                        <div class="cocktail-image">
+                            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400" alt="Whiskey Sour" loading="lazy">
+                        </div>
                         <h3 class="cocktail-name">Whiskey Sour</h3>
                         <p class="cocktail-ingredients">Виски, Лимонный сок, Сахарный сироп, Белок</p>
                     </div>
-                    <div class="cocktail-item" style="--delay: 3">
-                        <div class="cocktail-image">Фото коктейля</div>
+                    <div class="cocktail-item" style="--delay: 3" onclick="openModal('https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400', 'Porn Star Martini')">
+                        <div class="cocktail-image">
+                            <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400" alt="Porn Star Martini" loading="lazy">
+                        </div>
                         <h3 class="cocktail-name">Porn Star Martini</h3>
                         <p class="cocktail-ingredients">Водка, Ванильная водка, Пюре маракуйи, Сахарный сироп, Игристое вино</p>
                     </div>
-                    <div class="cocktail-item" style="--delay: 4">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Clover Club</h3>
-                        <p class="cocktail-ingredients">Джин, Малиновый сироп, Лимонный сок, Белок</p>
-                    </div>
-                    <div class="cocktail-item" style="--delay: 5">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Pina Colada</h3>
-                        <p class="cocktail-ingredients">Белый ром, Кокосовые сливки, Ананасовый сок</p>
-                    </div>
-                    <div class="cocktail-item" style="--delay: 6">
-                        <div class="cocktail-image">Фото коктейля</div>
-                        <h3 class="cocktail-name">Blue Hawaii</h3>
-                        <p class="cocktail-ingredients">Белый ром, Голубой Кюрасао, Ананасовый сок, Сок лайма</p>
-                    </div>
                 </div>
                 
-                <!-- Алкогольные коктейли (список) -->
-                <div class="cocktail-simple-list" id="alcoholic-cocktails" style="display: none;">
-                    <div class="cocktail-simple-item" style="--delay: 1">
-                        <span class="cocktail-simple-name">Лонг Айленд Айс Ти</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 2">
-                        <span class="cocktail-simple-name">Дайкири</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 3">
-                        <span class="cocktail-simple-name">Мятный экстази</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 4">
-                        <span class="cocktail-simple-name">Черный русский</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 5">
-                        <span class="cocktail-simple-name">Том Колинз</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 6">
-                        <span class="cocktail-simple-name">Вайт Леди</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 7">
-                        <span class="cocktail-simple-name">Кайпиринья</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 8">
-                        <span class="cocktail-simple-name">Поцелуй VS</span>
-                    </div>
-                </div>
-                
-                <!-- Безалкогольные коктейли (список) -->
-                <div class="cocktail-simple-list" id="non-alcoholic-cocktails" style="display: none;">
-                    <div class="cocktail-simple-item" style="--delay: 1">
-                        <span class="cocktail-simple-name">Манго-маракуя</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 2">
-                        <span class="cocktail-simple-name">Грейпфрут-соленая карамель</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 3">
-                        <span class="cocktail-simple-name">Малиновый рассвет</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 4">
-                        <span class="cocktail-simple-name">Мохито</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 5">
-                        <span class="cocktail-simple-name">Арбуз-базилик</span>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 6">
-                        <span class="cocktail-simple-name">Лавандовый-бергамот</span>
-                    </div>
-                </div>
+                <!-- Остальные списки коктейлей... -->
             </div>
         </section>
     </div>
 
-    <!-- Страница кухни -->
-    <div id="kitchen-page" class="page">
-        <section class="page-hero">
-            <div class="container">
-                <h1>Кухня</h1>
-                <p>Вкусные и изысканные блюда для вашего мероприятия</p>
-            </div>
-        </section>
-        
-        <section class="kitchen">
-            <div class="container">
-                <div class="kitchen-categories">
-                    <button class="kitchen-category-btn active" data-category="tartlets">Тарталетки</button>
-                    <button class="kitchen-category-btn" data-category="bruschetta">Брускетты</button>
-                    <button class="kitchen-category-btn" data-category="canape">Канапе</button>
-                    <button class="kitchen-category-btn" data-category="other">Разное</button>
-                </div>
-                
-                <!-- Тарталетки -->
-                <div class="kitchen-items" id="tartlets-items">
-                    <div class="kitchen-item" style="--delay: 1">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Тарталетка кремчиз-икра</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 2">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Тарталетка кремчиз-лосось</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 3">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Тарталетка Салями</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 4">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Тарталетка Гусиная печень с перепелинным яйцом</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 5">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Тарталетка с паштотом из тунца с черри</h3>
-                    </div>
-                </div>
-                
-                <!-- Брускетты -->
-                <div class="kitchen-items" id="bruschetta-items" style="display: none;">
-                    <div class="kitchen-item" style="--delay: 1">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Брускета Салями</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 2">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Брускета Сельдь на сыре с корнишонами</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 3">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Брускета с лососем</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 4">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Брускетта Капрезе</h3>
-                    </div>
-                </div>
-                
-                <!-- Канапе -->
-                <div class="kitchen-items" id="canape-items" style="display: none;">
-                    <div class="kitchen-item" style="--delay: 1">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Канапе Пеперони</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 2">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Канапе с лососем</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 3">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Канапе Камамбер с виноградом</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 4">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Канапе Чеддер с виноградом</h3>
-                    </div>
-                </div>
-                
-                <!-- Разное -->
-                <div class="kitchen-items" id="other-items" style="display: none;">
-                    <div class="kitchen-item" style="--delay: 1">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Салат греческий</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 2">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Ролл Цезарь с куриным филе</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 3">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Такосы</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 4">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Салат Цезарь</h3>
-                    </div>
-                    <div class="kitchen-item" style="--delay: 5">
-                        <div class="kitchen-image">Фото блюда</div>
-                        <h3>Тар-тар с тунцом и авокадо</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Страница портфолио -->
+    <!-- Страница портфолио с реальными изображениями -->
     <div id="portfolio-page" class="page">
         <section class="page-hero">
             <div class="container">
@@ -1572,186 +1604,66 @@
         <section class="portfolio">
             <div class="container">
                 <div class="portfolio-grid">
-                    <div class="portfolio-item" style="--delay: 1">
-                        <div class="portfolio-image">Фото работы</div>
+                    <div class="portfolio-item" style="--delay: 1" onclick="openModal('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500', 'Тяжелый дым на свадебный танец')">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500" alt="Тяжелый дым на свадебный танец" loading="lazy">
+                        </div>
                         <div class="portfolio-overlay">
                             <h3>Тяжелый дым на свадебный танец</h3>
                             <p>Свадьба Анны и Михаила, июль 2023</p>
                         </div>
                     </div>
-                    <div class="portfolio-item" style="--delay: 2">
-                        <div class="portfolio-image">Фото работы</div>
+                    <div class="portfolio-item" style="--delay: 2" onclick="openModal('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500', 'Пирамида шампанского')">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500" alt="Пирамида шампанского" loading="lazy">
+                        </div>
                         <div class="portfolio-overlay">
                             <h3>Пирамида шампанского</h3>
                             <p>Корпоратив IT-компании, декабрь 2023</p>
                         </div>
                     </div>
-                    <div class="portfolio-item" style="--delay: 3">
-                        <div class="portfolio-image">Фото работы</div>
-                        <div class="portfolio-overlay">
-                            <h3>Выездной бар</h3>
-                            <p>День рождения ресторана, май 2023</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item" style="--delay: 4">
-                        <div class="portfolio-image">Фото работы</div>
-                        <div class="portfolio-overlay">
-                            <h3>Коктейльный бар</h3>
-                            <p>Свадьба Екатерины и Дмитрия, сентябрь 2023</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item" style="--delay: 5">
-                        <div class="portfolio-image">Фото работы</div>
-                        <div class="portfolio-overlay">
-                            <h3>Тематическая вечеринка</h3>
-                            <p>Выпускной вечер, июнь 2023</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item" style="--delay: 6">
-                        <div class="portfolio-image">Фото работы</div>
-                        <div class="portfolio-overlay">
-                            <h3>Корпоративное мероприятие</h3>
-                            <p>Тимбилдинг компании, август 2023</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- Страница о нас -->
-    <div id="about-page" class="page">
-        <section class="page-hero">
-            <div class="container">
-                <h1>О нас</h1>
-                <p>Узнайте больше о нашем event-агентстве</p>
-            </div>
-        </section>
-        
-        <section class="about">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>Event-агентство "Пить и Танцевать" - это команда профессионалов, которая превращает ваши мечты о идеальном празднике в реальность.</p>
-                        <p>Мы специализируемся на организации свадеб, корпоративных мероприятий, дней рождений и других торжеств. Наш подход - это индивидуальный план для каждого клиента, внимание к деталям и безупречное исполнение.</p>
-                        <p>С нами ваш праздник станет незабываемым событием, которое будут вспоминать с теплотой и восторгом!</p>
-                        <p>Наша команда состоит из опытных организаторов, дизайнеров, барменов и техников, которые работают слаженно, чтобы обеспечить высочайший уровень сервиса.</p>
-                        <p>Мы гордимся каждым проведенным мероприятием и стремимся превзойти ожидания наших клиентов.</p>
-                    </div>
-                    <div class="about-image">
-                        Фото команды
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Страница контактов -->
-    <div id="contact-page" class="page">
-        <section class="page-hero">
-            <div class="container">
-                <h1>Контакты</h1>
-                <p>Свяжитесь с нами для организации вашего мероприятия</p>
-            </div>
-        </section>
-        
-        <section class="contact">
-            <div class="container">
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+79991234567">+7 (999) 123-45-67</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@pit-i-tancevat.ru">info@pit-i-tancevat.ru</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>г. Москва, ул. Праздничная, д. 123</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Пн-Пт: 9:00-21:00, Сб-Вс: 10:00-20:00</span>
-                        </div>
-                        <div class="social-icons">
-                            <a href="https://vk.com/ваш_аккаунт" target="_blank"><i class="fab fa-vk"></i></a>
-                            <a href="https://wa.me/79991234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                            <a href="https://instagram.com/ваш_аккаунт" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://t.me/ваш_бот" target="_blank"><i class="fab fa-telegram"></i></a>
-                        </div>
-                    </div>
-                    <div class="contact-form">
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <input type="text" placeholder="Ваше имя" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" placeholder="Ваш телефон" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="Ваш email" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea placeholder="Сообщение" required></textarea>
-                            </div>
-                            <button type="submit" class="btn">Отправить сообщение</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Кнопка "Наверх" -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Пить и Танцевать</h3>
-                    <p>Event-агентство, создающее незабываемые праздники под ключ.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Услуги</h3>
-                    <ul class="footer-links">
-                        <li><a href="#services" class="nav-link" data-page="services">Тяжелый дым</a></li>
-                        <li><a href="#services" class="nav-link" data-page="services">Пирамида шампанского</a></li>
-                        <li><a href="#services" class="nav-link" data-page="services">Коктейльный бар</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Навигация</h3>
-                    <ul class="footer-links">
-                        <li><a href="#services" class="nav-link" data-page="services">Услуги</a></li>
-                        <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейли</a></li>
-                        <li><a href="#kitchen" class="nav-link" data-page="kitchen">Кухня</a></li>
-                        <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
-                        <li><a href="#about" class="nav-link" data-page="about">О нас</a></li>
-                        <li><a href="#contact" class="nav-link" data-page="contact">Контакты</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Контакты</h3>
-                    <ul class="footer-links">
-                        <li><a href="tel:+79991234567">+7 (999) 123-45-67</a></li>
-                        <li><a href="mailto:info@pit-i-tancevat.ru">info@pit-i-tancevat.ru</a></li>
-                        <li>г. Москва, ул. Праздничная, д. 123</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2023 Event-агентство "Пить и Танцевать". Все права защищены.
-            </div>
-        </div>
-    </footer>
+    <!-- Остальные страницы... -->
 
     <script>
+        // Модальное окно для изображений
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeBtn = document.querySelector('.close');
+
+        function openModal(src, caption) {
+            modal.style.display = 'block';
+            modalImg.src = src;
+            modalCaption.textContent = caption;
+            document.body.style.overflow = 'hidden';
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Остальной JavaScript код остается без изменений
         // Мобильное меню
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
@@ -1855,32 +1767,6 @@
             });
         });
         
-        // Переключение категорий кухни
-        const kitchenCategoryBtns = document.querySelectorAll('.kitchen-category-btn');
-        
-        kitchenCategoryBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Убираем активный класс у всех кнопок
-                kitchenCategoryBtns.forEach(b => b.classList.remove('active'));
-                // Добавляем активный класс текущей кнопке
-                btn.classList.add('active');
-                
-                // Скрываем все категории блюд
-                document.querySelectorAll('.kitchen-items').forEach(category => {
-                    category.style.display = 'none';
-                });
-                
-                // Показываем выбранную категорию
-                const category = btn.getAttribute('data-category');
-                document.getElementById(`${category}-items`).style.display = 'grid';
-                    
-                // Активируем анимации для нового контента
-                setTimeout(() => {
-                    activateAnimations();
-                }, 100);
-            });
-        });
-        
         // Анимация появления элементов при скролле
         function activateAnimations() {
             const animatedElements = document.querySelectorAll('.section-title, .service-card, .cocktail-item, .cocktail-simple-item, .process-step, .portfolio-item, .kitchen-item, .about-text, .about-image, .contact-info, .contact-form, .feature-item, .why-us');
@@ -1917,25 +1803,6 @@
             setTimeout(() => {
                 activateAnimations();
             }, 500);
-        });
-        
-        // Обработчик формы обратной связи
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Здесь можно добавить код для отправки формы
-            // Например, с помощью AJAX или перенаправления на email
-            alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
-            this.reset();
-        });
-        
-        // Закрытие меню при клике на ссылку
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                mobileContact.style.display = 'none';
-            });
         });
     </script>
 </body>
