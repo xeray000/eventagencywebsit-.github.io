@@ -718,6 +718,123 @@
             font-weight: 300;
         }
 
+        /* Kitchen Section */
+        .kitchen-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .kitchen-category-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            padding: 12px 25px;
+            margin: 5px 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .kitchen-category-btn.active {
+            color: var(--accent-color);
+        }
+
+        .kitchen-category-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .kitchen-category-btn.active::after {
+            width: 100%;
+        }
+
+        .kitchen-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .kitchen-item {
+            background-color: var(--secondary-color);
+            border-radius: 4px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: calc(var(--delay) * 0.1s);
+            cursor: pointer;
+            border: 1px solid #2a2a2a;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .kitchen-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .kitchen-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .kitchen-image {
+            width: 100%;
+            height: 200px;
+            background-color: #333;
+            border-radius: 2px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .kitchen-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .kitchen-item:hover .kitchen-image img {
+            transform: scale(1.05);
+        }
+
+        .kitchen-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .kitchen-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
         /* Portfolio Section */
         .portfolio-grid {
             display: grid;
@@ -1199,7 +1316,8 @@
             }
             
             .cocktail-image,
-            .portfolio-image {
+            .portfolio-image,
+            .kitchen-image {
                 height: 180px;
             }
             
@@ -1237,7 +1355,8 @@
             }
             
             .cocktail-image,
-            .portfolio-image {
+            .portfolio-image,
+            .kitchen-image {
                 height: 160px;
             }
             
@@ -1259,6 +1378,7 @@
                 <li><a href="#home" class="nav-link" data-page="home">Главная</a></li>
                 <li><a href="#services" class="nav-link" data-page="services">Услуги</a></li>
                 <li><a href="#cocktail-menu" class="nav-link" data-page="cocktail-menu">Коктейли</a></li>
+                <li><a href="#kitchen" class="nav-link" data-page="kitchen">Кухня</a></li>
                 <li><a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a></li>
                 <li><a href="#about" class="nav-link" data-page="about">О нас</a></li>
                 <li><a href="#contact" class="nav-link" data-page="contact">Контакты</a></li>
@@ -1633,60 +1753,6 @@
                         <h3 class="cocktail-name">Clover Club</h3>
                         <p class="cocktail-ingredients">Джин, Малиновый сироп, Лимонный сок, Белок</p>
                     </div>
-                    
-                    <!-- Pina Colada -->
-                    <div class="cocktail-item" style="--delay: 5" onclick="openModal('https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&h=300&fit=crop', 'Pina Colada')">
-                        <div class="cocktail-image">
-                            <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&h=300&fit=crop" alt="Pina Colada" loading="lazy">
-                        </div>
-                        <h3 class="cocktail-name">Pina Colada</h3>
-                        <p class="cocktail-ingredients">Белый ром, Кокосовые сливки, Ананасовый сок</p>
-                    </div>
-                    
-                    <!-- Blue Hawaii -->
-                    <div class="cocktail-item" style="--delay: 6" onclick="openModal('https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=300&fit=crop', 'Blue Hawaii')">
-                        <div class="cocktail-image">
-                            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=300&fit=crop" alt="Blue Hawaii" loading="lazy">
-                        </div>
-                        <h3 class="cocktail-name">Blue Hawaii</h3>
-                        <p class="cocktail-ingredients">Белый ром, Голубой Кюрасао, Ананасовый сок, Сок лайма</p>
-                    </div>
-                    
-                    <!-- Tequila Sunrise -->
-                    <div class="cocktail-item" style="--delay: 7" onclick="openModal('https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&h=300&fit=crop', 'Tequila Sunrise')">
-                        <div class="cocktail-image">
-                            <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&h=300&fit=crop" alt="Tequila Sunrise" loading="lazy">
-                        </div>
-                        <h3 class="cocktail-name">Tequila Sunrise</h3>
-                        <p class="cocktail-ingredients">Текила, Апельсиновый сок, Гренадин</p>
-                    </div>
-                    
-                    <!-- Mojito -->
-                    <div class="cocktail-item" style="--delay: 8" onclick="openModal('https://images.unsplash.com/photo-1570598912133-8de8e6d8b81c?w=400&h=300&fit=crop', 'Mojito')">
-                        <div class="cocktail-image">
-                            <img src="https://images.unsplash.com/photo-1570598912133-8de8e6d8b81c?w=400&h=300&fit=crop" alt="Mojito" loading="lazy">
-                        </div>
-                        <h3 class="cocktail-name">Mojito</h3>
-                        <p class="cocktail-ingredients">Белый ром, Сахарный сироп, Содовая, Лайм, Мята</p>
-                    </div>
-                    
-                    <!-- Bellini -->
-                    <div class="cocktail-item" style="--delay: 9" onclick="openModal('https://images.unsplash.com/photo-1567696911981-8c6dc7a9c1a7?w=400&h=300&fit=crop', 'Bellini')">
-                        <div class="cocktail-image">
-                            <img src="https://images.unsplash.com/photo-1567696911981-8c6dc7a9c1a7?w=400&h=300&fit=crop" alt="Bellini" loading="lazy">
-                        </div>
-                        <h3 class="cocktail-name">Bellini</h3>
-                        <p class="cocktail-ingredients">Игристое вино, Персиковое пюре</p>
-                    </div>
-                    
-                    <!-- Aperol Spritz -->
-                    <div class="cocktail-item" style="--delay: 10" onclick="openModal('https://images.unsplash.com/photo-1514361892636-6d4d7fdc6a7b?w=400&h=300&fit=crop', 'Aperol Spritz')">
-                        <div class="cocktail-image">
-                            <img src="https://images.unsplash.com/photo-1514361892636-6d4d7fdc6a7b?w=400&h=300&fit=crop" alt="Aperol Spritz" loading="lazy">
-                        </div>
-                        <h3 class="cocktail-name">Aperol Spritz</h3>
-                        <p class="cocktail-ingredients">Aperol, Просекко, Содовая</p>
-                    </div>
                 </div>
                 
                 <!-- Алкогольные коктейли (список) -->
@@ -1707,36 +1773,6 @@
                         <div>
                             <span class="cocktail-simple-name">Мятный Экстази</span>
                             <p class="cocktail-simple-ingredients">Водка, Мятный ликер, Сок лайма</p>
-                        </div>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 4">
-                        <div>
-                            <span class="cocktail-simple-name">Черный Русский</span>
-                            <p class="cocktail-simple-ingredients">Водка, Кофейный ликер</p>
-                        </div>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 5">
-                        <div>
-                            <span class="cocktail-simple-name">Том Колинз</span>
-                            <p class="cocktail-simple-ingredients">Джин, Лимонный сок, Сахарный сироп, Содовая</p>
-                        </div>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 6">
-                        <div>
-                            <span class="cocktail-simple-name">Вайт Леди</span>
-                            <p class="cocktail-simple-ingredients">Джин, Трипл-сек, Лимонный сок</p>
-                        </div>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 7">
-                        <div>
-                            <span class="cocktail-simple-name">Кайпиринья</span>
-                            <p class="cocktail-simple-ingredients">Кашаса, Лайм, Сахар</p>
-                        </div>
-                    </div>
-                    <div class="cocktail-simple-item" style="--delay: 8">
-                        <div>
-                            <span class="cocktail-simple-name">Поцелуй</span>
-                            <p class="cocktail-simple-ingredients">Водка, Клубничный ликер, Сливки</p>
                         </div>
                     </div>
                 </div>
@@ -1761,23 +1797,112 @@
                             <p class="cocktail-simple-ingredients">Малиновое пюре, Гранатовый сироп, Лимонный сок, Имбирный эль</p>
                         </div>
                     </div>
-                    <div class="cocktail-simple-item" style="--delay: 4">
-                        <div>
-                            <span class="cocktail-simple-name">Мохито Безалкогольный</span>
-                            <p class="cocktail-simple-ingredients">Сахарный сироп, Содовая, Лайм, Мята</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница кухни -->
+    <div id="kitchen-page" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Кухня</h1>
+                <p>Вкусные закуски и блюда для вашего мероприятия</p>
+            </div>
+        </section>
+        
+        <section class="kitchen">
+            <div class="container">
+                <div class="kitchen-categories">
+                    <button class="kitchen-category-btn active" data-category="cold-snacks">Холодные закуски</button>
+                    <button class="kitchen-category-btn" data-category="hot-snacks">Горячие закуски</button>
+                    <button class="kitchen-category-btn" data-category="desserts">Десерты</button>
+                </div>
+                
+                <!-- Холодные закуски -->
+                <div class="kitchen-items" id="cold-snacks">
+                    <div class="kitchen-item" style="--delay: 1" onclick="openModal('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop', 'Брускетты с томатами')">
+                        <div class="kitchen-image">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop" alt="Брускетты с томатами" loading="lazy">
                         </div>
+                        <h3>Брускетты с томатами</h3>
+                        <p>Хрустящие тосты с сочными томатами, базиликом и оливковым маслом</p>
                     </div>
-                    <div class="cocktail-simple-item" style="--delay: 5">
-                        <div>
-                            <span class="cocktail-simple-name">Арбуз-Базилик</span>
-                            <p class="cocktail-simple-ingredients">Арбузный сок, Базилик, Лимонный сок, Содовая</p>
+                    
+                    <div class="kitchen-item" style="--delay: 2" onclick="openModal('https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=400&h=300&fit=crop', 'Тапас с прошутто')">
+                        <div class="kitchen-image">
+                            <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=400&h=300&fit=crop" alt="Тапас с прошутто" loading="lazy">
                         </div>
+                        <h3>Тапас с прошутто</h3>
+                        <p>Испанские закуски с вяленым мясом, оливками и сыром</p>
                     </div>
-                    <div class="cocktail-simple-item" style="--delay: 6">
-                        <div>
-                            <span class="cocktail-simple-name">Лавандовый Бергамот</span>
-                            <p class="cocktail-simple-ingredients">Лавандовый сироп, Чай бергамот, Лимон, Содовая</p>
+                    
+                    <div class="kitchen-item" style="--delay: 3" onclick="openModal('https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=300&fit=crop', 'Цезарь с креветками')">
+                        <div class="kitchen-image">
+                            <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=300&fit=crop" alt="Цезарь с креветками" loading="lazy">
                         </div>
+                        <h3>Цезарь с креветками</h3>
+                        <p>Классический салат с тигровыми креветками и пармезаном</p>
+                    </div>
+                </div>
+                
+                <!-- Горячие закуски -->
+                <div class="kitchen-items" id="hot-snacks" style="display: none;">
+                    <div class="kitchen-item" style="--delay: 1" onclick="openModal('https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=300&fit=crop', 'Тарталетки с грибами')">
+                        <div class="kitchen-image">
+                            <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=300&fit=crop" alt="Тарталетки с грибами" loading="lazy">
+                        </div>
+                        <h3>Тарталетки с грибами</h3>
+                        <p>Хрустящие корзиночки с ароматными грибами в сливочном соусе</p>
+                    </div>
+                    
+                    <div class="kitchen-item" style="--delay: 2" onclick="openModal('https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop', 'Мини-бургеры')">
+                        <div class="kitchen-image">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop" alt="Мини-бургеры" loading="lazy">
+                        </div>
+                        <h3>Мини-бургеры</h3>
+                        <p>Аппетитные бургеры с говяжьей котлетой и свежими овощами</p>
+                    </div>
+                    
+                    <div class="kitchen-item" style="--delay: 3" onclick="openModal('https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop', 'Креветки в кляре')">
+                        <div class="kitchen-image">
+                            <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop" alt="Креветки в кляре" loading="lazy">
+                        </div>
+                        <h3>Креветки в кляре</h3>
+                        <p>Хрустящие тигровые креветки с соусом
+                                                <div class="kitchen-item" style="--delay: 3" onclick="openModal('https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop', 'Креветки в кляре')">
+                        <div class="kitchen-image">
+                            <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop" alt="Креветки в кляре" loading="lazy">
+                        </div>
+                        <h3>Креветки в кляре</h3>
+                        <p>Хрустящие тигровые креветки с соусом айоли</p>
+                    </div>
+                </div>
+                
+                <!-- Десерты -->
+                <div class="kitchen-items" id="desserts" style="display: none;">
+                    <div class="kitchen-item" style="--delay: 1" onclick="openModal('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&h=300&fit=crop', 'Тирамису')">
+                        <div class="kitchen-image">
+                            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&h=300&fit=crop" alt="Тирамису" loading="lazy">
+                        </div>
+                        <h3>Тирамису</h3>
+                        <p>Классический итальянский десерт с кофе и маскарпоне</p>
+                    </div>
+                    
+                    <div class="kitchen-item" style="--delay: 2" onclick="openModal('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop', 'Шоколадный фондан')">
+                        <div class="kitchen-image">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop" alt="Шоколадный фондан" loading="lazy">
+                        </div>
+                        <h3>Шоколадный фондан</h3>
+                        <p>Тёплый шоколадный кекс с жидкой сердцевиной</p>
+                    </div>
+                    
+                    <div class="kitchen-item" style="--delay: 3" onclick="openModal('https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=300&fit=crop', 'Макаруны')">
+                        <div class="kitchen-image">
+                            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=300&fit=crop" alt="Макаруны" loading="lazy">
+                        </div>
+                        <h3>Макаруны</h3>
+                        <p>Нежные французские пирожные с различными начинками</p>
                     </div>
                 </div>
             </div>
@@ -2099,6 +2224,32 @@
                 const category = btn.getAttribute('data-category');
                 document.getElementById(`${category}-cocktails`).style.display = 
                     category === 'classic' ? 'grid' : 'block';
+                    
+                // Активируем анимации для нового контента
+                setTimeout(() => {
+                    activateAnimations();
+                }, 100);
+            });
+        });
+
+        // Переключение категорий кухни
+        const kitchenCategoryBtns = document.querySelectorAll('.kitchen-category-btn');
+        
+        kitchenCategoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Убираем активный класс у всех кнопок
+                kitchenCategoryBtns.forEach(b => b.classList.remove('active'));
+                // Добавляем активный класс текущей кнопке
+                btn.classList.add('active');
+                
+                // Скрываем все списки блюд
+                document.querySelectorAll('.kitchen-items').forEach(list => {
+                    list.style.display = 'none';
+                });
+                
+                // Показываем выбранный список
+                const category = btn.getAttribute('data-category');
+                document.getElementById(category).style.display = 'grid';
                     
                 // Активируем анимации для нового контента
                 setTimeout(() => {
