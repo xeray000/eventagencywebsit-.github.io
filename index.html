@@ -6,6 +6,8 @@
     <title>Пить и Танцевать - Event-агентство</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         /* Базовые стили */
         :root {
@@ -75,13 +77,7 @@
             position: relative;
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
             font-weight: 400;
-        }
-
-        .section-title.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .section-title::after {
@@ -114,6 +110,65 @@
         .btn:hover {
             background-color: #e6c158;
             transform: translateY(-3px);
+        }
+
+        /* Оптимизация для анимаций */
+        .hero-content,
+        .section-title,
+        .service-card,
+        .process-step,
+        .feature-item,
+        .cocktail-item,
+        .kitchen-item,
+        .portfolio-item,
+        .about-text,
+        .about-image,
+        .contact-info,
+        .contact-form,
+        .why-us,
+        .cocktail-simple-item {
+            will-change: transform, opacity;
+        }
+
+        /* Предотвращение мерцания */
+        .gsap-marker-scroller-start,
+        .gsap-marker-scroller-end,
+        .gsap-marker-start,
+        .gsap-marker-end {
+            display: none !important;
+        }
+
+        /* Улучшение производительности */
+        section {
+            transform: translateZ(0);
+        }
+
+        /* Гарантия, что анимируемые элементы изначально скрыты */
+        .service-card,
+        .process-step,
+        .feature-item,
+        .cocktail-item,
+        .kitchen-item,
+        .portfolio-item,
+        .cocktail-simple-item {
+            opacity: 0;
+        }
+
+        /* Отключение CSS анимаций для избежания конфликтов */
+        .section-title,
+        .service-card,
+        .process-step,
+        .feature-item,
+        .cocktail-item,
+        .kitchen-item,
+        .portfolio-item,
+        .about-text,
+        .about-image,
+        .contact-info,
+        .contact-form,
+        .why-us,
+        .cocktail-simple-item {
+            transition: none !important;
         }
 
         /* Header */
@@ -299,12 +354,6 @@
             margin: 0 auto;
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .hero-content.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .hero h1 {
@@ -338,18 +387,11 @@
             opacity: 0;
             transform: translateY(30px);
             padding: 40px 25px;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             min-height: 320px;
-        }
-
-        .process-step.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .step-number {
@@ -406,14 +448,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
             border: 1px solid #2a2a2a;
-        }
-
-        .service-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .service-card:hover {
@@ -497,13 +532,6 @@
             opacity: 0;
             transform: translateY(30px);
             padding: 30px 20px;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
-        }
-
-        .feature-item.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .feature-icon {
@@ -533,12 +561,6 @@
             opacity: 0;
             transform: translateY(30px);
             padding: 30px;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .why-us.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .why-us h3 {
@@ -611,18 +633,11 @@
             transition: var(--transition);
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
             cursor: pointer;
             border: 1px solid #2a2a2a;
             height: 100%;
             display: flex;
             flex-direction: column;
-        }
-
-        .cocktail-item.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .cocktail-item:hover {
@@ -689,14 +704,7 @@
             transition: var(--transition);
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
             border: 1px solid #2a2a2a;
-        }
-
-        .cocktail-simple-item.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .cocktail-simple-item:hover {
@@ -774,18 +782,11 @@
             transition: var(--transition);
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
             cursor: pointer;
             border: 1px solid #2a2a2a;
             height: 100%;
             display: flex;
             flex-direction: column;
-        }
-
-        .kitchen-item.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .kitchen-item:hover {
@@ -849,15 +850,8 @@
             height: 280px;
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            transition-delay: calc(var(--delay) * 0.1s);
             cursor: pointer;
             border: 1px solid #2a2a2a;
-        }
-
-        .portfolio-item.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .portfolio-image {
@@ -910,12 +904,6 @@
             flex: 1;
             opacity: 0;
             transform: translateX(-30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .about-text.visible {
-            opacity: 1;
-            transform: translateX(0);
         }
 
         .about-text h3 {
@@ -944,7 +932,6 @@
             color: var(--text-secondary);
             opacity: 0;
             transform: translateX(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
             overflow: hidden;
             position: relative;
             border: 1px solid #2a2a2a;
@@ -954,11 +941,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .about-image.visible {
-            opacity: 1;
-            transform: translateX(0);
         }
 
         /* Contact Section */
@@ -971,24 +953,12 @@
             flex: 1;
             opacity: 0;
             transform: translateX(-30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .contact-info.visible {
-            opacity: 1;
-            transform: translateX(0);
         }
 
         .contact-form {
             flex: 1;
             opacity: 0;
             transform: translateX(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .contact-form.visible {
-            opacity: 1;
-            transform: translateX(0);
         }
 
         .contact-item {
@@ -1767,6 +1737,42 @@
                             <i class="fab fa-whatsapp"></i> Заказать
                         </a>
                     </div>
+
+                    <div class="service-card" style="--delay: 4">
+                        <div class="service-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Музыкальное сопровождение</h3>
+                        <p>Профессиональные диджеи и звуковое оборудование для создания идеальной атмосферы на вашем мероприятии.</p>
+                        <div class="service-price">от 15000 руб.</div>
+                        <a href="https://wa.me/79773001608" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Заказать
+                        </a>
+                    </div>
+
+                    <div class="service-card" style="--delay: 5">
+                        <div class="service-icon">
+                            <i class="fas fa-photo-video"></i>
+                        </div>
+                        <h3>Фото и видео съемка</h3>
+                        <p>Профессиональная съемка вашего мероприятия с последующей обработкой и созданием памятного альбома.</p>
+                        <div class="service-price">от 20000 руб.</div>
+                        <a href="https://wa.me/79773001608" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Заказать
+                        </a>
+                    </div>
+
+                    <div class="service-card" style="--delay: 6">
+                        <div class="service-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Световое шоу</h3>
+                        <p>Современное световое оборудование и профессиональные светодизайнеры для создания незабываемого визуального шоу.</p>
+                        <div class="service-price">от 18000 руб.</div>
+                        <a href="https://wa.me/79773001608" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Заказать
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1826,6 +1832,24 @@
                         <h3 class="cocktail-name">Clover Club</h3>
                         <p class="cocktail-ingredients">Джин, Малиновый сироп, Лимонный сок, Белок</p>
                     </div>
+
+                    <!-- Mojito -->
+                    <div class="cocktail-item" style="--delay: 5" onclick="openModal('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&h=300&fit=crop', 'Mojito')">
+                        <div class="cocktail-image">
+                            <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&h=300&fit=crop" alt="Mojito" loading="lazy">
+                        </div>
+                        <h3 class="cocktail-name">Mojito</h3>
+                        <p class="cocktail-ingredients">Белый ром, Сахарный сироп, Лайм, Мята, Содовая</p>
+                    </div>
+
+                    <!-- Margarita -->
+                    <div class="cocktail-item" style="--delay: 6" onclick="openModal('https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&h=300&fit=crop', 'Margarita')">
+                        <div class="cocktail-image">
+                            <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&h=300&fit=crop" alt="Margarita" loading="lazy">
+                        </div>
+                        <h3 class="cocktail-name">Margarita</h3>
+                        <p class="cocktail-ingredients">Текила, Трипл-сек, Лаймовый сок</p>
+                    </div>
                 </div>
                 
                 <!-- Алкогольные коктейли (список) -->
@@ -1848,6 +1872,18 @@
                             <p class="cocktail-simple-ingredients">Водка, Мятный ликер, Сок лайма</p>
                         </div>
                     </div>
+                    <div class="cocktail-simple-item" style="--delay: 4">
+                        <div>
+                            <span class="cocktail-simple-name">Космополитен</span>
+                            <p class="cocktail-simple-ingredients">Водка, Трипл-сек, Клюквенный сок, Лаймовый сок</p>
+                        </div>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 5">
+                        <div>
+                            <span class="cocktail-simple-name">Негрони</span>
+                            <p class="cocktail-simple-ingredients">Джин, Кампари, Красный вермут</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Безалкогольные коктейли (список) -->
@@ -1868,6 +1904,18 @@
                         <div>
                             <span class="cocktail-simple-name">Малиновый Рассвет</span>
                             <p class="cocktail-simple-ingredients">Малиновое пюре, Гранатовый сироп, Лимонный сок, Имбирный эль</p>
+                        </div>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 4">
+                        <div>
+                            <span class="cocktail-simple-name">Клубничный Мохито</span>
+                            <p class="cocktail-simple-ingredients">Клубничное пюре, Лайм, Мята, Содовая, Сахарный сироп</p>
+                        </div>
+                    </div>
+                    <div class="cocktail-simple-item" style="--delay: 5">
+                        <div>
+                            <span class="cocktail-simple-name">Тропический Бриз</span>
+                            <p class="cocktail-simple-ingredients">Ананасовый сок, Персиковый нектар, Кокосовое молоко, Лайм</p>
                         </div>
                     </div>
                 </div>
@@ -2091,6 +2139,33 @@
                             <p>День рождения, май 2023</p>
                         </div>
                     </div>
+                    <div class="portfolio-item" style="--delay: 4" onclick="openModal('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500', 'Свадебное торжество')">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500" alt="Свадебное торжество" loading="lazy">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Свадебное торжество</h3>
+                            <p>Свадьба Елены и Дмитрия, август 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 5" onclick="openModal('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500', 'Корпоративный вечер')">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500" alt="Корпоративный вечер" loading="lazy">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Корпоративный вечер</h3>
+                            <p>Корпоратив банка, ноябрь 2023</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" style="--delay: 6" onclick="openModal('https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=500', 'День рождения')">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=500" alt="День рождения" loading="lazy">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>День рождения</h3>
+                            <p>Юбилей 50 лет, сентябрь 2023</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2121,7 +2196,12 @@
                             <li>Индивидуальный подход к каждому клиенту</li>
                             <li>Современное оборудование и технологии</li>
                             <li>Гибкая система ценообразования</li>
+                            <li>Полный комплекс услуг под ключ</li>
+                            <li>Креативный подход к организации мероприятий</li>
                         </ul>
+
+                        <h3>Наша команда</h3>
+                        <p>В нашей команде работают профессиональные бармены, организаторы мероприятий, диджеи, фотографы и декораторы. Мы постоянно совершенствуем свои навыки и следим за последними тенденциями в event-индустрии.</p>
                     </div>
                     <div class="about-image">
                         <img src="https://images.unsplash.com/photo-1556760544-74068565f05c?w=600" alt="Наша команда" loading="lazy">
@@ -2315,6 +2395,351 @@
     </footer>
 
     <script>
+        // Инициализация GSAP и ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Функция для безопасной инициализации анимаций
+        function initScrollAnimations() {
+            // Отключаем все существующие триггеры перед повторной инициализацией
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+            
+            // 1. Анимация заголовков секций
+            gsap.utils.toArray('.section-title').forEach(title => {
+                gsap.fromTo(title, {
+                    opacity: 0,
+                    y: 50
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: title,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse",
+                        markers: false
+                    }
+                });
+            });
+
+            // 2. Анимация hero content
+            gsap.fromTo('.hero-content', {
+                opacity: 0,
+                y: 30
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: '.hero',
+                    start: "top center",
+                    end: "bottom center",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            // 3. Анимация карточек услуг с задержкой
+            gsap.utils.toArray('.service-card').forEach((card, index) => {
+                gsap.fromTo(card, {
+                    opacity: 0,
+                    y: 60,
+                    rotationY: 5
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    rotationY: 0,
+                    duration: 0.8,
+                    delay: index * 0.1,
+                    ease: "back.out(1.2)",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+
+            // 4. Анимация шагов процесса
+            gsap.utils.toArray('.process-step').forEach((step, index) => {
+                gsap.fromTo(step, {
+                    opacity: 0,
+                    y: 40,
+                    scale: 0.9
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.7,
+                    delay: index * 0.15,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: step,
+                        start: "top 90%",
+                        end: "bottom 10%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+
+            // 5. Анимация элементов features
+            gsap.utils.toArray('.feature-item').forEach((feature, index) => {
+                gsap.fromTo(feature, {
+                    opacity: 0,
+                    x: index % 2 === 0 ? -50 : 50,
+                    rotationY: 10
+                }, {
+                    opacity: 1,
+                    x: 0,
+                    rotationY: 0,
+                    duration: 0.8,
+                    delay: index * 0.1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: feature,
+                        start: "top 85%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+
+            // 6. Анимация why-us блока
+            const whyUs = document.querySelector('.why-us');
+            if (whyUs) {
+                gsap.fromTo(whyUs, {
+                    opacity: 0,
+                    y: 40,
+                    scale: 0.95
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: whyUs,
+                        start: "top 85%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            }
+
+            // 7. Анимация about секции
+            const aboutText = document.querySelector('.about-text');
+            const aboutImage = document.querySelector('.about-image');
+            
+            if (aboutText && aboutImage) {
+                gsap.fromTo(aboutText, {
+                    opacity: 0,
+                    x: -80
+                }, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: aboutText,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+
+                gsap.fromTo(aboutImage, {
+                    opacity: 0,
+                    x: 80,
+                    scale: 1.1
+                }, {
+                    opacity: 1,
+                    x: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: aboutImage,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            }
+
+            // 8. Анимация contact секции
+            const contactInfo = document.querySelector('.contact-info');
+            const contactForm = document.querySelector('.contact-form');
+            
+            if (contactInfo && contactForm) {
+                gsap.fromTo(contactInfo, {
+                    opacity: 0,
+                    x: -60
+                }, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.9,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: contactInfo,
+                        start: "top 85%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+
+                gsap.fromTo(contactForm, {
+                    opacity: 0,
+                    x: 60,
+                    y: 30
+                }, {
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    duration: 0.9,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: contactForm,
+                        start: "top 85%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            }
+
+            // 9. Анимация коктейльных карточек
+            gsap.utils.toArray('.cocktail-item').forEach((item, index) => {
+                gsap.fromTo(item, {
+                    opacity: 0,
+                    y: 50,
+                    rotationX: 10
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    rotationX: 0,
+                    duration: 0.6,
+                    delay: index * 0.08,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 90%",
+                        end: "bottom 10%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+
+            // 10. Анимация элементов кухни
+            gsap.utils.toArray('.kitchen-item').forEach((item, index) => {
+                gsap.fromTo(item, {
+                    opacity: 0,
+                    y: 40,
+                    scale: 0.95
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.7,
+                    delay: index * 0.07,
+                    ease: "back.out(1.3)",
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 90%",
+                        end: "bottom 10%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+
+            // 11. Анимация портфолио
+            gsap.utils.toArray('.portfolio-item').forEach((item, index) => {
+                gsap.fromTo(item, {
+                    opacity: 0,
+                    y: 60,
+                    rotationY: 15
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    rotationY: 0,
+                    duration: 0.8,
+                    delay: index * 0.1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 85%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+
+            // 12. Анимация простых списков коктейлей
+            gsap.utils.toArray('.cocktail-simple-item').forEach((item, index) => {
+                gsap.fromTo(item, {
+                    opacity: 0,
+                    x: -30
+                }, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.5,
+                    delay: index * 0.05,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 90%",
+                        end: "bottom 10%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+
+            // 13. Параллакс эффект для hero секции
+            gsap.to('.hero', {
+                yPercent: -20,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: '.hero',
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        }
+
+        // Функция для обновления анимаций при смене страницы
+        function updatePageAnimations() {
+            // Ждем немного, чтобы DOM обновился
+            setTimeout(() => {
+                // Обновляем ScrollTrigger
+                ScrollTrigger.refresh();
+                
+                // Переинициализируем анимации
+                initScrollAnimations();
+            }, 100);
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ждем полной загрузки всех ресурсов
+            window.addEventListener('load', function() {
+                // Небольшая задержка для стабильности
+                setTimeout(() => {
+                    initScrollAnimations();
+                    ScrollTrigger.refresh();
+                }, 500);
+            });
+        });
+
+        // Обновление анимаций при изменении размера окна
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                ScrollTrigger.refresh();
+            }, 250);
+        });
+
         // Модальное окно для изображений
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
@@ -2387,8 +2812,8 @@
             // Прокручиваем к верху страницы
             window.scrollTo(0, 0);
             
-            // Сбрасываем анимации для новой страницы
-            resetAnimations();
+            // Обновляем анимации для новой страницы
+            updatePageAnimations();
         }
         
         // Обработчики для навигационных ссылок
@@ -2417,9 +2842,6 @@
             } else {
                 backToTop.classList.remove('visible');
             }
-            
-            // Активируем анимации при скролле
-            activateAnimations();
         });
         
         // Кнопка "Наверх"
@@ -2450,10 +2872,8 @@
                 document.getElementById(`${category}-cocktails`).style.display = 
                     category === 'classic' ? 'grid' : 'block';
                     
-                // Активируем анимации для нового контента
-                setTimeout(() => {
-                    activateAnimations();
-                }, 100);
+                // Обновляем анимации для нового контента
+                updatePageAnimations();
             });
         });
 
@@ -2476,49 +2896,9 @@
                 const category = btn.getAttribute('data-category');
                 document.getElementById(category).style.display = 'grid';
                     
-                // Активируем анимации для нового контента
-                setTimeout(() => {
-                    activateAnimations();
-                }, 100);
+                // Обновляем анимации для нового контента
+                updatePageAnimations();
             });
-        });
-        
-        // Анимация появления элементов при скролле
-        function activateAnimations() {
-            const animatedElements = document.querySelectorAll('.section-title, .service-card, .cocktail-item, .cocktail-simple-item, .process-step, .portfolio-item, .kitchen-item, .about-text, .about-image, .contact-info, .contact-form, .feature-item, .why-us');
-            
-            animatedElements.forEach(el => {
-                const elementTop = el.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    el.classList.add('visible');
-                }
-            });
-        }
-        
-        // Сброс анимаций при смене страницы
-        function resetAnimations() {
-            const animatedElements = document.querySelectorAll('.section-title, .service-card, .cocktail-item, .cocktail-simple-item, .process-step, .portfolio-item, .kitchen-item, .about-text, .about-image, .contact-info, .contact-form, .feature-item, .why-us');
-            
-            animatedElements.forEach(el => {
-                el.classList.remove('visible');
-            });
-            
-            // Активируем анимации после небольшой задержки
-            setTimeout(() => {
-                activateAnimations();
-            }, 300);
-        }
-        
-        // Анимация для hero section
-        window.addEventListener('load', () => {
-            document.querySelector('.hero-content').classList.add('visible');
-            
-            // Активируем анимации после загрузки страницы
-            setTimeout(() => {
-                activateAnimations();
-            }, 500);
         });
 
         // Обработка форм
@@ -2529,6 +2909,14 @@
                 this.reset();
             });
         });
+
+        // Глобальный экспорт для отладки
+        window.cleanupAnimations = function() {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+            gsap.killTweensOf('*');
+        };
+        
+        window.reinitAnimations = initScrollAnimations;
     </script>
 </body>
 </html>
