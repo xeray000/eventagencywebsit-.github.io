@@ -1877,10 +1877,23 @@
                         <h3>Профессиональное event-агентство</h3>
                         <p>Мы - команда профессионалов, которая превращает ваши мечты в реальность. С 2018 года мы организуем незабываемые мероприятия любого масштаба.</p>
                         <p>Наш опыт и внимание к деталям позволяют создавать уникальные события, которые запоминаются надолго.</p>
+                        
+                        <h3>Наша философия</h3>
+                        <p>Мы верим, что каждое мероприятие должно быть уникальным и отражать индивидуальность наших клиентов. От свадеб и корпоративов до дней рождений и тематических вечеринок - мы создаем атмосферу, которая остается в памяти гостей надолго.</p>
+                        
+                        <h3>Почему выбирают нас?</h3>
+                        <ul>
+                            <li>Более 5 лет успешной работы на рынке</li>
+                            <li>Более 500 реализованных мероприятий</li>
+                            <li>Индивидуальный подход к каждому клиенту</li>
+                            <li>Профессиональная команда специалистов</li>
+                            <li>Современное оборудование и материалы</li>
+                        </ul>
+                        
                         <a href="#contact" class="btn nav-link" data-page="contact">Связаться с нами</a>
                     </div>
                     <div class="about-image">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600" alt="Наша команда" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1556760544-74068565f05c?w=600" alt="Наша команда" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -1892,24 +1905,56 @@
                 <h2 class="section-title">Контакты</h2>
                 <div class="contact-content">
                     <div class="contact-info">
+                        <h3>Свяжитесь с нами</h3>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>+7 977-300-16-08</span>
+                            <div>
+                                <span>+7 977-300-16-08</span>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px;">Основной номер для связи</p>
+                            </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>info@drinkanddance.ru</span>
+                            <div>
+                                <span>info@drinkanddance.ru</span>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px;">Электронная почта</p>
+                            </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Москва, ул. Примерная, 123</span>
+                            <div>
+                                <span>Москва и Московская область</span>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px;">Работаем по всему региону</p>
+                            </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-clock"></i>
-                            <span>Ежедневно с 9:00 до 22:00</span>
+                            <div>
+                                <span>Ежедневно с 9:00 до 22:00</span>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px;">Принимаем заявки и консультируем</p>
+                            </div>
+                        </div>
+                        
+                        <h3 style="margin-top: 30px;">Мы в соцсетях</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 15px;">Следите за нашими работами и новостями</p>
+                        <div class="social-icons" style="justify-content: flex-start; margin-top: 15px;">
+                            <a href="https://vk.com/club232466077" target="_blank" style="width: 50px; height: 50px;">
+                                <i class="fab fa-vk"></i>
+                            </a>
+                            <a href="https://wa.me/79773001608" target="_blank" style="width: 50px; height: 50px;">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.instagram.com/drink_and_dance_event?igsh=MWYyNXludnlkY2tkaw==" target="_blank" style="width: 50px; height: 50px;">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://t.me/DrinkAndDanceEventBot" target="_blank" style="width: 50px; height: 50px;">
+                                <i class="fab fa-telegram"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="contact-form">
+                        <h3>Оставьте заявку</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 25px;">Заполните форму, и мы свяжемся с вами в течение 30 минут</p>
                         <form id="contactForm">
                             <div class="form-group">
                                 <input type="text" placeholder="Ваше имя" required>
@@ -1918,7 +1963,19 @@
                                 <input type="tel" placeholder="Ваш телефон" required>
                             </div>
                             <div class="form-group">
-                                <textarea placeholder="Сообщение" required></textarea>
+                                <input type="email" placeholder="Ваш email">
+                            </div>
+                            <div class="form-group">
+                                <select style="width: 100%; padding: 14px 18px; background-color: var(--secondary-color); border: 1px solid #333; border-radius: 2px; color: var(--text-primary); font-family: 'Montserrat', sans-serif; font-weight: 300;">
+                                    <option value="">Тип мероприятия</option>
+                                    <option value="wedding">Свадьба</option>
+                                    <option value="corporate">Корпоратив</option>
+                                    <option value="birthday">День рождения</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Опишите ваше мероприятие" required></textarea>
                             </div>
                             <div class="checkbox-label">
                                 <input type="checkbox" required>
@@ -1926,7 +1983,7 @@
                                     <a href="#privacy" class="nav-link" data-page="privacy">Политикой конфиденциальности</a>
                                 </span>
                             </div>
-                            <button type="submit" class="btn">Отправить</button>
+                            <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
                         </form>
                     </div>
                 </div>
