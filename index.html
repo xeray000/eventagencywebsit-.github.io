@@ -171,6 +171,189 @@
             transition: none !important;
         }
 
+        /* Стили для видео в портфолио */
+        .portfolio-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .video-play-btn {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            transform: scale(0.8);
+        }
+
+        .portfolio-item:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover .video-play-btn {
+            transform: scale(1);
+        }
+
+        .video-play-btn:hover {
+            background-color: #e6c158;
+            transform: scale(1.1);
+        }
+
+        /* Модальное окно для видео */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .video-modal-content {
+            position: relative;
+            margin: auto;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .video-modal-content video {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            border-radius: 4px;
+        }
+
+        .video-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--accent-color);
+            font-size: 30px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 2001;
+            background: rgba(0, 0, 0, 0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-close:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .video-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
+        /* Категории портфолио */
+        .portfolio-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-category-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            padding: 12px 25px;
+            margin: 5px 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .portfolio-category-btn.active {
+            color: var(--accent-color);
+        }
+
+        .portfolio-category-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .portfolio-category-btn.active::after {
+            width: 100%;
+        }
+
+        /* Индикатор типа контента */
+        .content-type {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+            z-index: 2;
+        }
+
+        .content-type.photo {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .content-type.video {
+            background: #ff4757;
+        }
+
         /* Header */
         header {
             position: fixed;
@@ -874,6 +1057,10 @@
             transition: var(--transition);
         }
 
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+
         .portfolio-overlay {
             position: absolute;
             bottom: 0;
@@ -1371,6 +1558,10 @@
                 right: 20px;
                 font-size: 30px;
             }
+
+            .video-modal-content {
+                width: 95%;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1398,6 +1589,20 @@
             
             .about-image {
                 height: 280px;
+            }
+
+            .portfolio-categories,
+            .cocktail-categories,
+            .kitchen-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .portfolio-category-btn,
+            .category-btn,
+            .kitchen-category-btn {
+                margin: 5px 0;
+                width: 200px;
             }
         }
     </style>
@@ -1475,6 +1680,17 @@
         <div class="modal-content">
             <img id="modalImage" src="" alt="">
             <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для видео -->
+    <div id="videoModal" class="video-modal">
+        <span class="video-close">&times;</span>
+        <div class="video-modal-content">
+            <video id="modalVideo" controls>
+                Ваш браузер не поддерживает видео.
+            </video>
+            <div class="video-caption" id="videoCaption"></div>
         </div>
     </div>
 
@@ -2111,8 +2327,16 @@
         
         <section class="portfolio">
             <div class="container">
+                <div class="portfolio-categories">
+                    <button class="portfolio-category-btn active" data-category="all">Все работы</button>
+                    <button class="portfolio-category-btn" data-category="photo">Фотографии</button>
+                    <button class="portfolio-category-btn" data-category="video">Видео</button>
+                </div>
+                
                 <div class="portfolio-grid">
-                    <div class="portfolio-item" style="--delay: 1" onclick="openModal('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500', 'Тяжелый дым на свадебный танец')">
+                    <!-- Фото работы -->
+                    <div class="portfolio-item" style="--delay: 1" data-type="photo" onclick="openModal('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500', 'Тяжелый дым на свадебный танец')">
+                        <div class="content-type photo">Фото</div>
                         <div class="portfolio-image">
                             <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500" alt="Тяжелый дым на свадебный танец" loading="lazy">
                         </div>
@@ -2121,16 +2345,30 @@
                             <p>Свадьба Анны и Михаила, июль 2023</p>
                         </div>
                     </div>
-                    <div class="portfolio-item" style="--delay: 2" onclick="openModal('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500', 'Пирамида шампанского')">
+
+                    <!-- Видео работа 1 -->
+                    <div class="portfolio-item" style="--delay: 2" data-type="video" onclick="openVideoModal('https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-partying-happily-4640-large.mp4', 'Корпоративное мероприятие')">
+                        <div class="content-type video">Видео</div>
                         <div class="portfolio-image">
-                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500" alt="Пирамида шампанского" loading="lazy">
+                            <video class="portfolio-video" muted loop preload="metadata" poster="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500">
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-partying-happily-4640-large.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                            <div class="video-overlay">
+                                <div class="video-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
                         </div>
                         <div class="portfolio-overlay">
-                            <h3>Пирамида шампанского</h3>
-                            <p>Корпоратив IT-компании, декабрь 2023</p>
+                            <h3>Корпоративное мероприятие</h3>
+                            <p>Новогодний корпоратив, декабрь 2023</p>
                         </div>
                     </div>
-                    <div class="portfolio-item" style="--delay: 3" onclick="openModal('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500', 'Коктейльный бар')">
+
+                    <!-- Фото работа -->
+                    <div class="portfolio-item" style="--delay: 3" data-type="photo" onclick="openModal('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500', 'Коктейльный бар')">
+                        <div class="content-type photo">Фото</div>
                         <div class="portfolio-image">
                             <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500" alt="Коктейльный бар" loading="lazy">
                         </div>
@@ -2139,31 +2377,88 @@
                             <p>День рождения, май 2023</p>
                         </div>
                     </div>
-                    <div class="portfolio-item" style="--delay: 4" onclick="openModal('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500', 'Свадебное торжество')">
+
+                    <!-- Видео работа 2 -->
+                    <div class="portfolio-item" style="--delay: 4" data-type="video" onclick="openVideoModal('https://assets.mixkit.co/videos/preview/mixkit-young-women-dancing-at-a-party-4645-large.mp4', 'Свадебное торжество')">
+                        <div class="content-type video">Видео</div>
                         <div class="portfolio-image">
-                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500" alt="Свадебное торжество" loading="lazy">
+                            <video class="portfolio-video" muted loop preload="metadata" poster="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500">
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-young-women-dancing-at-a-party-4645-large.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                            <div class="video-overlay">
+                                <div class="video-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
                         </div>
                         <div class="portfolio-overlay">
                             <h3>Свадебное торжество</h3>
                             <p>Свадьба Елены и Дмитрия, август 2023</p>
                         </div>
                     </div>
-                    <div class="portfolio-item" style="--delay: 5" onclick="openModal('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500', 'Корпоративный вечер')">
+
+                    <!-- Видео работа 3 -->
+                    <div class="portfolio-item" style="--delay: 5" data-type="video" onclick="openVideoModal('https://assets.mixkit.co/videos/preview/mixkit-wedding-couple-dancing-at-the-reception-4647-large.mp4', 'Свадебный танец')">
+                        <div class="content-type video">Видео</div>
                         <div class="portfolio-image">
-                            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500" alt="Корпоративный вечер" loading="lazy">
+                            <video class="portfolio-video" muted loop preload="metadata" poster="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500">
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-wedding-couple-dancing-at-the-reception-4647-large.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                            <div class="video-overlay">
+                                <div class="video-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
                         </div>
                         <div class="portfolio-overlay">
-                            <h3>Корпоративный вечер</h3>
-                            <p>Корпоратив банка, ноябрь 2023</p>
+                            <h3>Свадебный танец</h3>
+                            <p>Первый танец молодоженов, июнь 2023</p>
                         </div>
                     </div>
-                    <div class="portfolio-item" style="--delay: 6" onclick="openModal('https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=500', 'День рождения')">
+
+                    <!-- Фото работа -->
+                    <div class="portfolio-item" style="--delay: 6" data-type="photo" onclick="openModal('https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=500', 'День рождения')">
+                        <div class="content-type photo">Фото</div>
                         <div class="portfolio-image">
                             <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=500" alt="День рождения" loading="lazy">
                         </div>
                         <div class="portfolio-overlay">
                             <h3>День рождения</h3>
                             <p>Юбилей 50 лет, сентябрь 2023</p>
+                        </div>
+                    </div>
+
+                    <!-- Видео работа 4 -->
+                    <div class="portfolio-item" style="--delay: 7" data-type="video" onclick="openVideoModal('https://assets.mixkit.co/videos/preview/mixkit-people-celebrating-a-wedding-with-sparklers-4131-large.mp4', 'Свадебный фейерверк')">
+                        <div class="content-type video">Видео</div>
+                        <div class="portfolio-image">
+                            <video class="portfolio-video" muted loop preload="metadata" poster="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?w=500">
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-people-celebrating-a-wedding-with-sparklers-4131-large.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                            <div class="video-overlay">
+                                <div class="video-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Свадебный фейерверк</h3>
+                            <p>Завершение свадебного вечера, июль 2023</p>
+                        </div>
+                    </div>
+
+                    <!-- Фото работа -->
+                    <div class="portfolio-item" style="--delay: 8" data-type="photo" onclick="openModal('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=500', 'Музыкальное сопровождение')">
+                        <div class="content-type photo">Фото</div>
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=500" alt="Музыкальное сопровождение" loading="lazy">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Музыкальное сопровождение</h3>
+                            <p>Живая музыка на мероприятии, октябрь 2023</p>
                         </div>
                     </div>
                 </div>
@@ -2397,6 +2692,36 @@
     <script>
         // Инициализация GSAP и ScrollTrigger
         gsap.registerPlugin(ScrollTrigger);
+
+        // Функции для работы с видео
+
+        // Открытие модального окна с видео
+        function openVideoModal(videoSrc, caption) {
+            const videoModal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            const videoCaption = document.getElementById('videoCaption');
+            
+            videoModal.style.display = 'block';
+            modalVideo.src = videoSrc;
+            videoCaption.textContent = caption;
+            document.body.style.overflow = 'hidden';
+            
+            // Автовоспроизведение при открытии
+            modalVideo.play().catch(e => {
+                console.log('Автовоспроизведение заблокировано браузером');
+            });
+        }
+
+        // Закрытие видео модального окна
+        function closeVideoModal() {
+            const videoModal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            
+            videoModal.style.display = 'none';
+            modalVideo.pause();
+            modalVideo.currentTime = 0;
+            document.body.style.overflow = 'auto';
+        }
 
         // Функция для безопасной инициализации анимаций
         function initScrollAnimations() {
@@ -2765,11 +3090,25 @@
             }
         }
 
+        // Обработчики для видео модального окна
+        document.querySelector('.video-close').onclick = closeVideoModal;
+
+        document.getElementById('videoModal').onclick = function(event) {
+            if (event.target === this) {
+                closeVideoModal();
+            }
+        }
+
         // Закрытие по ESC
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && modal.style.display === 'block') {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+            if (event.key === 'Escape') {
+                if (document.getElementById('videoModal').style.display === 'block') {
+                    closeVideoModal();
+                }
+                if (document.getElementById('imageModal').style.display === 'block') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
             }
         });
 
@@ -2901,12 +3240,65 @@
             });
         });
 
+        // Фильтрация портфолио по категориям
+        const portfolioCategoryBtns = document.querySelectorAll('.portfolio-category-btn');
+        
+        portfolioCategoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Убираем активный класс у всех кнопок
+                portfolioCategoryBtns.forEach(b => b.classList.remove('active'));
+                // Добавляем активный класс текущей кнопке
+                btn.classList.add('active');
+                
+                const category = btn.getAttribute('data-category');
+                const portfolioItems = document.querySelectorAll('.portfolio-item');
+                
+                portfolioItems.forEach(item => {
+                    if (category === 'all') {
+                        item.style.display = 'block';
+                    } else {
+                        if (item.getAttribute('data-type') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }
+                });
+                
+                // Обновляем анимации после фильтрации
+                updatePageAnimations();
+            });
+        });
+
+        // Автовоспроизведение видео при наведении (только для зацикленных muted видео)
+        document.querySelectorAll('.portfolio-video').forEach(video => {
+            video.addEventListener('mouseenter', function() {
+                this.play().catch(e => {
+                    // Игнорируем ошибки автовоспроизведения
+                });
+            });
+            
+            video.addEventListener('mouseleave', function() {
+                this.pause();
+                this.currentTime = 0;
+            });
+        });
+
         // Обработка форм
         document.querySelectorAll('form').forEach(form => {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 alert('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.');
                 this.reset();
+            });
+        });
+
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Автопауза всех видео при загрузке
+            document.querySelectorAll('.portfolio-video').forEach(video => {
+                video.pause();
+                video.currentTime = 0;
             });
         });
 
