@@ -674,43 +674,65 @@
         }
 
         /* Списки для алкогольных и безалкогольных коктейлей */
-        .cocktail-simple-list {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+     /* Стили для простых списков коктейлей */
+.cocktail-simple-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
 
-        .cocktail-simple-item {
-            background-color: var(--secondary-color);
-            border-radius: 4px;
-            padding: 20px 25px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(20px);
-            border: 1px solid #2a2a2a;
-        }
+.cocktail-simple-item {
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+    padding: 20px 25px;
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(20px);
+    border: 1px solid #2a2a2a;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+}
 
-        .cocktail-simple-item:hover {
-            background-color: #2a2a2a;
-            transform: translateX(5px);
-            border-color: var(--accent-color);
-        }
+.cocktail-simple-item:hover {
+    background-color: #2a2a2a;
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
 
-        .cocktail-simple-name {
-            font-size: 1.2rem;
-            font-weight: 400;
-        }
+.cocktail-simple-name {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    font-family: 'Cormorant Garamond', serif;
+}
 
-        .cocktail-simple-ingredients {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 5px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-        }
+/* Убираем старые стили для ингредиентов */
+.cocktail-simple-ingredients {
+    display: none;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .cocktail-simple-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .cocktail-simple-item {
+        padding: 15px 20px;
+        min-height: 70px;
+    }
+    
+    .cocktail-simple-name {
+        font-size: 1.2rem;
+    }
+}
 
         /* Kitchen Section */
         .kitchen-categories {
@@ -2425,51 +2447,43 @@
             }
         });
 
-        // Переключение категорий коктейлей
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            const cocktailLists = {
-                'classic': document.getElementById('classic-cocktails'),
-                'alcoholic': document.getElementById('alcoholic-cocktails'),
-                'non-alcoholic': document.getElementById('non-alcoholic-cocktails')
-            };
+      // Переключение категорий коктейлей
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const cocktailLists = {
+        'classic': document.getElementById('classic-cocktails'),
+        'alcoholic': document.getElementById('alcoholic-cocktails'),
+        'non-alcoholic': document.getElementById('non-alcoholic-cocktails')
+    };
+    
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
             
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    
-                    // Обновляем активную кнопку
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Показываем соответствующую категорию
-                    Object.values(cocktailLists).forEach(list => {
-                        if (list) {
-                            gsap.to(list, {
-                                opacity: 0,
-                                duration: 0.3,
-                                onComplete: () => {
-                                    list.style.display = 'none';
-                                }
-                            });
-                        }
-                    });
-                    
-                    if (cocktailLists[category]) {
-                        if (category === 'classic') {
-                            cocktailLists[category].style.display = 'grid';
-                        } else {
-                            cocktailLists[category].style.display = 'block';
-                        }
-                        
-                        gsap.fromTo(cocktailLists[category], 
-                            { opacity: 0 }, 
-                            { opacity: 1, duration: 0.6 }
-                        );
-                    }
-                });
+            // Обновляем активную кнопку
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Скрываем все категории
+            Object.values(cocktailLists).forEach(list => {
+                if (list) {
+                    list.style.display = 'none';
+                }
             });
+            
+            // Показываем выбранную категорию
+            if (cocktailLists[category]) {
+                cocktailLists[category].style.display = 'grid';
+                
+                // Анимация появления
+                gsap.fromTo(cocktailLists[category], 
+                    { opacity: 0 }, 
+                    { opacity: 1, duration: 0.6 }
+                );
+            }
         });
+    });
+});
 
         // Кнопка "Наверх"
         document.addEventListener('DOMContentLoaded', function() {
