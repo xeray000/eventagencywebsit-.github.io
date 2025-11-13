@@ -674,63 +674,59 @@
         }
 
         /* Списки для алкогольных и безалкогольных коктейлей */
-     /* Стили для простых списков коктейлей */
-.cocktail-simple-list {
+   /* Стили для простых списков коктейлей */
+.simple-cocktail-list {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
     max-width: 900px;
     margin: 0 auto;
+}
+
+.simple-cocktail-list.active {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 15px;
 }
 
-.cocktail-simple-item {
+.simple-cocktail-item {
     background-color: var(--secondary-color);
-    border-radius: 4px;
-    padding: 20px 25px;
-    transition: var(--transition);
-    opacity: 0;
-    transform: translateY(20px);
     border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    padding: 20px;
     text-align: center;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 80px;
-}
-
-.cocktail-simple-item:hover {
-    background-color: #2a2a2a;
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
-}
-
-.cocktail-simple-name {
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: var(--text-primary);
+    font-size: 1.2rem;
     font-family: 'Cormorant Garamond', serif;
+    color: var(--text-primary);
+    transition: var(--transition);
+    cursor: pointer;
 }
 
-/* Убираем старые стили для ингредиентов */
-.cocktail-simple-ingredients {
+.simple-cocktail-item:hover {
+    background-color: #2a2a2a;
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* Стили для классических коктейлей */
+.cocktail-list {
     display: none;
 }
 
-/* Адаптивность для мобильных устройств */
+.cocktail-list.active {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* Адаптивность */
 @media (max-width: 768px) {
-    .cocktail-simple-list {
+    .simple-cocktail-list {
         grid-template-columns: 1fr;
         gap: 10px;
     }
     
-    .cocktail-simple-item {
-        padding: 15px 20px;
-        min-height: 70px;
-    }
-    
-    .cocktail-simple-name {
-        font-size: 1.2rem;
+    .simple-cocktail-item {
+        padding: 15px;
+        font-size: 1.1rem;
     }
 }
 
@@ -1554,8 +1550,7 @@
         </section>
     </div>
 
-    <!-- Страница коктейльной карты -->
-   <!-- Страница коктейльной карты -->
+ <!-- Страница коктейльной карты -->
 <div id="cocktail-menu-page" class="page">
     <section class="page-hero">
         <div class="container">
@@ -1573,7 +1568,7 @@
             </div>
             
             <!-- Классические коктейли -->
-            <div class="cocktail-list" id="classic-cocktails">
+     <div class="cocktail-list" id="classic-cocktails">
                 <div class="cocktail-item" style="--delay: 1">
                     <div class="cocktail-image">
                         <img src="https://images.unsplash.com/photo-1570598912132-0ba1dc952b7d?w=400&h=300&fit=crop" alt="White Russian" loading="lazy">
@@ -1735,54 +1730,26 @@
                 </div>
             </div>
             
-            <!-- Алкогольные коктейли -->
-            <div class="cocktail-simple-list" id="alcoholic-cocktails" style="display: none;">
-                <div class="cocktail-simple-item" style="--delay: 1">
-                    <span class="cocktail-simple-name">Лонг Айленд Айс Ти</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 2">
-                    <span class="cocktail-simple-name">Дайкири</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 3">
-                    <span class="cocktail-simple-name">Мятный Экстази</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 4">
-                    <span class="cocktail-simple-name">Черный Русский</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 5">
-                    <span class="cocktail-simple-name">Том Колинз</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 6">
-                    <span class="cocktail-simple-name">Вайт Леди</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 7">
-                    <span class="cocktail-simple-name">Кайпиринья</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 8">
-                    <span class="cocktail-simple-name">Поцелуй VS</span>
-                </div>
+            <!-- Алкогольные коктейли - ПРОСТОЙ СПИСОК -->
+            <div class="simple-cocktail-list" id="alcoholic-cocktails">
+                <div class="simple-cocktail-item">Лонг Айленд Айс Ти</div>
+                <div class="simple-cocktail-item">Дайкири</div>
+                <div class="simple-cocktail-item">Мятный Экстази</div>
+                <div class="simple-cocktail-item">Черный Русский</div>
+                <div class="simple-cocktail-item">Том Колинз</div>
+                <div class="simple-cocktail-item">Вайт Леди</div>
+                <div class="simple-cocktail-item">Кайпиринья</div>
+                <div class="simple-cocktail-item">Поцелуй VS</div>
             </div>
             
-            <!-- Безалкогольные коктейли -->
-            <div class="cocktail-simple-list" id="non-alcoholic-cocktails" style="display: none;">
-                <div class="cocktail-simple-item" style="--delay: 1">
-                    <span class="cocktail-simple-name">Манго-Маракуйя</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 2">
-                    <span class="cocktail-simple-name">Грейпфрут-Соленая Карамель</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 3">
-                    <span class="cocktail-simple-name">Малиновый Рассвет</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 4">
-                    <span class="cocktail-simple-name">Мохито</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 5">
-                    <span class="cocktail-simple-name">Арбуз-Базилик</span>
-                </div>
-                <div class="cocktail-simple-item" style="--delay: 6">
-                    <span class="cocktail-simple-name">Лавандовый-Бергамот</span>
-                </div>
+            <!-- Безалкогольные коктейли - ПРОСТОЙ СПИСОК -->
+            <div class="simple-cocktail-list" id="non-alcoholic-cocktails">
+                <div class="simple-cocktail-item">Манго-Маракуйя</div>
+                <div class="simple-cocktail-item">Грейпфрут-Соленая Карамель</div>
+                <div class="simple-cocktail-item">Малиновый Рассвет</div>
+                <div class="simple-cocktail-item">Мохито</div>
+                <div class="simple-cocktail-item">Арбуз-Базилик</div>
+                <div class="simple-cocktail-item">Лавандовый-Бергамот</div>
             </div>
         </div>
     </section>
@@ -2447,7 +2414,7 @@
             }
         });
 
-      // Переключение категорий коктейлей
+     // Простое переключение категорий коктейлей
 document.addEventListener('DOMContentLoaded', function() {
     const categoryBtns = document.querySelectorAll('.category-btn');
     const cocktailLists = {
@@ -2460,31 +2427,44 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             const category = this.getAttribute('data-category');
             
-            // Обновляем активную кнопку
+            // Убираем активный класс со всех кнопок
             categoryBtns.forEach(b => b.classList.remove('active'));
+            // Добавляем активный класс нажатой кнопке
             this.classList.add('active');
             
-            // Скрываем все категории
+            // Скрываем все списки
             Object.values(cocktailLists).forEach(list => {
-                if (list) {
-                    list.style.display = 'none';
-                }
+                if (list) list.classList.remove('active');
             });
             
-            // Показываем выбранную категорию
+            // Показываем выбранный список
             if (cocktailLists[category]) {
-                cocktailLists[category].style.display = 'grid';
-                
-                // Анимация появления
-                gsap.fromTo(cocktailLists[category], 
-                    { opacity: 0 }, 
-                    { opacity: 1, duration: 0.6 }
-                );
+                cocktailLists[category].classList.add('active');
             }
         });
     });
+    
+    // Показываем классические коктейли по умолчанию
+    if (cocktailLists.classic) {
+        cocktailLists.classic.classList.add('active');
+    }
 });
-
+// Отладочный код для проверки коктейльных списков
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Проверка коктейльных списков:');
+    console.log('classic-cocktails:', document.getElementById('classic-cocktails'));
+    console.log('alcoholic-cocktails:', document.getElementById('alcoholic-cocktails'));
+    console.log('non-alcoholic-cocktails:', document.getElementById('non-alcoholic-cocktails'));
+    
+    // Принудительно показываем алкогольные коктейли для теста
+    setTimeout(() => {
+        const alcoholicList = document.getElementById('alcoholic-cocktails');
+        if (alcoholicList) {
+            alcoholicList.style.display = 'grid';
+            console.log('Алкогольные коктейли принудительно показаны');
+        }
+    }, 1000);
+});
         // Кнопка "Наверх"
         document.addEventListener('DOMContentLoaded', function() {
             const backToTopBtn = document.getElementById('backToTop');
