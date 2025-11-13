@@ -886,6 +886,96 @@
             transform: scale(1.05);
         }
 
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+
+        .lightbox-prev, .lightbox-next {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .lightbox-prev:hover, .lightbox-next:hover {
+            background-color: var(--accent-color);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1rem;
+        }
+
         /* About Section */
         .about-content {
             display: flex;
@@ -1248,6 +1338,16 @@
             .simple-cocktail-list {
                 grid-template-columns: 1fr;
             }
+
+            .lightbox-nav {
+                padding: 0 10px;
+            }
+
+            .lightbox-prev, .lightbox-next {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1295,6 +1395,15 @@
                 padding: 15px;
                 font-size: 1.1rem;
             }
+
+            .lightbox-content {
+                max-width: 95%;
+            }
+
+            .lightbox-close {
+                top: -50px;
+                right: -10px;
+            }
         }
     </style>
 </head>
@@ -1328,9 +1437,6 @@
                     <a href="https://www.instagram.com/drink_and_dance_event?igsh=MWYyNXludnlkY2tkaw==" target="_blank" title="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://t.me/DrinkAndDanceEventBot" target="_blank" title="Telegram">
-                        <i class="fab fa-telegram"></i>
-                    </a>
                 </div>
             </div>
             
@@ -1352,12 +1458,28 @@
                 <a href="https://www.instagram.com/drink_and_dance_event?igsh=MWYyNXludnlkY2tkaw==" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://t.me/DrinkAndDanceEventBot" target="_blank">
-                    <i class="fab fa-telegram"></i>
-                </a>
             </div>
         </div>
     </header>
+
+    <!-- Lightbox для просмотра фотографий -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-nav">
+            <button class="lightbox-prev" id="lightboxPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-next" id="lightboxNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="">
+        </div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
 
     <!-- Кнопка "Наверх" -->
     <div class="back-to-top" id="backToTop">
@@ -1921,7 +2043,7 @@
         <section class="portfolio">
             <div class="container">
                 <div class="portfolio-grid">
-                    <div class="portfolio-item" style="--delay: 1">
+                    <div class="portfolio-item" style="--delay: 1" data-index="0">
                         <div class="portfolio-image">
                             <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500" alt="Тяжелый дым на свадебный танец" loading="lazy">
                         </div>
@@ -1931,7 +2053,7 @@
                         </div>
                     </div>
 
-                    <div class="portfolio-item" style="--delay: 2">
+                    <div class="portfolio-item" style="--delay: 2" data-index="1">
                         <div class="portfolio-image">
                             <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500" alt="Коктейльный бар" loading="lazy">
                         </div>
@@ -1941,7 +2063,7 @@
                         </div>
                     </div>
 
-                    <div class="portfolio-item" style="--delay: 3">
+                    <div class="portfolio-item" style="--delay: 3" data-index="2">
                         <div class="portfolio-image">
                             <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=500" alt="День рождения" loading="lazy">
                         </div>
@@ -1951,13 +2073,33 @@
                         </div>
                     </div>
 
-                    <div class="portfolio-item" style="--delay: 4">
+                    <div class="portfolio-item" style="--delay: 4" data-index="3">
                         <div class="portfolio-image">
                             <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=500" alt="Музыкальное сопровождение" loading="lazy">
                         </div>
                         <div class="portfolio-overlay">
                             <h3>Музыкальное сопровождение</h3>
                             <p>Живая музыка на мероприятии</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item" style="--delay: 5" data-index="4">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=500" alt="Свадебное торжество" loading="lazy">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Свадебное торжество</h3>
+                            <p>Организация свадьбы под ключ</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item" style="--delay: 6" data-index="5">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500" alt="Корпоративное мероприятие" loading="lazy">
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Корпоративное мероприятие</h3>
+                            <p>Новогодний корпоратив</p>
                         </div>
                     </div>
                 </div>
@@ -2097,9 +2239,6 @@
                             <a href="https://www.instagram.com/drink_and_dance_event?igsh=MWYyNXludnlkY2tkaw==" target="_blank" style="width: 50px; height: 50px;">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://t.me/DrinkAndDanceEventBot" target="_blank" style="width: 50px; height: 50px;">
-                                <i class="fab fa-telegram"></i>
-                            </a>
                         </div>
                     </div>
                     <div class="contact-form">
@@ -2162,9 +2301,6 @@
                         </a>
                         <a href="https://www.instagram.com/drink_and_dance_event?igsh=MWYyNXludnlkY2tkaw==" target="_blank">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://t.me/DrinkAndDanceEventBot" target="_blank">
-                            <i class="fab fa-telegram"></i>
                         </a>
                     </div>
                 </div>
@@ -2242,6 +2378,103 @@
             // Добавляем активный класс нажатой кнопке
             event.target.classList.add('active');
         }
+
+        // Lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const lightboxPrev = document.getElementById('lightboxPrev');
+            const lightboxNext = document.getElementById('lightboxNext');
+            const lightboxCounter = document.getElementById('lightboxCounter');
+            
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            let currentIndex = 0;
+            let portfolioImages = [];
+            
+            // Собираем все изображения из портфолио
+            portfolioItems.forEach(item => {
+                const img = item.querySelector('img');
+                if (img) {
+                    portfolioImages.push({
+                        src: img.src,
+                        alt: img.alt,
+                        title: item.querySelector('h3').textContent,
+                        description: item.querySelector('p').textContent
+                    });
+                }
+            });
+            
+            // Функция открытия lightbox
+            function openLightbox(index) {
+                currentIndex = index;
+                updateLightbox();
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Блокируем скролл страницы
+            }
+            
+            // Функция обновления lightbox
+            function updateLightbox() {
+                const currentImage = portfolioImages[currentIndex];
+                lightboxImage.src = currentImage.src;
+                lightboxImage.alt = currentImage.alt;
+                lightboxCounter.textContent = `${currentIndex + 1} / ${portfolioImages.length}`;
+            }
+            
+            // Функция закрытия lightbox
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = ''; // Восстанавливаем скролл страницы
+            }
+            
+            // Функция показа следующего изображения
+            function showNext() {
+                currentIndex = (currentIndex + 1) % portfolioImages.length;
+                updateLightbox();
+            }
+            
+            // Функция показа предыдущего изображения
+            function showPrev() {
+                currentIndex = (currentIndex - 1 + portfolioImages.length) % portfolioImages.length;
+                updateLightbox();
+            }
+            
+            // Обработчики событий для элементов портфолио
+            portfolioItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    openLightbox(index);
+                });
+            });
+            
+            // Обработчики событий для элементов управления lightbox
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxPrev.addEventListener('click', showPrev);
+            lightboxNext.addEventListener('click', showNext);
+            
+            // Закрытие lightbox по клику на фон
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // Навигация с помощью клавиатуры
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                
+                switch(e.key) {
+                    case 'Escape':
+                        closeLightbox();
+                        break;
+                    case 'ArrowLeft':
+                        showPrev();
+                        break;
+                    case 'ArrowRight':
+                        showNext();
+                        break;
+                }
+            });
+        });
 
         // Инициализация GSAP анимаций
         document.addEventListener('DOMContentLoaded', function() {
