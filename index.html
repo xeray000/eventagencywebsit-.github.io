@@ -1196,10 +1196,15 @@
             min-height: 100vh;
             padding-top: 80px;
             width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .page.active {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .page-hero {
@@ -2337,7 +2342,7 @@
         <!-- Существующая контактная информация -->
         <section class="contact">
             <div class="container">
-                <h2 class="section-title">Наши контакты</h2>
+                <h2 class="section-title">Свяжитесь с нами</h2>
                 <div class="contact-content">
                     <div class="contact-info">
                         <h3>Контактная информация</h3>
@@ -3087,18 +3092,34 @@ const TELEGRAM_CONFIG = {
             
             // Функция для переключения страниц
             function showPage(pageId) {
+                // Сначала скрываем все страницы с анимацией
                 pages.forEach(page => {
-                    page.classList.remove('active');
+                    if (page.classList.contains('active')) {
+                        gsap.to(page, {
+                            opacity: 0,
+                            y: 20,
+                            duration: 0.5,
+                            ease: "power2.out",
+                            onComplete: () => {
+                                page.classList.remove('active');
+                            }
+                        });
+                    }
                 });
                 
+                // Затем показываем целевую страницу с анимацией
                 const targetPage = document.getElementById(pageId + '-page');
                 if (targetPage) {
                     targetPage.classList.add('active');
                     
-                    // Плавное появление контента при переключении страниц
                     gsap.fromTo(targetPage, 
-                        { opacity: 0 }, 
-                        { opacity: 1, duration: 0.8 }
+                        { opacity: 0, y: 20 }, 
+                        { 
+                            opacity: 1, 
+                            y: 0, 
+                            duration: 0.8,
+                            ease: "power2.out"
+                        }
                     );
                 }
                 
